@@ -17,9 +17,9 @@ date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
-subscribe_email: me@adrianmejia.com
+subscribe_email: 
 # RSS feeds can list your email address if you like
-email:
+email: me@adrianmejia.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -77,7 +77,7 @@ google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user: adriansky@gmail.com
+googleplus_user: 105957252272382685246
 googleplus_hidden: false
 
 # Pinboard
