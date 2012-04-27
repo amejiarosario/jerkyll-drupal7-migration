@@ -2,6 +2,7 @@
 layout: post
 title: Ruby on Rails Architectural Design
 created: 1313082237
+comments: true
 categories: [ruby on rails, software architecture, web frameworks, web development, agile frameworks, twitter]
 ---
 <p>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Introduction</p>

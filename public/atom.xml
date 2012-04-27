@@ -4,7 +4,7 @@
   <title><![CDATA[Adrian Mejia's Web]]></title>
   <link href="http://adrianmejia.com/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-04-27T02:55:06-04:00</updated>
+  <updated>2012-04-27T03:26:19-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -82,16 +82,6 @@
 
 
 <p>Using Firebug in Firefox is very tab Net &gt; XHR you can see all your ajax request and reponses. Very useful for debugging. Hope this save you some time and frustration. Any question or suggestion fee free to comment below or contact me.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[New blog]]></title>
-    <link href="http://adrianmejia.com/blog/2012/04/10/new-blog/"/>
-    <updated>2012-04-10T00:00:00-04:00</updated>
-    <id>http://adrianmejia.com/blog/2012/04/10/new-blog</id>
-    <content type="html"><![CDATA[<p>This blog has been migrated to http://adrianmejia.com/ and will be continue from there since today.</p>
 
 ]]></content>
   </entry>
@@ -1285,6 +1275,82 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
     <content type="html"><![CDATA[<p>B. Steichen, S. Lawless, V. Wade et al. (2009) [1] proposed an Adaptive Hypermedia (AH) for dynamic hypertext generation of learning content. This system provides personalized learning services, which aims to enrich the learning process and the satisfaction of the learners. In order to accomplish these tasks: the system perform open courses harvesting and identification, generate dynamically hyperlinks based on the learner experience and appropriated learning strategies, and present the content in a uniform presentation across heterogeneous content. National digital content repositories cross institution sharing of learning resources and universities open courseware seed the identification task. Web crawlers are used to harvest the open corpus. Focused crawlers, such as Nalanda and Combine are mentioned and Heritix is recommended.  The harvested data is later indexed to make it more discoverable with open sources solutions, such as Nutch and Swish-e and then retrieve using search engines like Lucene and Lemur. For the metadata classification there are 3 approaches: (i) extraction of the metadata from files that already have it; (ii) infer and generate metadata automatically. Semtag from IBM perform can do this using a Taxonomy Based Disambiguation (TBD) algorithm. Also Klarity and DC.dot are metadata generators. (iii) Use of social bookmarking (digg, flickr, facebook,…) to extract the metadata/content description. For the dynamic hypertext generation a system was develop on top of the Adaptive Personalized eLearning Service (APeLS). This facilitates students to learn about specific concepts using query of keywords. In [2] can found be found also the results of this system.</p>
 
 <p>[1] Steichen, B., Lawless, S., O’Connor, A., &amp; Wade, V. (2009). Dynamic Hypertext Generation for Reusing Open Corpus Content. HT’09, June 29–July 1, 2009, Torino, Italy, 119-128. ACM.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[E-Learning on the Social Semantic Information Sources - Paper Review]]></title>
+    <link href="http://adrianmejia.com/blog/2011/09/21/e-learning-on-the-social-semantic-information-sources-paper-review/"/>
+    <updated>2011-09-21T00:00:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2011/09/21/e-learning-on-the-social-semantic-information-sources-paper-review</id>
+    <content type="html"><![CDATA[<p>The paper [1] is proposing a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). It presents how digital libraries can be combined with social semantic information sources and it exemplifies how these techniques can improve e-Learning. The goal of the SSCF is to enhance individual bookmarks with shared knowledge of the community. The Fig. 1 shows the dificulty (or time-consumptions) of bookmarking all the interested links and then share all of them in a blog for other users.</p>
+
+
+<p><img alt="Use Case Scenario for SSCF" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.24.35%20PM.png" style="width: 600px; height: 222px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>In order to solve this problem, they [1] proposed a SSCF bookmarking system, which is based on JeremeDL. This platform joins 3 separated applications: blog, Digital Library, and bookmarking application (Fig. 3), to solve the problems above-mentioned.</p>
+
+
+<p><img alt="SSCF solution" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.26.20%20PM.png" style="width: 600px; height: 442px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>JeromeDL can be use to reduce the time of login in 3 different applications as show in the Fig. 5</p>
+
+
+<p><img alt="JeromeDL time comparison with other systems" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.26.39%20PM.png" style="width: 600px; height: 196px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>The process that includes SOIC ontology support and alignment is the following:</p>
+
+
+<ol>
+    <li>Users can bookmark blog post, forums, or URL site.</li>
+    <li>Extract metadata from the bookmarked site using SOIC browser (<a href="http://sparql.captsolo.net/browser/browser.py?url=URL" target="_blank">http://sparql.captsolo.net/browser/browser.py?url=URL</a>).</li>
+    <li>All relevant information is saved to the SSCF RDF repository.</li>
+    <li>SSCF module generates bookmark trees and also displays SIOC information.</li>
+    <li>Ontology alignment: creating some content using SIOC metadata and delivery mediation mechanism for other SSCF/JeromeDL content.</li>
+</ol>
+
+
+<p>I like the idea of organizing and categorizing URL sites using existing ontologies and web semantics. This allow to group similar content together and enhance navigability of the information. It’s also interesting the way they join multiple applications (library, bookmarks and blog) in other to reduce the time as shown in the Fig. 5. However, it’s not clear to me how if the SSCF is an addon to the JeremeDL system or if is a fork of this project.</p>
+
+
+<p><strong>Mentions</strong>:</p>
+
+
+<ul>
+    <li>Semantic Web,&nbsp;<a href="http://en.wikipedia.org/wiki/Semantic_Web" target="_blank">http://en.wikipedia.org/wiki/Semantic_Web</a>,</li>
+    <li>Ping Semantic Web,&nbsp;<a href="http://pingthesemanticweb.com/" target="_blank">http://pingthesemanticweb.com/</a>, repository for RDF documents</li>
+    <li>SIOC (Semantically-Interlinked Online Communities),&nbsp;<a href="http://sioc-project.org/" target="_blank">http://sioc-project.org/</a>, aims to enable the integration of online community information</li>
+    <li>Connotea,&nbsp;<a href="http://www.connotea.org/" target="_blank">http://www.connotea.org/</a>, Free online reference management for all researchers, clinicians and scientists.</li>
+    <li>Open directory, dmoz.org, uses a hierarchical ontology scheme for organizing site listings.</li>
+    <li>RDF (Resource Description Framework),<a href="http://en.wikipedia.org/wiki/Resource_Description_Framework" target="_blank">http://en.wikipedia.org/wiki/Resource_Description_Framework</a>, description or modeling of information that is implemented in web resources</li>
+    <li>JeromeDL,&nbsp;<a href="http://www.jeromedl.org/" target="_blank">http://www.jeromedl.org/</a>, Social Semantic Digital Library. As a digital library, it allows institutions to easily publish documents on the Web. It supports a variety of document formats and allows to store and query a rich bibliographic description of each document</li>
+</ul>
+
+
+<p><strong>Ideas</strong>:</p>
+
+
+<ul>
+    <li>Uses a hierarchical ontology scheme for organizing site listings and also uses web semantics to categorize information.</li>
+    <li>Join multiple applications to reduce time user&#8217;s time performing common tasks.</li>
+</ul>
+
+
+<p><strong>Reference</strong>:<br>
+    [1] Sebastian Ryszard Kruk, Adam Gzella, Jaros law Dobrzanski,Bill McDaniel, and Tomasz Woroniecki; &#8220;E-Learning on the Social Semantic Information&nbsp;Sources&#8221;; EC-TEL 2007, LNCS 4753, pp. 172–186, 2007. Springer-Verlag Berlin Heidelberg 2007.</p>
+
 ]]></content>
   </entry>
   

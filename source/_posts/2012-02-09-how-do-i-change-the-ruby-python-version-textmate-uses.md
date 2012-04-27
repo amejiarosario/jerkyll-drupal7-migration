@@ -2,6 +2,7 @@
 layout: post
 title: How do I change the Ruby/Python version Textmate uses?
 created: 1328766604
+comments: true
 categories: [ruby, textmate, how-to, python]
 ---
 <p>&nbsp;</p>

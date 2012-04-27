@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="V. Mihál and M. Bieliková presents “An Approach to Annotation of Learning Texts on Programming within a Web-Based Educational System”. This work &hellip;">
+  <meta name="description" content="H. Dong et al. (2011) [1] introduce an approach to enhance disperse and heterogeneous industrial digital ecosystem for e-Learning. Its target is to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,47 +78,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/26/an-approach-to-annotation-of-learning-texts-on-programming-within-a-web-based-educational-system-paper-review/">An Approach to Annotation of Learning Texts on Programming Within a Web-Based Educational System - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T00:00:00-04:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/26/an-approach-to-annotation-of-learning-texts-on-programming-within-a-web-based-educational-system-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>V. Mihál and M. Bieliková presents “An Approach to Annotation of Learning Texts on Programming within a Web-Based Educational System”. This work leverage the usage of annotation to enhance programming learning experience. Annotations provide to learners supplementary information that they otherwise will have to find by themselves somewhere else.  They describe different types of annotation: manual and automatic. For the manual annotations the user the user provides insert related notes to material. Automatic annotation are done without human intervention. It uses ontologies and language processing to identify related content and insert it in the appropriated place.</p>
-
-<p>Reference
-V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on Programming within a Web-Based Educational System,” 2009 IEEE Fourth International Workshop on Semantic Media Adaptation and Personalization, pp. 99-104, 2009.</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -291,6 +250,111 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/21/e-learning-on-the-social-semantic-information-sources-paper-review/">E-Learning on the Social Semantic Information Sources - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00-04:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/21/e-learning-on-the-social-semantic-information-sources-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The paper [1] is proposing a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). It presents how digital libraries can be combined with social semantic information sources and it exemplifies how these techniques can improve e-Learning. The goal of the SSCF is to enhance individual bookmarks with shared knowledge of the community. The Fig. 1 shows the dificulty (or time-consumptions) of bookmarking all the interested links and then share all of them in a blog for other users.</p>
+
+
+<p><img alt="Use Case Scenario for SSCF" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.24.35%20PM.png" style="width: 600px; height: 222px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>In order to solve this problem, they [1] proposed a SSCF bookmarking system, which is based on JeremeDL. This platform joins 3 separated applications: blog, Digital Library, and bookmarking application (Fig. 3), to solve the problems above-mentioned.</p>
+
+
+<p><img alt="SSCF solution" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.26.20%20PM.png" style="width: 600px; height: 442px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>JeromeDL can be use to reduce the time of login in 3 different applications as show in the Fig. 5</p>
+
+
+<p><img alt="JeromeDL time comparison with other systems" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.26.39%20PM.png" style="width: 600px; height: 196px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>The process that includes SOIC ontology support and alignment is the following:</p>
+
+
+<ol>
+    <li>Users can bookmark blog post, forums, or URL site.</li>
+    <li>Extract metadata from the bookmarked site using SOIC browser (<a href="http://sparql.captsolo.net/browser/browser.py?url=URL" target="_blank">http://sparql.captsolo.net/browser/browser.py?url=URL</a>).</li>
+    <li>All relevant information is saved to the SSCF RDF repository.</li>
+    <li>SSCF module generates bookmark trees and also displays SIOC information.</li>
+    <li>Ontology alignment: creating some content using SIOC metadata and delivery mediation mechanism for other SSCF/JeromeDL content.</li>
+</ol>
+
+
+<p>I like the idea of organizing and categorizing URL sites using existing ontologies and web semantics. This allow to group similar content together and enhance navigability of the information. It’s also interesting the way they join multiple applications (library, bookmarks and blog) in other to reduce the time as shown in the Fig. 5. However, it’s not clear to me how if the SSCF is an addon to the JeremeDL system or if is a fork of this project.</p>
+
+
+<p><strong>Mentions</strong>:</p>
+
+
+<ul>
+    <li>Semantic Web,&nbsp;<a href="http://en.wikipedia.org/wiki/Semantic_Web" target="_blank">http://en.wikipedia.org/wiki/Semantic_Web</a>,</li>
+    <li>Ping Semantic Web,&nbsp;<a href="http://pingthesemanticweb.com/" target="_blank">http://pingthesemanticweb.com/</a>, repository for RDF documents</li>
+    <li>SIOC (Semantically-Interlinked Online Communities),&nbsp;<a href="http://sioc-project.org/" target="_blank">http://sioc-project.org/</a>, aims to enable the integration of online community information</li>
+    <li>Connotea,&nbsp;<a href="http://www.connotea.org/" target="_blank">http://www.connotea.org/</a>, Free online reference management for all researchers, clinicians and scientists.</li>
+    <li>Open directory, dmoz.org, uses a hierarchical ontology scheme for organizing site listings.</li>
+    <li>RDF (Resource Description Framework),<a href="http://en.wikipedia.org/wiki/Resource_Description_Framework" target="_blank">http://en.wikipedia.org/wiki/Resource_Description_Framework</a>, description or modeling of information that is implemented in web resources</li>
+    <li>JeromeDL,&nbsp;<a href="http://www.jeromedl.org/" target="_blank">http://www.jeromedl.org/</a>, Social Semantic Digital Library. As a digital library, it allows institutions to easily publish documents on the Web. It supports a variety of document formats and allows to store and query a rich bibliographic description of each document</li>
+</ul>
+
+
+<p><strong>Ideas</strong>:</p>
+
+
+<ul>
+    <li>Uses a hierarchical ontology scheme for organizing site listings and also uses web semantics to categorize information.</li>
+    <li>Join multiple applications to reduce time user&#8217;s time performing common tasks.</li>
+</ul>
+
+
+<p><strong>Reference</strong>:<br>
+    [1] Sebastian Ryszard Kruk, Adam Gzella, Jaros law Dobrzanski,Bill McDaniel, and Tomasz Woroniecki; &#8220;E-Learning on the Social Semantic Information&nbsp;Sources&#8221;; EC-TEL 2007, LNCS 4753, pp. 172–186, 2007. Springer-Verlag Berlin Heidelberg 2007.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -317,10 +381,6 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
       </li>
     
       <li class="post">
-        <a href="/blog/2012/04/10/new-blog/">New blog</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2012/02/11/adding-subversion-svn-properties-to-your-code/">Adding Subversion (SVN) Properties to your code</a>
       </li>
     
@@ -330,6 +390,10 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
     
       <li class="post">
         <a href="/blog/2012/02/04/get-started-with-the-web-crawler-apache-nutch-1-x/">Get Started with the web crawler Apache Nutch 1.x </a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/ssh-login-without-password/">SSH login without password</a>
       </li>
     
   </ul>

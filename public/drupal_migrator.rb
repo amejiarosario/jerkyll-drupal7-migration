@@ -85,6 +85,7 @@ SQL
            'layout' => 'post',
            'title' => title.to_s,
            'created' => created,
+           'comments' => true,
            'categories' => tags
          }.delete_if { |k,v| v.nil? || v == ''}.to_yaml
 
@@ -98,14 +99,16 @@ SQL
         # 
         # Make a file to redirect from the old Drupal URL
         #
+=begin
         if is_published
           ddir = "#{drupal_path}/#{drupal_slug}"
           FileUtils.mkdir_p ddir
           File.open("#{ddir}/index.php", "w") do |f|
             puts "#{ddir}/index.php"
-            f.puts permanent_redirect_to "#{time.strftime("%Y/%m/%d/") + slug}"
+            f.puts permanent_redirect_to "blog/#{time.strftime("%Y/%m/%d/") + slug}"
           end
         end
+=end
       end
 
       # TODO: Make dirs & files for nodes of type 'page'

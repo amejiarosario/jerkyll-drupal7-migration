@@ -2,6 +2,7 @@
 layout: post
 title: E-Learning on the Social Semantic Information Sources - Paper Review
 created: 1316620227
+comments: true
 categories: [paper review, e-learning]
 ---
 <p>The paper [1] is proposing a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). It presents how digital libraries can be combined with social semantic information sources and it exemplifies how these techniques can improve e-Learning. The goal of the SSCF is to enhance individual bookmarks with shared knowledge of the community. The Fig. 1 shows the dificulty (or time-consumptions) of bookmarking all the interested links and then share all of them in a blog for other users.</p>

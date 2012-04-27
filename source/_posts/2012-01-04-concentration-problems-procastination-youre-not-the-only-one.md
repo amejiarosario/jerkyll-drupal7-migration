@@ -2,6 +2,7 @@
 layout: post
 title: Concentration problems? Procastination? You're not the only one.
 created: 1325695584
+comments: true
 categories: [concentration, procrastination, attention]
 ---
 <p>&nbsp;</p>

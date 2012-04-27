@@ -2,6 +2,7 @@
 layout: post
 title: Microsoft Zune Failure Analysis
 created: 1312810976
+comments: true
 categories: [product lines, bug, testing, microsoft, freescale, zune]
 ---
 All the Zune 30 froze, precisely at 12:01 A.M. on December 31, 2008. These devices got stuck with an irresponsive Zune logo. This bug that didn’t allow users to use the device was cause by a bug in the internal clock driver that handled improperly the last day of a year leap. The Zune 30 model 2006 was the only one affected by this bug; all the other models keep working ok, such as the Zune: 80 and 120 GB with hard drive, and 4, 8, 16 GB with flash drive, because they did not have the component with the error.

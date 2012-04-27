@@ -2,6 +2,7 @@
 layout: post
 title: How to execute SQL statements on MS Access?
 created: 1320855136
+comments: true
 categories: [ms access, sql, visual basic, macros, how-to]
 ---
 Sometimes is quicker to use SQL statements than create tables using the MS Access Visual Designer. For instance, if you already have the SQL code from other databases this could be useful.

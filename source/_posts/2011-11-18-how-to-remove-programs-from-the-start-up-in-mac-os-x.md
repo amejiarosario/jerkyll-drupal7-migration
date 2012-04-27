@@ -2,6 +2,7 @@
 layout: post
 title: How to remove programs from the start up in Mac OS X
 created: 1321636703
+comments: true
 categories: [mac, how-to]
 ---
 <p>Well... I have done this so many times in Windows (it&#39;s just executing &quot;msconfig&quot; you can edit the startup items).&nbsp;Today, I had the need to do the same in the Mac OS X Lion.</p>

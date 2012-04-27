@@ -2,6 +2,7 @@
 layout: post
 title: Faster Windows XP removing Msmpeng.Exe and other programs
 created: 1310735883
+comments: true
 categories: [windows, tips, how-to]
 ---
 <p>At work, I use an Windows XP machine and it some times get really slowly. I noticed from the task manager (ctrl+shift+esc) that the process MsMpEng.exe is consuming most of my CPU time!</p>

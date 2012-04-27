@@ -2,6 +2,7 @@
 layout: post
 title: How to set up Git / github in windows
 created: 1311267147
+comments: true
 categories: [git, github, how-to]
 ---
 <p>Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly.</p>

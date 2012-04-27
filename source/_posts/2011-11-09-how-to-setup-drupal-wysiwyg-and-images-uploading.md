@@ -2,6 +2,7 @@
 layout: post
 title: How to setup Drupal WYSIWYG and Images uploading?
 created: 1320876440
+comments: true
 categories: [drupal, wysiwyg, imce, ckeditor]
 ---
 <p>It have been a pain for me to upload images and deal with tons of WYSIWYG editors... After many trials in this post I recompiled my experiences and the best method that I have found so far. If you have any suggestion I&#39;m willing to hear it, too.</p>

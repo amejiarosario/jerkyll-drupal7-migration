@@ -2,6 +2,7 @@
 layout: post
 title: Learning Algorithms from Scratch / Algorithms for Dummies
 created: 1324582027
+comments: true
 categories: [algorithms, runtime analysis, analysis of algorithm, for dummies, big-o]
 ---
 <p>When you are programming you face challenges all the way. Getting the problems solved is just the tip of the iceberg, getting it done efficiently is the rest.</p>
