@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="It have been a pain for me to upload images and deal with tons of WYSIWYG editors&#8230; After many trials in this post I recompiled my experiences &hellip;">
+  <meta name="description" content="If you want to login to a remote server using SSH and don&#39;t have to type the password again and again, here is a little trick $&nbsp;cat ~/.ssh/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +69,8 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<!-- <li><a href="/about">about</a></li> -->
 </ul>
 
 </nav>
@@ -82,7 +84,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/11/09/how-to-setup-drupal-wysiwyg-and-images-uploading/">How to Setup Drupal WYSIWYG and Images Uploading?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/01/19/ssh-login-without-password/">SSH Login Without Password</a></h1>
     
     
       <p class="meta">
@@ -98,128 +100,28 @@
   
 
 
-<time datetime="2011-11-09T00:00:00-05:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+<time datetime="2012-01-19T00:00:00-05:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
         
-         | <a href="/blog/2011/11/09/how-to-setup-drupal-wysiwyg-and-images-uploading/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/01/19/ssh-login-without-password/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>It have been a pain for me to upload images and deal with tons of WYSIWYG editors&#8230; After many trials in this post I recompiled my experiences and the best method that I have found so far. If you have any suggestion I&#39;m willing to hear it, too.</p>
+  <div class="entry-content"><p>If you want to login to a remote server using SSH and don&#39;t have to type the password again and again, here is a little trick</p>
 
 
-<div>
-    <strong>1. Install and enable the following modules:</strong></div>
+<p>$&nbsp;cat ~/.ssh/id_rsa.pub | ssh &lt;user&gt;@&lt;server.domain&gt; &#39;cat &gt;&gt; .ssh/authorized_keys&#39;</p>
 
 
-<div>
-    &nbsp;</div>
+<p>After you run this and enter your password (for the last time), you can login to your server just typing:</p>
 
 
-<div>
-    http://drupal.org/project/ckeditor (disable the WYSIWYG module if you have it install it)</div>
+<p>$ ssh &lt;user&gt;@&lt;server.domain&gt;</p>
 
 
-<div>
-    http://drupal.org/project/imce -or- http://drupal.org/project/elfinder</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    - optional -</div>
-
-
-<div>
-    http://drupal.org/project/ckeditor_link</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <div>
-        How to setup Drupal WYSIWYG and Images uploading?</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        It have been a pain for me to upload images and deal with tons of WYSIWYG editors&#8230; After many trials in this post I recompiled my experiences and the best method that I have found so far. If you have any suggestion I&#39;m willing to hear it, too.</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>1. Install and enable the following modules:</strong></div>
-    <div>
-        &nbsp;</div>
-    <div>
-        http://drupal.org/project/ckeditor (disable the WYSIWYG module if you have it install it)</div>
-    <div>
-        http://drupal.org/project/imce -or- http://drupal.org/project/elfinder</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        - optional -</div>
-    <div>
-        http://drupal.org/project/ckeditor_link</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>2. Setting up IMCE</strong></div>
-    <div>
-        a. Install and enable the IMCE module at module administration page.</div>
-    <div>
-        b. Create configuration profiles and assign them to user roles at /?q=/admin/config/media/imce <strong>-or-</strong> Menu: Configuration &raquo; Media &raquo; IMCE&nbsp;</div>
-    <div>
-        c. Test it at /imce.</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>3. Setup text formats. </strong>You can create two new ones to be used by the ckeditor (basic and full):</div>
-    <div>
-        a. Menu: Configuration &raquo; Content authoring &raquo; Text formats</div>
-    <div>
-        b. Click &quot;+ Add text format&quot; and add two new formats &quot;ckeditor-basic&quot; and &quot;ckeditor-full&quot; with the &quot;administrator&quot; and &quot;authenticated users&quot; check boxes marked. Everything else could remain in their default values.</div>
-    <div>
-        c. Back to Configuration &raquo; Content authoring, you can rearrange the order, the top most one will be the default.</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>4. Setup CKEditor</strong></div>
-    <div>
-        After you install the CKEditor module, download the latest version of ckeditor from http://ckeditor.com/download</div>
-    <div>
-        a. &quot;Create a new profile&quot; link</div>
-    <div>
-        b. Setup the name in the &quot;Basic Setup&quot; section and choose one of Input format that you created in step (3)</div>
-    <div>
-        c. In &quot;Editor Appearance&quot; you can setup the toolbar load (basic, full, advance)</div>
-    <div>
-        d. In &quot;FILE BROWSER SETTINGS&quot; select &quot;IMCE&quot; as the &quot;File browser type&quot;</div>
-    <div>
-        e. Save and you can repeated this steps for full and basic.</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>5. You are all set.&nbsp;</strong>When you add new content your Textbox and imaging uploading should look like this:</div>
-</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-11-09%20at%205.05.23%20PM.png" style="width: 500px; height: 325px; " /></div>
-
-
-<div>
-    &nbsp;</div>
+<p>You are all set.</p>
 
 </div>
   
@@ -233,7 +135,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access/">How to Execute SQL Statements on MS Access?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/01/04/concentration-problems-procastination-youre-not-the-only-one/">Concentration Problems? Procastination? You&#8217;re Not the Only One.</a></h1>
     
     
       <p class="meta">
@@ -249,51 +151,102 @@
   
 
 
-<time datetime="2011-11-09T00:00:00-05:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+<time datetime="2012-01-04T00:00:00-05:00" pubdate data-updated="true">Jan 4<span>th</span>, 2012</time>
         
-         | <a href="/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/01/04/concentration-problems-procastination-youre-not-the-only-one/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Sometimes is quicker to use SQL statements than create tables using the MS Access Visual Designer. For instance, if you already have the SQL code from other databases this could be useful.</p>
-
-<p>Here are the steps of how to create a new table programmatically in Access (2007):</p>
-
-<ol>
-<li>Open/create your database on MS Access</li>
-<li>Menu: &#8216;Databases Tools&#8217; > &#8216;Visual Basic&#8217; (this will open the visual basic editor</li>
-<li>in the Visual Basic Editor, Menu: Run</li>
-<li>Insert the name of your macro and click &#8216;create&#8217; button</li>
-<li>Insert a code similar to the shown below. Replace the path in &#8216;OpenDatabase&#8217; with your database path; and fill &#8216;dbs.Execute&#8217; with your own SQL statements</li>
-</ol>
+  <div class="entry-content"><p>&nbsp;</p>
 
 
-<p>Sub createdb()</p>
-
-<pre><code>Dim dbs As Database
-
-' Modify this line to include the path to Northwind
-' on your computer.
-Set dbs = OpenDatabase("C:\\amr\\projects\\sites\\files\\tf_pledge_reminder_email.accdb")
-
-' Create a table with two text fields.
-dbs.Execute "create table RIT_TF_PLG_REM_EMAIL_TEST2 (   pref_mail_name  VARCHAR(60), pd_to_date      NUMBER,   this_payment    NUMBER )"
-
-dbs.Close
-</code></pre>
-
-<p>End Sub</p>
-
-<ol>
-<li>Menu: Run</li>
-<li>You are all set.</li>
-</ol>
+<p>Procastination and concentration problems are big deals from a lot of people, specially for students. There are too many distractions that are more fun than our homework.</p>
 
 
-<p>If you have any questions you can contact me or write a comment</p>
+<p>I read an interesting&nbsp;<a href="http://altmedicine.about.com/od/optimumhealthessentials/a/Concentration.htm">article about concentration</a>&nbsp;that I&#39;d like to share a summary with my own notes:</p>
+
+
+<p>There is no substitute for paying attention&#8230; here are Five tips to improve your attention/concentration/focus/productivity:</p>
+
+
+<p><strong>F =&nbsp;</strong><u><strong>Five More Rule</strong></u></p>
+
+
+<div>
+    There are two kinds of people &#8211; those who have learned how to work through frustration, and those who wish they had. From now on, if you&#39;re in the middle of a task and tempted to give up &#8211; just do 5 MORE. Read 5 MORE pages. Finish 5 MORE math problems. Work 5 MORE minutes.</div>
+
+
+<div>
+    &nbsp;</div>
+
+
+<div>
+    <strong>O =&nbsp;<u>One Think At a Time</u></strong></div>
+
+
+<div>
+    &nbsp;</div>
+
+
+<div>
+    Quite self-explantory, isn&#39;t it? We know the theory, now let&#39;s put in practice.</div>
+
+
+<div>
+    &nbsp;</div>
+
+
+<div>
+    <div>
+        <strong>C =&nbsp;<u>Conquer Procrastination</u></strong></div>
+    <div>
+        &nbsp;</div>
+    <div>
+        Don&#39;t feel like concentrating? Are you putting off a task or project you&#39;re supposed to be working on? That&#39;s a form of procrastination. R. D. Clyde said, &quot;It&#39;s amazing how long it takes to complete something we&#39;re not working on.&quot; ~ Every time you catch yourself doing something that you are not suppose to be doing (facebook, twitter, 9gag) quite it right away, and get back to your homework/work.</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        <strong>U =&nbsp;<u>Use Your Hands as Blinkers</u></strong></div>
+    <div>
+        &nbsp;</div>
+    <div>
+        Give multi-tasking a rest. Focus in one task at time!</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        <strong>S =&nbsp;<u>See As If For the First or Last Time</u></strong></div>
+    <div>
+        &nbsp;</div>
+    <div>
+        uhm&#8230; maybe not very useful but it says: Want to know how to be &quot;here and now&quot; and fully present instead of mindlessly rushing here, there, and everywhere? Frederick Franck said, &quot;When the eye wakes up to see again, it suddenly stops taking anything for granted.&quot; Evelyn Underhill said, &quot;For lack of attention, a thousand forms of loveliness elude us every day.&quot;</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        <div>
+            <strong>What people have said about concentration</strong></div>
+        <ul>
+            <li>
+                &quot;I used to think the human brain was the most fascinating part of the body, and then I realized, &#39;What is telling me that?&#39;&quot; - Emo Phillips</li>
+            <li>
+                &quot;I&#39;m getting so absent-minded and forgetful. Sometimes in the middle of a sentence, I &#8230; &quot; - Milton Berle&nbsp;</li>
+            <li>
+                &quot;Iron rusts from disuse, stagnant water loses its purity and in cold weather becomes frozen, even so does inaction sap the vigors of the mind.&quot; Leonardo da Vinci&nbsp;</li>
+            <li>
+                &quot;Tell me to what you pay attention, and I will tell you who you are.&quot; - Jose Ortega y Gasset</li>
+            <li>
+                I would go without shirt or shoe sooner than lose for a minute the two separate sides of my head.&quot; - Rudyard Kipling</li>
+            <li>
+                &quot;It&#39;s not that I don&#39;t want to listen to people. I very much want to listen to people. I jut can&#39;t hear them over my talking.&quot; - Paula Poundstone</li>
+        </ul>
+    </div>
+</div>
+
+
+<p>&nbsp;</p>
+
 </div>
   
   
@@ -306,7 +259,7 @@ dbs.Close
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/11/09/gitftp-publish-git-repository-over-ftp/">Git+ftp: Publish Git Repository Over FTP</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/12/22/learning-algorithms-from-scratch-algorithms-for-dummies/">Learning Algorithms From Scratch / Algorithms for Dummies</a></h1>
     
     
       <p class="meta">
@@ -322,416 +275,308 @@ dbs.Close
   
 
 
-<time datetime="2011-11-09T00:00:00-05:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+<time datetime="2011-12-22T00:00:00-05:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
         
-         | <a href="/blog/2011/11/09/gitftp-publish-git-repository-over-ftp/#disqus_thread">Comments</a>
+         | <a href="/blog/2011/12/22/learning-algorithms-from-scratch-algorithms-for-dummies/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I have been working with websites for a while and also with different web hosts. The default way to upload content is through FTP but it takes a lot of time because upload the entire site each time. Some web hosts &nbsp;have ssh and git, which is great for deployement because you can keep track of the versions and also upload only the files that changes.</p>
+  <div class="entry-content"><p>When you are programming you face challenges all the way. Getting the problems solved is just the tip of the iceberg, getting it done efficiently is the rest.</p>
+
+
+<p class="p1"><b>Why should you care for efficiency?</b></p>
+
+
+<p class="p1">Solutions to the same problem might take years with certain algorithm, and just minutes using efficient algorithms. For instance, if you have applications that are used for thousands of people over internet, every fraction of second counts. Therefore, efficient algorithms is a must.</p>
+
+
+<p class="p1"><b>How I do my algorithms more efficient?</b></p>
+
+
+<p class="p1">To improve something you first need to know the actual state. In this case you need to measure the actual effectiveness of your algorithm in other to improve it. It&#39;s very common to use running time analysis to measure the speed of algorithms independently from the hardware used (old pc, supercomputer it doesn&#39;t matter).&nbsp;</p>
+
+
+<p class="p1"><b>Run-time analysis</b></p>
+
+
+<p class="p1">A common way to analyze the algorithms is using the big-O notation. The good thing about this notation is that is independent from the computer used to run the algorithm. You know that if you use a very slow computer (e.g. pentium I) v.s. a supercomputer use in NASA, the latter will run the program much faster. Big-O notation abstract the hardware and just focus in the algorithm per se. The only variable in the big-O notation gives the relative time needed to process an algorithm in function of the input n. Let&#39;s clarify this with an example.</p>
+
+
+<p class="p1"><strong>Ex.1</strong> - You want to sort an array A of n integers.&nbsp;</p>
+
+
+<p class="p1">Depending in the algorithm used to do that you may have:</p>
+
+
+<ul>
+    <li class="p1">
+        <b>selection</b> sort has a running time of O(n^2);</li>
+    <li class="p1">
+        <b>merge sort</b> &#8211;&gt; O(n log n)</li>
+</ul>
+
+
+<p class="p1">Right now, it doesn&#39;t matter if are not familiar with these algorithms (we will cover this the next lessons), the point here is that we have n integer and big-O notations give us a mathematical expression that is in function of the input n. If you&nbsp;<a href="http://fooplot.com/index.php?&amp;type0=0&amp;type1=0&amp;type2=0&amp;type3=0&amp;type4=0&amp;y0=x%5E2&amp;y1=x*log%28x%29&amp;y2=&amp;y3=&amp;y4=&amp;r0=&amp;r1=&amp;r2=&amp;r3=&amp;r4=&amp;px0=&amp;px1=&amp;px2=&amp;px3=&amp;px4=&amp;py0=&amp;py1=&amp;py2=&amp;py3=&amp;py4=&amp;smin0=0&amp;smin1=0&amp;smin2=0&amp;smin3=0&amp;smin4=0&amp;smax0=2pi&amp;smax1=2pi&amp;smax2=2pi&amp;smax3=2pi&amp;smax4=2pi&amp;thetamin0=0&amp;thetamin1=0&amp;thetamin2=0&amp;thetamin3=0&amp;thetamin4=0&amp;thetamax0=2pi&amp;thetamax1=2pi&amp;thetamax2=2pi&amp;thetamax3=2pi&amp;thetamax4=2pi&amp;ipw=0&amp;ixmin=-5&amp;ixmax=5&amp;iymin=-3&amp;iymax=3&amp;igx=1&amp;igy=1&amp;igl=1&amp;igs=0&amp;iax=1&amp;ila=1&amp;xmin=-5&amp;xmax=5&amp;ymin=-3&amp;ymax=3"><span class="s1">plot in a graph n^2 and n log n</span></a>. You&#39;ll see that n^2 grows much faster than n log(n). That means that the algorithm n^2 will take longer than n*log(n) to process as the size of the array n increases.</p>
+
+
+<p class="p1"><b>Common order of Growth</b></p>
+
+
+<p class="p1">To give you an idea of the common order of growth of runtime expressions. Take a look at the following graph and table. The slower the function growth the better is the algorithm. In order from better performance to worst is:</p>
+
+
+<p class="p1">1 &#8211; log n &#8211; n &#8211; n log n &#8211; n^2 &#8211; n^3 &#8211; 2^n &#8211; n! &#8230;</p>
+
+
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
+
+
+<p class="p2">&nbsp;</p>
+
+
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
+
+
+<p class="p2">&nbsp;</p>
+
+
+<p class="p1">&nbsp;</p>
+
+
+<p class="p1"><b>Approximate growth rate from code.</b></p>
+
+
+<p class="p1">There are a whole theory and math behind the Big-O notation and other notations related. At this time, just take a look of the typical code and its growth order.</p>
+
+
+<p class="p1"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
+
+
+<p>&nbsp;</p>
+
+
+<p><strong>Cases (the good, the bad, and the ugly)</strong></p>
+
+
+<p>Remember that n is the number of elements in the input. All this runtime growth rate are in function of the input elements. There is another important thing to consider about the input elements: the order! The order of the input elements matters, and that&#39;s why algorithms are analyzed in 3 different cases:</p>
+
+
+<ol>
+    <li>
+        Worst-case performance: the input is distributed as worst as it could be for an algorithm. &nbsp;&nbsp;</li>
+    <li>
+        Average-case scenario: approximation of the most common arrange of inputs.</li>
+    <li>
+        Best-case scenario: most favorable distribution of the inputs.</li>
+    <li>
+        One more: Space. this is how much space the algorithm cosume to execute.&nbsp;</li>
+</ol>
+
+
+<p class="p2">If you want more depth in these topic read here:&nbsp;</p>
+
+
+<ul>
+    <li class="p2">
+        <span style="color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; line-height: 16px; background-color: rgb(255, 255, 255); font-size: small; ">Analysis (</span><a href="http://gcu.googlecode.com/files/02Analysis.pdf" style="color: rgb(85, 26, 139); font-family: Helvetica, Arial, sans-serif; line-height: 16px; background-color: rgb(255, 255, 255); font-size: small; ">pdf</a><span style="color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; line-height: 16px; background-color: rgb(255, 255, 255); font-size: small; ">) (</span><a href="http://gcu.googlecode.com/files/02Analysis.key.zip" style="color: rgb(85, 26, 139); font-family: Helvetica, Arial, sans-serif; line-height: 16px; background-color: rgb(255, 255, 255); font-size: small; ">keynote</a><span style="color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; line-height: 16px; background-color: rgb(255, 255, 255); font-size: small; ">)</span></li>
+    <li class="p2">
+        <span style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-size: small; line-height: 16px; ">Algorithm @&nbsp;</span>ocw.mit.edu: lectures <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures/lecture-1-administrivia-introduction-analysis-of-algorithms-insertion-sort-mergesort">1 </a>and <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures/lecture-2-asymptotic-notation-recurrences-substitution-master-method">2</a></li>
+    <li class="p2">
+        http://algs4.cs.princeton.edu/home/</li>
+</ul>
+
+
+<p class="p2">&nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x/">How to Remove Programs From the Start Up in Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-18T00:00:00-05:00" pubdate data-updated="true">Nov 18<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well&#8230; I have done this so many times in Windows (it&#39;s just executing &quot;msconfig&quot; you can edit the startup items).&nbsp;Today, I had the need to do the same in the Mac OS X Lion.</p>
+
+
+<p>Here is how to do it</p>
+
+
+<ol>
+    <li>
+        System Preferences &gt; Users &amp; Groups</li>
+    <li>
+        Tab &quot;Login Items&quot;</li>
+    <li>
+        You can remove the programs (-) from the list and they won&#39;t show up in the next startup.</li>
+</ol>
+
+
+<p><img alt="Login Items Mac" src="http://adrianmejiarosario.com/sites/default/files/loginItems.png" style="width: 669px; height: 501px; " /></p>
+
+
+<p>&nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/10/regular-expressions-in-c-and-java-csv-example/">Regular Expressions in C# and Java - CSV Example</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-10T00:00:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/11/10/regular-expressions-in-c-and-java-csv-example/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Regular expressions are used to find matches in texts. The following is a real application of Regex in C# and Java.&nbsp;</p>
 
 
 <div>
-    &nbsp;</div>
-
-
-<div>
-    In order to use git for local development and ftp (for hosting that doesn&#39;t support git/ssh) there are some options:</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <a href="https://github.com/resmo/git-ftp">https://github.com/resmo/git-ftp</a> - Git powered FTP client written as shell script.</div>
-
-
-<div>
-    <a href="https://github.com/ezyang/git-ftp">https://github.com/ezyang/git-ftp</a> - A quick and efficient way of pushing changed files to a website via FTP using python.</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    I have use ezyang/git-ftp to deploy my drupal websites with good results.</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    1. Install &#39;git-python&#39; first from <a href="http://gitorious.org/git-python">http://gitorious.org/git-python</a> -or- using `easy_install gitpython`</div>
-
-
-<div>
-    2. git clone <a href="https://github.com/ezyang/git-ftp.git">https://github.com/ezyang/git-ftp.git</a></div>
-
-
-<div>
-    3. You can create an alias for easy access in `~/.bash_profile` such as `alias git-ftp=&quot;python ~/git-ftp/git-ftp.py &quot;`</div>
-
-
-<div>
-    4. Just run the command `python ~/git-ftp/git-ftp.py ` where is your git repository that you want to upload. I will prompt all the ftp details and also will create the config file for you.</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    You might want to setup files to ignore. If you are using drupal you should create a .gitignore file with a content similar to this:</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
+    <div>
+        CSV are files that all the data is separated by a comma. E.g:</div>
     <pre>
-.DS_Store*
+name,line1,line2,city,zip code,country</pre>
+    <div>
+        You cand easily use String.Split() in C# to get all the values. But, there are cases when the data can contain comma. E.g:</div>
+    <pre>
+&quot;Mr. John Doe, Jr.&quot;,7926 Glenbrook Dr., 14623</pre>
+    <div>
+        In this case a regular expression (regex) could be use to determine if the comma is inside a quote or not.</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        C# Example:</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        <pre>
+    public string[] parseCSV(string line)
+    {
+        List&lt;string&gt; datalist = new List&lt;string&gt;();
 
+        /*
+         * Define a regular expression for csv.
+         * This Pattern will match on either quoted text or text between commas, including
+         * whitespace, and accounting for beginning and end of line.
+         */
 
-# Ignore configuration files that may contain sensitive information.
+        Regex rx = new Regex(&quot;\&quot;([^\&quot;]*)\&quot;|(?&lt;=,|^)([^,]*)(?:,|$)&quot;,
+          RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-sites/*/settings*.php
+        // Find matches.
+        MatchCollection matches = rx.Matches(line);
 
+        // Report the number of matches found.
+        Console.WriteLine(&quot;{0} matches found.&quot;, matches.Count);
 
-# Ignore paths that contain user-generated content.
+        // Report on each match.
+        foreach (Match match in matches)
+        {
+            if (match.Groups[1].Value.Length &gt; 0)
+                datalist.Add(match.Groups[1].Value); // match csv values inside commas
+            else
+                datalist.Add(match.Groups[2].Value); // match csv values outside commas
+        }
+        return datalist.ToArray();
+    }</pre>
+    </div>
+    <div>
+        &nbsp;</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        Java Example:</div>
+    <div>
+        <pre>
+    public String[] parse(String csvLine) {
+        Pattern csvPattern = Pattern.compile(&quot;\&quot;([^\&quot;]*)\&quot;|(?&lt;=,|^)([^,]*)(?:,|$)&quot;);
+        matcher = csvPattern.matcher(csvLine);
+        allMatches.clear();
+        String match;
 
-sites/*/files
+        while (matcher.find()) {
+                match = matcher.group(1);
 
-sites/*/private</pre>
+                if (match!=null) {
+                        allMatches.add(match);
+                }
+                else {
+                        allMatches.add(matcher.group(2));
+                }
+        }
+
+        size = allMatches.size();               
+        if (size &gt; 0) {
+                return allMatches.toArray(new String[size]);
+        }
+        else {
+                return new String[0];
+        }                       
+    } </pre>
+    </div>
 </div>
 
 
-<div>
-    &nbsp;</div>
+<p>&nbsp;</p>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/04/update-drupal-sites/">Update Drupal Sites</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-04T00:00:00-04:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/11/04/update-drupal-sites/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The better way to learn is by a concrete example. I update a site called &#8220;heyshuga&#8221; from Drupal 7.8 to 7.9. Here are the steps</p>
-
-<ol>
-<li>Download the latest version of drupal</li>
-</ol>
-
-
-<p>$ wget http://drupal.org/files/projects/drupal-x.y.tar.gz
-$ tar -zxvf drupal-x.y.tar.gz</p>
-
-<p>-or using drush-</p>
-
-<p>$ drush dl drupal</p>
-
-<ol>
-<li>Copy the new files to the old directory</li>
-</ol>
-
-
-<p>$ cp -R drupal-x.y/* drupal-x.y/.htaccess /path/to/your/installation</p>
-
-<ol>
-<li>Run the drupal update</li>
-</ol>
-
-
-<p>www.yousite.com/update.php</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/26/integration-of-visualization-techniques-and-completion-strategy-to-improve-learning-in-computer-programming/">Integration of Visualization Techniques and Completion Strategy to Improve Learning in Computer Programming</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T00:00:00-04:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/26/integration-of-visualization-techniques-and-completion-strategy-to-improve-learning-in-computer-programming/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The advantages of different presentation media are explored in the work of N. Hashim and S. Salam in “Integration of Visualization Techniques and Completion Strategy to Improve Learning in Computer Programming” [1]. They compare the advantages of Mobile-based training (MBT) over Web-based training (WBT) for learning computer programming. Additionally, they explain some features that aid the learning process, such as visualization techniques and completion strategy. Visualization techniques refers to the use of static (images and text) and dynamic (animation, voice and videos) presentation. Completion strategy is an assessment technique in which the learner have to prove their knowledge gained. This is done by filling blanks of incomplete code snippets, rewrite programs to improve performance, and so forth.</p>
-
-<p>Reference
-[1] N. Hashim and S. Salam, “Integration of Visualization Techniques and Completion Strategy to Improve Learning in Computer Programming,” 2009 IEEE International Conference of Soft Computing and Pattern Recognition, pp. 665-669, 2009.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/26/an-approach-to-annotation-of-learning-texts-on-programming-within-a-web-based-educational-system-paper-review/">An Approach to Annotation of Learning Texts on Programming Within a Web-Based Educational System - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T00:00:00-04:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/26/an-approach-to-annotation-of-learning-texts-on-programming-within-a-web-based-educational-system-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>V. Mihál and M. Bieliková presents “An Approach to Annotation of Learning Texts on Programming within a Web-Based Educational System”. This work leverage the usage of annotation to enhance programming learning experience. Annotations provide to learners supplementary information that they otherwise will have to find by themselves somewhere else.  They describe different types of annotation: manual and automatic. For the manual annotations the user the user provides insert related notes to material. Automatic annotation are done without human intervention. It uses ontologies and language processing to identify related content and insert it in the appropriated place.</p>
-
-<p>Reference
-V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on Programming within a Web-Based Educational System,” 2009 IEEE Fourth International Workshop on Semantic Media Adaptation and Personalization, pp. 99-104, 2009.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/04/focused-crawling-for-automatic-service-discovery-annotation-and-classification-in-industrial-digital-ecosystems-paper-review/">Focused Crawling for Automatic Service Discovery, Annotation, and Classification in Industrial Digital Ecosystems - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-04T00:00:00-04:00" pubdate data-updated="true">Oct 4<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/04/focused-crawling-for-automatic-service-discovery-annotation-and-classification-in-industrial-digital-ecosystems-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>H. Dong et al. (2011) [1] introduce an approach to enhance disperse and heterogeneous industrial digital ecosystem for e-Learning. Its target is to discover and classify the industrial information automatically using focused crawlers. The focused crawler perform 5 operations: webpage fetcher (multithreading web crawling given a URL list), policy center  (fetching boundaries, max. depth, multithreading priority), webpage pool (store data as plain text), webpage parser (use heuristics rules on website layouts to extract desired data), service metadata generator (produce metadata and in ontology markup language), and service metadata classifier (used structured domains of knowledge to classify the data). [4] also explain in detail the Ontology Markup Language (OML) and perform several test and performance measures, such as harvest rate, precision, recall, harmony, f-measure, fallout rate, and more.</p>
-
-<p>This paper provides a detailed methodology to perform focused web crawling of educational content. It also provides great details about the classification of the content using web semantics and ontology services. Examples of Web Ontology Language (OWL) are shown. Another thing that I like is the amount of metrics they have to measure the performance of the system. However, this project doesn&#8217;t explain how the user is going to interact with the recollected data and the presentation layer.</p>
-
-<p>[1] H. Dong and F. K. Hussain, “Focused Crawling for Automatic Service Discovery, Annotation, and Classification in Industrial Digital Ecosystems,” IEEE Transactions on Industrial Electronics, vol. 58, no. 6, pp. 2106-2116, Jun. 2011.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/27/occs-enabling-the-dynamic-discovery-harvesting-and-delivery-of-educational-content-from-open-corpus-sources-paper-review/">OCCS: Enabling the Dynamic Discovery, Harvesting and Delivery of Educational Content From Open Corpus Sources - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-27T00:00:00-04:00" pubdate data-updated="true">Sep 27<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/09/27/occs-enabling-the-dynamic-discovery-harvesting-and-delivery-of-educational-content-from-open-corpus-sources-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>S. Lawless, V. Wade et al. (2008) [1] introduces the Open Corpus Content Service (OCCS), which is a system to discover, harvest, classify and index educational content from the Internet. It aims to provide a dynamic learning object generation based on the background of the learner. The OCCS employs Heritrix (open source, web-scale, archival web crawler) for discovery educational content available in the WWW. Heritrix uses languages guessers (JTCL) and text classifier (Rainbow) to classify the extracted data. All the content is indexed in ARC files with NutchWAX and Hadoop. Finally the data is presented to the users using WERA (WEb aRchive Access). Additionally, the OCCS system is evaluated using a specific topic and the results are shown in [1].</p>
-
-<p>Something that I like about this paper is that it mentions most of the tool used to implement the OCCS in all this stages. All these tools can be used by the reader to implement similar projects.</p>
-
-<p>This paper seem to be the one of the earliest of a series of papers about the same topic by the same authors:
-[2] S. Lawless, L. Hederman, and V. Wade, “Enhancing Access to Open Corpus Educational Content : Learning in the Wild,” HT  ’08 Proceedings of the nineteenth ACM conference on Hypertext and hypermedia, pp. 167-174, 2008.
-[3] <a href="http://www.adrianmejiarosario.com/content/dynamic-hypertext-generation-reusing-open-corpus-content-paper-review">B. Steichen, S. Lawless, A. O’Connor, and V. Wade, “Dynamic Hypertext Generation for Reusing Open Corpus Content,” Proceedings of the 20th ACM conference on Hypertext and hypermedia HT 09, pp. 119-128, 2009.</a></p>
-
-<p>Reference
-[1] S. Lawless, L. Hederman, and V. Wade, “OCCS: Enabling the Dynamic Discovery, Harvesting and Delivery of Educational Content from Open Corpus Sources,” 2008 Eighth IEEE International Conference on Advanced Learning Technologies, pp. 676-678, 2008.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/27/elearning-2-0-and-social-practice-oriented-communities-to-improve-knowledge-in-companies-paper-review/">eLearning 2.0 and Social, Practice-Oriented Communities to Improve Knowledge in Companies - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-27T00:00:00-04:00" pubdate data-updated="true">Sep 27<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/09/27/elearning-2-0-and-social-practice-oriented-communities-to-improve-knowledge-in-companies-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>S. R. Kruk et al. (2007) [1] implemented a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). The goal of the SSCF is to enhance individual bookmarks with shared knowledge of the community. It also presents how digital libraries can be combined with social semantic information sources and it exemplifies how these techniques can improve e-Learning. Digital Libraries and other open courses can leverage their potential with the collaborative architectures. Learners can use it to exchange information, and express and synthetize knowledge e-Learning environments. It also makes use of the social bookmarking, web semantics and ontology services in other to organize and classify knowledge.</p>
-
-<p>About this paper, I like the how it states the benefits of this e-Learning systems for companies and institutions and also the benefits web collaboration to boost learning.  Additionally, the idea of using social bookmarking to classify educational content is pretty interesting.</p>
-
-<p>[1] I. Hamburg, “eLearning 2.0 and Social, Practice-Oriented Communities to Improve Knowledge in Companies”, 2010 Fifth International Conference on Internet and Web Applications and Services, pp. 411-416, 2010.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review/">Dynamic Hypertext Generation for Reusing Open Corpus Content - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-22T00:00:00-04:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2011</time>
-        
-         | <a href="/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>B. Steichen, S. Lawless, V. Wade et al. (2009) [1] proposed an Adaptive Hypermedia (AH) for dynamic hypertext generation of learning content. This system provides personalized learning services, which aims to enrich the learning process and the satisfaction of the learners. In order to accomplish these tasks: the system perform open courses harvesting and identification, generate dynamically hyperlinks based on the learner experience and appropriated learning strategies, and present the content in a uniform presentation across heterogeneous content. National digital content repositories cross institution sharing of learning resources and universities open courseware seed the identification task. Web crawlers are used to harvest the open corpus. Focused crawlers, such as Nalanda and Combine are mentioned and Heritix is recommended.  The harvested data is later indexed to make it more discoverable with open sources solutions, such as Nutch and Swish-e and then retrieve using search engines like Lucene and Lemur. For the metadata classification there are 3 approaches: (i) extraction of the metadata from files that already have it; (ii) infer and generate metadata automatically. Semtag from IBM perform can do this using a Taxonomy Based Disambiguation (TBD) algorithm. Also Klarity and DC.dot are metadata generators. (iii) Use of social bookmarking (digg, flickr, facebook,…) to extract the metadata/content description. For the dynamic hypertext generation a system was develop on top of the Adaptive Personalized eLearning Service (APeLS). This facilitates students to learn about specific concepts using query of keywords. In [2] can found be found also the results of this system.</p>
-
-<p>[1] Steichen, B., Lawless, S., O’Connor, A., &amp; Wade, V. (2009). Dynamic Hypertext Generation for Reusing Open Corpus Content. HT’09, June 29–July 1, 2009, Torino, Italy, 119-128. ACM.</p>
 </div>
   
   
@@ -752,6 +597,11 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
 <aside class="sidebar">
   
     <section>
+  <h1>About Me</h1>
+  <p>I&#8217;m a software engineer passionate about web development and internet technologies. Currently, I&#8217;m working and living in Boston.</p>
+	<p>You can contact me at me@&lt;this-domain&gt;</p>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
@@ -776,11 +626,6 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
       </li>
     
   </ul>
-</section>
-<section>
-  <h1>About Me</h1>
-  <p>I&#8217;m a software engineer passionate about web development and internet technologies. Currently, I&#8217;m working and living in Boston.</p>
-	<p>You can contact me at me@&lt;this-domain&gt;</p>
 </section>
 
 <section>
@@ -843,6 +688,17 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
     <a href="https://plus.google.com/105957252272382685246?rel=author">
       <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
       Google+
+    </a>
+  </h1>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="http://www.linkedin.com/in/adrianmejia">
+      <img src="http://www.davidandersononline.com/images/linkedinIcon32x32.png" width="32" height="32">
+      Linkedin
     </a>
   </h1>
 </section>
