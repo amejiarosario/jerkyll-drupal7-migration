@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Metadata | Adrian Mejia's Web]]></title>
+  <link href="http://adrianmejia.com/blog/categories/metadata/atom.xml" rel="self"/>
+  <link href="http://adrianmejia.com/"/>
+  <updated>2012-04-27T00:46:30-04:00</updated>
+  <id>http://adrianmejia.com/</id>
+  <author>
+    <name><![CDATA[Adrian Mejia]]></name>
+    <email><![CDATA[me@adrianmejia.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dynamic Hypertext Generation for Reusing Open Corpus Content - Paper Review]]></title>
+    <link href="http://adrianmejia.com/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review/"/>
+    <updated>2011-09-22T00:00:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review</id>
+    <content type="html"><![CDATA[<p>B. Steichen, S. Lawless, V. Wade et al. (2009) [1] proposed an Adaptive Hypermedia (AH) for dynamic hypertext generation of learning content. This system provides personalized learning services, which aims to enrich the learning process and the satisfaction of the learners. In order to accomplish these tasks: the system perform open courses harvesting and identification, generate dynamically hyperlinks based on the learner experience and appropriated learning strategies, and present the content in a uniform presentation across heterogeneous content. National digital content repositories cross institution sharing of learning resources and universities open courseware seed the identification task. Web crawlers are used to harvest the open corpus. Focused crawlers, such as Nalanda and Combine are mentioned and Heritix is recommended.  The harvested data is later indexed to make it more discoverable with open sources solutions, such as Nutch and Swish-e and then retrieve using search engines like Lucene and Lemur. For the metadata classification there are 3 approaches: (i) extraction of the metadata from files that already have it; (ii) infer and generate metadata automatically. Semtag from IBM perform can do this using a Taxonomy Based Disambiguation (TBD) algorithm. Also Klarity and DC.dot are metadata generators. (iii) Use of social bookmarking (digg, flickr, facebook,…) to extract the metadata/content description. For the dynamic hypertext generation a system was develop on top of the Adaptive Personalized eLearning Service (APeLS). This facilitates students to learn about specific concepts using query of keywords. In [2] can found be found also the results of this system.</p>
+
+<p>[1] Steichen, B., Lawless, S., O’Connor, A., &amp; Wade, V. (2009). Dynamic Hypertext Generation for Reusing Open Corpus Content. HT’09, June 29–July 1, 2009, Torino, Italy, 119-128. ACM.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On line Course Organization - Paper Review]]></title>
+    <link href="http://adrianmejia.com/blog/2011/09/17/on-line-course-organization-paper-review/"/>
+    <updated>2011-09-17T00:00:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2011/09/17/on-line-course-organization-paper-review</id>
+    <content type="html"><![CDATA[<p>This paper [1] proposed a specialized search engine, called Fusion, which index meta-information about available courses. Google can be used to perform this search, but the result will be too broad. Fusion provides specialized results only. In order to accomplish this task, Fusion used the web crawler Nutch, which is used to extract the content of courses. The crawler does real-time decisions to parse and store only the necessary data instead of the whole content. The extraction of the metadata is done using the following technologies: NekoHTML (HTML document parser), Xalan (XSLT for transforming XML to HTML), XPath (used to navigate through elements in the XML). After all the course metadata is extracted, the information is classified according to the IEEE-LTSC LOM (Learning Object Metadata). Finally all the data is stored and used for the web portal.</p>
+
+
+<div><img alt="architecture online course crawler" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/architecture-online-course-crawler.png" style="width: 500px; height: 236px; "></div>
+
+
+<div style="text-align: left; ">Source: [1]</div>
+
+
+<div style="text-align: right; ">&nbsp;</div>
+
+
+<div>I like the amount of specialized tools used to develop the Fusion (shown bellow). However, as they said in their conclusion this extraction could be extended to support eLearning 2.0 features: personal spaces, user contributions, user feedbacks, user tags, and user comments.</div>
+
+
+<div>&nbsp;</div>
+
+
+<div>
+    <div>This paper [1] proposed a specialized search engine, called Fusion, which index meta-information about available courses. Google can be used to perform this search, but the result will be too broad. Fusion provides specialized results only. In order to accomplish this task, Fusion used the web crawler Nutch, which is used to extract the content of courses. The crawler does real-time decisions to parse and store only the necessary data instead of the whole content. The extraction of the metadata is done using the following technologies: NekoHTML (HTML document parser), Xalan (XSLT for transforming XML to HTML), XPath (used to navigate through elements in the XML). After all the course metadata is extracted, the information is classified according to the IEEE-LTSC LOM (Learning Object Metadata). Finally all the data is stored and used for the web portal.</div>
+    <div>&nbsp;</div>
+    <div>I like the amount of specialized tools used to develop the Fusion (shown bellow). However, as they said in their conclusion this extraction could be extended to support eLearning 2.0 features: personal spaces, user contributions, user feedbacks, user tags, and user comments.</div>
+    <div>&nbsp;</div>
+    <div><strong>Highlighted Mentions:</strong></div>
+    <ul>
+        <li>Web crawlers: JSpider, Wget and Nutch. Preferred: Nutch.</li>
+        <li>Online courses resources: MIT OCW, UIUC, GreatLearning</li>
+        <li>Commercial elearning: BlackBoard, WebCT, and Desire2Learn. Open-source: Moodle</li>
+        <li>Metadata extraction: Dom-tree approaches: HMM (Hidden Markov Model), CRF (Conditional Random Fields) and SVM (Support Vector Machine)</li>
+        <li>HTML Scanner: NekoHTML, XPath</li>
+        <li>XSLT processor: “Xalan”</li>
+        <li>Glossary: SCORM (Sharable Content Object Reference Model), LOM (Learning Object Management), IEEE-LTSC LOM (Learning Object Metadata), which is developed upon IMS metadata.</li>
+        <li>Crawling approaches:&nbsp;Intelligent Crawling with keywords,&nbsp;OPIC algorithm com- puting the importance value of websites,&nbsp;Learnable Crawler using URL seeds, topic keywords and URL prediction,&nbsp;Decision Tree method,...</li>
+    </ul>
+    <div>&nbsp;</div>
+    <div>References:</div>
+    <div>[1] Zhang, M., W. Wang, et al. "On Line Course Organization", Advances in Web Based Learning – ICWL 2007. H. Leung, F. Li, R. Lau and Q. Li, Springer Berlin / Heidelberg. 4823: 148-159. 2008</div>
+</div>
+
+
+<p>&nbsp;</p>
+
+
+<ul style="border-style: initial; border-color: initial; ">
+    <li style="border-style: initial; border-color: initial; ">ChinaGrid GreatLearning project, http://greatlearning.grids.cn</li>
+    <li style="border-style: initial; border-color: initial; ">MIT’s Open Courseware (OCW), http://ocw.mit.edu/index.html</li>
+    <li style="border-style: initial; border-color: initial; ">BlackBoard, http://www.blackboard.com/</li>
+    <li style="border-style: initial; border-color: initial; ">WebCT, http://www.webct.com/</li>
+    <li style="border-style: initial; border-color: initial; ">Desire2Learn, http://www.desire2learn.com/</li>
+    <li style="border-style: initial; border-color: initial; ">Nutch, http://lucene.apache.org/nutch/</li>
+    <li style="border-style: initial; border-color: initial; ">LOM, WG12: Learning Object Metadata, http://ltsc.ieee.org/wg12/</li>
+    <li style="border-style: initial; border-color: initial; ">SCRORM, http://www.adlnet.org/index.cfm?fuseaction=scormabt</li>
+    <li style="border-style: initial; border-color: initial; ">Jena – A Semantic Web Framework for Java, http://jena.sourceforge.net/</li>
+</ul>
+
+
+<p>&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+</feed>

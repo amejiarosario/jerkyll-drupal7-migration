@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: how-to | Adrian Mejia's Web]]></title>
+  <link href="http://adrianmejia.com/blog/categories/how-to/atom.xml" rel="self"/>
+  <link href="http://adrianmejia.com/"/>
+  <updated>2012-04-27T00:46:30-04:00</updated>
+  <id>http://adrianmejia.com/</id>
+  <author>
+    <name><![CDATA[Adrian Mejia]]></name>
+    <email><![CDATA[me@adrianmejia.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to remove programs from the start up in Mac OS X]]></title>
+    <link href="http://adrianmejia.com/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x/"/>
+    <updated>2011-11-18T00:00:00-05:00</updated>
+    <id>http://adrianmejia.com/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x</id>
+    <content type="html"><![CDATA[<p>Well... I have done this so many times in Windows (it&#39;s just executing &quot;msconfig&quot; you can edit the startup items).&nbsp;Today, I had the need to do the same in the Mac OS X Lion.</p>
+
+
+<p>Here is how to do it</p>
+
+
+<ol>
+    <li>
+        System Preferences &gt; Users &amp; Groups</li>
+    <li>
+        Tab &quot;Login Items&quot;</li>
+    <li>
+        You can remove the programs (-) from the list and they won&#39;t show up in the next startup.</li>
+</ol>
+
+
+<p><img alt="Login Items Mac" src="http://adrianmejia.com/sites/default/files/loginItems.png" style="width: 669px; height: 501px; " /></p>
+
+
+<p>&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to execute SQL statements on MS Access?]]></title>
+    <link href="http://adrianmejia.com/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access/"/>
+    <updated>2011-11-09T00:00:00-05:00</updated>
+    <id>http://adrianmejia.com/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access</id>
+    <content type="html"><![CDATA[<p>Sometimes is quicker to use SQL statements than create tables using the MS Access Visual Designer. For instance, if you already have the SQL code from other databases this could be useful.</p>
+
+<p>Here are the steps of how to create a new table programmatically in Access (2007):</p>
+
+<ol>
+<li>Open/create your database on MS Access</li>
+<li>Menu: 'Databases Tools' > 'Visual Basic' (this will open the visual basic editor</li>
+<li>in the Visual Basic Editor, Menu: Run</li>
+<li>Insert the name of your macro and click 'create' button</li>
+<li>Insert a code similar to the shown below. Replace the path in 'OpenDatabase' with your database path; and fill 'dbs.Execute' with your own SQL statements</li>
+</ol>
+
+
+<p>Sub createdb()</p>
+
+<pre><code>Dim dbs As Database
+
+' Modify this line to include the path to Northwind
+' on your computer.
+Set dbs = OpenDatabase("C:\\amr\\projects\\sites\\files\\tf_pledge_reminder_email.accdb")
+
+' Create a table with two text fields.
+dbs.Execute "create table RIT_TF_PLG_REM_EMAIL_TEST2 (   pref_mail_name  VARCHAR(60), pd_to_date      NUMBER,   this_payment    NUMBER )"
+
+dbs.Close
+</code></pre>
+
+<p>End Sub</p>
+
+<ol>
+<li>Menu: Run</li>
+<li>You are all set.</li>
+</ol>
+
+
+<p>If you have any questions you can contact me or write a comment</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git auto-commit with Crontab]]></title>
+    <link href="http://adrianmejia.com/blog/2011/08/15/git-auto-commit-with-crontab/"/>
+    <updated>2011-08-15T00:00:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2011/08/15/git-auto-commit-with-crontab</id>
+    <content type="html"><![CDATA[<p>You might want to commit from a git repository from time to time for several purposes (backup, control version, continuous integration, etc). One way to accomplish that is using the CronTab (Cron is used to run periodic task in Unix-like systems).</p>
+
+<p>Here is an example.</p>
+
+<p>1.- Create an script. e.g. baskitup.sh with:</p>
+
+<pre>
+<code># MySQL-dump: save a copy of the actual content in the database. (this is for a Drupal site, the backup is done using drupal's drush)
+php -c ~/www/php.ini  ~/drush/drush.php -r /home/adrimej0/www -u 1 sql-dump --result-file=latest.sql
+
+# Git: add and commit changes
+cd /home/adrimej0/www && /home/adrimej0/opt/bin/git commit -a -m "weekly crontab backup `date`"
+
+# send data to Git server
+cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
+</pre>
+
+
+<p>2.- Set up the cron. In the shell write the following</p>
+
+<pre>
+<code>$ crontab -e</code>
+</pre>
+
+
+<p>add the following command line for weekly auto-commits:</p>
+
+<pre>
+<code>MAILTO="youremail@domain.com"
+0 0 * * 0 /home/adrimej0/www/backitup.sh</code>
+</pre>
+
+
+<p>Done. Now your (drupal) site will be backed up every week automatically (every Sunday at midnight).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to set up Git / github in windows]]></title>
+    <link href="http://adrianmejia.com/blog/2011/07/21/how-to-set-up-git-github-in-windows/"/>
+    <updated>2011-07-21T00:00:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2011/07/21/how-to-set-up-git-github-in-windows</id>
+    <content type="html"><![CDATA[<p>Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly.</p>
+
+
+<p>You will need the following tools:</p>
+
+
+<ul>
+    <li><strong>Putty</strong>: download <a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip">latest version here</a>.</li>
+    <li><strong>TortoiseGit</strong>: download the <a href="http://code.google.com/p/tortoisegit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version here</a>. &nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/tortoisegit/downloads/detail?name=Tortoisegit-1.6.5.0-32bit.msi&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Tortoisegit-1.6.5.0-32bit.msi</a>)</li>
+    <li><strong>msysgit</strong>: As today the <a href="http://code.google.com/p/msysgit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version</a>&nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/msysgit/downloads/detail?name=Git-1.7.6-preview20110708.exe&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Git-1.7.6-preview20110708.exe</a>)</li>
+</ul>
+
+
+<p><u>Setting up Putty</u></p>
+
+
+<ol>
+    <li>Unzip the folder.&nbsp;</li>
+    <li>Generate the ssh key using the&nbsp;PUTTYGEN.EXE from the putty folder. After genete it, click "save private key" to save the *.ppk</li>
+</ol>
+
+
+<p><u>Setting up Git / TortoiseGIT on Windows</u></p>
+
+
+<ol>
+    <li>Install msysgit</li>
+    <li>Install TortoiseGit</li>
+    <li>Config TortoiseGit: do right click and in the contextual menu: TortoiseGit -&gt; Settings -&gt; Git -&gt; config (set your name and password)</li>
+    <li>Set remote git server: Settings -&gt; Git -&gt; Remote. Fill it up with your Git server info (e.g. Github, Google code, ...)</li>
+</ol>
+
+
+<p><img alt="GitTortoise Remote Configuration" src="http://adrianmejia.com/sites/default/files/pictures/gitTortoise-RemoteConfig.JPG"><br>
+    &nbsp;</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C#'s GetManifestResourceStream Gotcha]]></title>
+    <link href="http://adrianmejia.com/blog/2011/07/18/cs-getmanifestresourcestream-gotcha/"/>
+    <updated>2011-07-18T00:00:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2011/07/18/cs-getmanifestresourcestream-gotcha</id>
+    <content type="html"><![CDATA[<p>In the .NET framework, the method Assembly -&gt; Get Manifest Resource Stream has a gotcha that could take some time to figure out why is not working as intented. I was working in a piece of code (show below), and the GetManifestResourceStream always returned NULL exception error. Even though the file was there...</p>
+
+
+<p>C# example:</p>
+
+
+<div>
+    <pre>public XmlTextReader GetSyntaxModeFile(SyntaxMode syntaxMode)
+{
+&nbsp;&nbsp; &nbsp;Assembly assembly = typeof(SyntaxMode).Assembly;
+&nbsp;&nbsp; &nbsp;var stream = assembly.GetManifestResourceStream("ICSharpCode.TextEditor.Resources." + syntaxMode.FileName);
+&nbsp;&nbsp; &nbsp;if(stream == null)
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw new Exception("The resource "+syntaxMode.FileName+" was not loaded properly.");
+&nbsp;&nbsp; &nbsp;return new XmlTextReader(stream);
+}</pre>
+</div>
+
+
+<p><strong>Solution:</strong></p>
+
+
+<p>The GetManifestResourceStream method will always returns NULL if the resource '<strong>built action</strong>' property is not set to '<strong>embedded resource</strong>'</p>
+
+
+<p><img alt="Build action property set to embedded resource" src="http://adrianmejia.com/sites/default/files/pictures/GetManifestResourceStream.JPG" style="width: 488px; height: 332px;"></p>
+
+
+<p>After setting this property with all the needed files assembly.<u><strong>GetManifestResourceStream</strong></u> starts returning the corrent stream instead of NULL</p>
+
+]]></content>
+  </entry>
+  
+</feed>
