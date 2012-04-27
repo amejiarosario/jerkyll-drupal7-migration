@@ -2,7 +2,7 @@
 layout: post
 title: Drupal Modules for SEO optimation
 created: 1310520753
-categories: seo, drupal
+categories: "[seo, drupal]"
 ---
 <p>Search Engine Optimizations (SEO) could be quite challenging for beginners. It's overwhelming the amount of information that a webmaster need to understand in order to make his websites visible, in search engines like Google, Bing, Yahoo, ... Moreover most of this information is quite disperse. The idea here is to provided all the needed information in one place. Starting from steps for all websites and then focusing on Drupal SEO modules. &nbsp; <strong>General Steps:</strong></p>
 <ol>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: big-O | Adrian Mejia's Web]]></title>
+  <title><![CDATA[Category: big-o | Adrian Mejia's Web]]></title>
   <link href="http://adrianmejia.com/blog/categories/big-o/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-04-27T00:46:30-04:00</updated>
+  <updated>2012-04-27T02:20:40-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -65,13 +65,13 @@
 <p class="p1">1 -- log n -- n -- n log n -- n^2 -- n^3 -- 2^n -- n! ...</p>
 
 
-<p class="p2"><img alt="" src="http://adrianmejia.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
 
 
 <p class="p2">&nbsp;</p>
 
 
-<p class="p2"><img alt="" src="http://adrianmejia.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
 
 
 <p class="p2">&nbsp;</p>
@@ -86,7 +86,7 @@
 <p class="p1">There are a whole theory and math behind the Big-O notation and other notations related. At this time, just take a look of the typical code and its growth order.</p>
 
 
-<p class="p1"><img alt="" src="http://adrianmejia.com/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
+<p class="p1"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
 
 
 <p>&nbsp;</p>

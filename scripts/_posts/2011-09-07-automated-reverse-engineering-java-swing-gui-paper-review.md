@@ -2,7 +2,7 @@
 layout: post
 title: Automated Reverse Engineering Java-Swing GUI - Paper Review
 created: 1315369148
-categories: Software Engineering, Reverse Engineering, GUI, Aspect Oriented Programming, AspectJ, Dynamic Analysis, Paper Review
+categories: "[software engineering, reverse engineering, gui, aspect oriented programming, aspectj, dynamic analysis, paper review]"
 ---
 The extraction of Java-Swing GUI information using AspectJ seems like an way to do Reverse Engineering. The extracted information could be use later to migrate applications Java-Swing applications to the web, enhance program understating, generate UML diagrams and a myriad of other uses. This article will be summary of the paper about this topic [1].
 

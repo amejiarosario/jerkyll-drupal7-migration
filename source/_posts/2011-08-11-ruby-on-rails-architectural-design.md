@@ -2,7 +2,7 @@
 layout: post
 title: Ruby on Rails Architectural Design
 created: 1313082237
-categories: ruby on rails, software architecture, web frameworks, web development, agile frameworks, twitter
+categories: [ruby on rails, software architecture, web frameworks, web development, agile frameworks, twitter]
 ---
 <p>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Introduction</p>
 <p>Ruby on Rails (RoR) is open source web framework written in the Ruby programming language, and all the applications in Rails are written in Ruby. Ruby on Rails is focused on productivity and enforces agile web development.</p>

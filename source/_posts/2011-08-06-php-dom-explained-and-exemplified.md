@@ -2,7 +2,7 @@
 layout: post
 title: "PHP DOM: explained and exemplified"
 created: 1312663045
-categories: php, dom, xml
+categories: [php, dom, xml]
 ---
 <p>This is guide to get started with PHP DOM or a quick reminder to those who have a little while since the last time they used it.&nbsp;The extended documentation is in&nbsp;<a href="http://www.php.net/manual/en/book.dom.php" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; vertical-align: baseline; color: rgb(0, 116, 189); text-decoration: none; ">PHP.net</a>, but it is quite long. Here you might found a quick reference to get started in no time.</p>
 <p>Purpose of the DOM (Docuement Object Model): It is a convention used to represent and manipulate objects in XML, XHTML and HTML documents. Parsing XML and HTML files is very useful. It allows to manipulate RSS Feeds, interact with APIs and web services through XML (e.g. Google Maps, Facebook and Twitter APIs, etc.), extract information from websites (web crawling) and more.&nbsp;</p>

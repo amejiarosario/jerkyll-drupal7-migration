@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: c#, | Adrian Mejia's Web]]></title>
+  <title><![CDATA[Category: c# | Adrian Mejia's Web]]></title>
   <link href="http://adrianmejia.com/blog/categories/c-/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-04-27T00:46:30-04:00</updated>
+  <updated>2012-04-27T02:20:40-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -141,7 +141,7 @@ name,line1,line2,city,zip code,country</pre>
 <p>The GetManifestResourceStream method will always returns NULL if the resource '<strong>built action</strong>' property is not set to '<strong>embedded resource</strong>'</p>
 
 
-<p><img alt="Build action property set to embedded resource" src="http://adrianmejia.com/sites/default/files/pictures/GetManifestResourceStream.JPG" style="width: 488px; height: 332px;"></p>
+<p><img alt="Build action property set to embedded resource" src="http://adrianmejiarosario.com/sites/default/files/pictures/GetManifestResourceStream.JPG" style="width: 488px; height: 332px;"></p>
 
 
 <p>After setting this property with all the needed files assembly.<u><strong>GetManifestResourceStream</strong></u> starts returning the corrent stream instead of NULL</p>

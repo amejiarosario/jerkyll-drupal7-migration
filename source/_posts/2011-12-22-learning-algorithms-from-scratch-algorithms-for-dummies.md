@@ -2,7 +2,7 @@
 layout: post
 title: Learning Algorithms from Scratch / Algorithms for Dummies
 created: 1324582027
-categories: algorithms, runtime analysis, analysis of algorithm, for dummies, big-O
+categories: [algorithms, runtime analysis, analysis of algorithm, for dummies, big-o]
 ---
 <p>When you are programming you face challenges all the way. Getting the problems solved is just the tip of the iceberg, getting it done efficiently is the rest.</p>
 <p class="p1"><b>Why should you care for efficiency?</b></p>
@@ -23,14 +23,14 @@ categories: algorithms, runtime analysis, analysis of algorithm, for dummies, bi
 <p class="p1"><b>Common order of Growth</b></p>
 <p class="p1">To give you an idea of the common order of growth of runtime expressions. Take a look at the following graph and table. The slower the function growth the better is the algorithm. In order from better performance to worst is:</p>
 <p class="p1">1 -- log n -- n -- n log n -- n^2 -- n^3 -- 2^n -- n! ...</p>
-<p class="p2"><img alt="" src="/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
 <p class="p2">&nbsp;</p>
-<p class="p2"><img alt="" src="/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
 <p class="p2">&nbsp;</p>
 <p class="p1">&nbsp;</p>
 <p class="p1"><b>Approximate growth rate from code.</b></p>
 <p class="p1">There are a whole theory and math behind the Big-O notation and other notations related. At this time, just take a look of the typical code and its growth order.</p>
-<p class="p1"><img alt="" src="/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
+<p class="p1"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
 <p>&nbsp;</p>
 <p><strong>Cases (the good, the bad, and the ugly)</strong></p>
 <p>Remember that n is the number of elements in the input. All this runtime growth rate are in function of the input elements. There is another important thing to consider about the input elements: the order! The order of the input elements matters, and that&#39;s why algorithms are analyzed in 3 different cases:</p>

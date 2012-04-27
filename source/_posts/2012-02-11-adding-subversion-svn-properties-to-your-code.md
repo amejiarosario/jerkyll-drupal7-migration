@@ -2,7 +2,7 @@
 layout: post
 title: Adding Subversion (SVN) Properties to your code
 created: 1329003331
-categories: svn, subversion, eclipse, svn properties
+categories: [svn, subversion, eclipse, svn properties]
 ---
 <p>When you are coding in a team enviroment it&#39;s good to have the subversion properties in your files, that way any other developer can see quickly who made the last changes and when.</p>
 <p>You can add the following lines at the bottom of your code:</p>
@@ -60,13 +60,13 @@ categories: svn, subversion, eclipse, svn properties
 	<li>
 		Add the text property in the text box&nbsp;(image bellow)</li>
 	<li>
-		You can also use files to avoid all the typing every time. right click and &#39;save as...&#39; to &lt;<a href="/sites/default/files/svn-keywords.txt" target="_blank">svn-keywords</a>&gt; and&nbsp;&lt;<a href="/sites/default/files/svn-eol-style.txt" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">svn-eol-property</a>&gt;.</li>
+		You can also use files to avoid all the typing every time. right click and &#39;save as...&#39; to &lt;<a href="http://adrianmejiarosario.com/sites/default/files/svn-keywords.txt" target="_blank">svn-keywords</a>&gt; and&nbsp;&lt;<a href="http://adrianmejiarosario.com/sites/default/files/svn-eol-style.txt" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">svn-eol-property</a>&gt;.</li>
 	<li>
 		Commit and you are all set.</li>
 </ol>
 <p>Eclipse Menu to add svn properties</p>
-<p><img alt="Eclipse SVN Property Menu" src="/sites/default/files/svnprop1.png" style="width: 600px; height: 564px; " /></p>
+<p><img alt="Eclipse SVN Property Menu" src="http://adrianmejiarosario.com/sites/default/files/svnprop1.png" style="width: 600px; height: 564px; " /></p>
 <p>Adding SVN properties typing</p>
-<p><img alt="" src="/sites/default/files/svnprop2.png" style="width: 525px; height: 520px; " /></p>
+<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/svnprop2.png" style="width: 525px; height: 520px; " /></p>
 <p>Adding SVN property from file</p>
-<p><img alt="SVN property from file" src="/sites/default/files/svnprop3.png" style="width: 525px; height: 520px; " /></p>
+<p><img alt="SVN property from file" src="http://adrianmejiarosario.com/sites/default/files/svnprop3.png" style="width: 525px; height: 520px; " /></p>

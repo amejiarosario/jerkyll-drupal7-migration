@@ -2,7 +2,7 @@
 layout: post
 title: Git auto-commit with Crontab
 created: 1313420094
-categories: unix, crontab, git, drupal, drush, how-to
+categories: "[unix, crontab, git, drupal, drush, how-to]"
 ---
 You might want to commit from a git repository from time to time for several purposes (backup, control version, continuous integration, etc). One way to accomplish that is using the CronTab (Cron is used to run periodic task in Unix-like systems).
 

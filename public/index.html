@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam &hellip;">
+  <meta name="description" content="I wanted to add AJAX to Spring MVC application. So, I did what most us do, go through the documentation or blog of the Spring Source. But, after &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/26/hello-world/">Hello World</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and Solving 406 Not Accepted</a></h1>
     
     
       <p class="meta">
@@ -98,16 +98,80 @@
   
 
 
-<time datetime="2012-04-26T18:58:00-04:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
+<time datetime="2012-04-27T02:17:00-04:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/04/26/hello-world/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="entry-content"><p>I wanted to add AJAX to Spring MVC application. So, I did what most us do, go through the documentation or blog of the Spring Source. But, after playing around I didn&#8217;t get it to work properly so here are some details that might save you some time.</p>
+
+
+<p>After I follow the instructions in <a href="http://blog.springsource.org/2010/01/25/ajax-simplifications-in-spring-3-0/%20" target="_blank">AJAX in Spring 3.0</a> I got some error &#8220;406 Not Accepted&#8221;, so let&#8217;s explain how to make it work:</p>
+
+
+<h2>Server Side</h2>
+
+
+<p>First you need to setup the actions/methods that the ajax client will call and provide that data in a request. In the server side we are going to use Spring MVC and reply using a JSON format.</p>
+
+
+<p>1. You need the annotation <strong>&lt;mvc:annotation-driven /&gt;</strong> in your spring.xml or servelet-web-context.xml<br />2. Then, you need to create your controller action that will reply to the AJAX invocation. Let&#8217;s see the following example. E.g. ProductController.java&nbsp;</p>
+
+
+<pre>@RequestMapping (value="/itemdescription", method=RequestMethod.GET, headers="Accept=application/json")<br />public <strong>@ResponseBody</strong> Product getItemDescription(@RequestParam String id){ <br />// code... <br />return yourProduct<br />}</pre>
+
+
+<p>There are a couple of things to point out here. Notice the return @ResponseBody Product type. So, you need to create create a POJO (Plain java class with the data that you want to send along with it&#8217;s getters and setters). E.g. Product.java.&nbsp;</p>
+
+
+<p>Also, notice the @ResponseBody annotation. This annotation allow you to translate the Product object into a JSON representation. But, this is not magic! and you need a couple of JARs to make it work (additionally to the annotation metined in step (1):</p>
+
+
+<ol>
+<li>http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl</li>
+<li>http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl</li>
+</ol>
+
+
+<p>Use maven or download and place this JARs in the lib manually.</p>
+
+
+<h2>Client Side</h2>
+
+
+<p>On the client side, I&#8217;m using jQuery and the code looks like this:</p>
+
+
+<pre>var jqxhr = $.getJSON("/&lt;your-servlet-name&gt;/itemdescription?id="+ itemId, function(result) {<br />&nbsp; //res=jQuery.stringify(result);<br /><br />&nbsp; if(result != null){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $.each(result, function(key, value) {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if(key==="descr"){ <br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; descr.val(value);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; userdescr.val(value);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br />&nbsp;&nbsp;&nbsp; } else {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; descr.val("");<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; userdescr.val("");<br />&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br />})<br />// .success(function() { console.log("2nd function second success"); })<br />.error(function(XMLHttpRequest, textStatus, errorThrown) { console.log("error "+textStatus+": "+errorThrown); })<br />// .complete(function() { console.log("complete"); });</pre>
+
+
+<p>There are some function there that are useful for debugging like printing out errors to the console and complete function. Notice also that $.getJSON is expenting the reponse in of a appplication/json type. So be sure that you have the &#8220;Accept=application/json&#8221; in your controller on the server side.</p>
+
+
+<p>Finally you can customize the javascript fragment shown above and place it in your webpage (JSP, HTML,&#8230;) in a ready document. (Also, It was also useful for me to add a delay after the document ready function because otherwise it conflicted with dojo framework apply to the same component. But remove the timeout if you want to)</p>
+
+
+<pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(document).ready(function() {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; console.log("document.ready");<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; setTimeout(function(){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(_itemId).keyup(function(){checkItemId($(_itemId).val(), $(_descr), $(_userdescr));});<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(_itemId).blur(function(){checkItemId($(_itemId).val(), $(_descr), $(_userdescr));});&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; },100);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });</pre>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;That&#8217;s all you need.</p>
+
+
+<h2>Troubleshooting</h2>
+
+
+<p>As mentioned before the spring mvc blog explain more in details each of the steps but lack some minor details that are key to make it work. I was getting &#8220;406 Not Accepted&#8221; because I didn&#8217;t have the jackson jars that the @ResponseBody needs to convert java objects to JSON. And also you need to add the Accept Request header in the controller.</p>
+
+
+<p>Using Firebug in Firefox is very tab Net &gt; XHR you can see all your ajax request and reponses. Very useful for debugging. Hope this save you some time and frustration. Any question or suggestion fee free to comment below or contact me.</p>
+
 </div>
   
   
@@ -284,7 +348,7 @@
     <li>
         Add the text property in the text box&nbsp;(image bellow)</li>
     <li>
-        You can also use files to avoid all the typing every time. right click and &#39;save as&#8230;&#39; to &lt;<a href="/sites/default/files/svn-keywords.txt" target="_blank">svn-keywords</a>&gt; and&nbsp;&lt;<a href="/sites/default/files/svn-eol-style.txt" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">svn-eol-property</a>&gt;.</li>
+        You can also use files to avoid all the typing every time. right click and &#39;save as&#8230;&#39; to &lt;<a href="http://adrianmejiarosario.com/sites/default/files/svn-keywords.txt" target="_blank">svn-keywords</a>&gt; and&nbsp;&lt;<a href="http://adrianmejiarosario.com/sites/default/files/svn-eol-style.txt" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">svn-eol-property</a>&gt;.</li>
     <li>
         Commit and you are all set.</li>
 </ol>
@@ -293,19 +357,19 @@
 <p>Eclipse Menu to add svn properties</p>
 
 
-<p><img alt="Eclipse SVN Property Menu" src="/sites/default/files/svnprop1.png" style="width: 600px; height: 564px; " /></p>
+<p><img alt="Eclipse SVN Property Menu" src="http://adrianmejiarosario.com/sites/default/files/svnprop1.png" style="width: 600px; height: 564px; " /></p>
 
 
 <p>Adding SVN properties typing</p>
 
 
-<p><img alt="" src="/sites/default/files/svnprop2.png" style="width: 525px; height: 520px; " /></p>
+<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/svnprop2.png" style="width: 525px; height: 520px; " /></p>
 
 
 <p>Adding SVN property from file</p>
 
 
-<p><img alt="SVN property from file" src="/sites/default/files/svnprop3.png" style="width: 525px; height: 520px; " /></p>
+<p><img alt="SVN property from file" src="http://adrianmejiarosario.com/sites/default/files/svnprop3.png" style="width: 525px; height: 520px; " /></p>
 
 </div>
   
@@ -379,10 +443,10 @@
 <p>Then copy it to TextMate preferences in a new variable called &quot;TM_RUBY&quot;, and &quot;TM_PYTHON&quot; as shown bellow:</p>
 
 
-<p><img alt="" src="/sites/default/files/Screen%20Shot%202012-02-09%20at%201.50.41%20AM.png" style="width: 792px; height: 402px; " /></p>
+<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202012-02-09%20at%201.50.41%20AM.png" style="width: 792px; height: 402px; " /></p>
 
 
-<p><img alt="" src="/sites/default/files/Screen%20Shot%202012-02-09%20at%2012.48.17%20AM.png" style="width: 600px; height: 320px; " /></p>
+<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202012-02-09%20at%2012.48.17%20AM.png" style="width: 600px; height: 320px; " /></p>
 
 </div>
   
@@ -953,13 +1017,13 @@
 <p class="p1">1 &#8211; log n &#8211; n &#8211; n log n &#8211; n^2 &#8211; n^3 &#8211; 2^n &#8211; n! &#8230;</p>
 
 
-<p class="p2"><img alt="" src="/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
 
 
 <p class="p2">&nbsp;</p>
 
 
-<p class="p2"><img alt="" src="/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
+<p class="p2"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.23.45%20PM.png" style="width: 300px; height: 257px; " /></p>
 
 
 <p class="p2">&nbsp;</p>
@@ -974,7 +1038,7 @@
 <p class="p1">There are a whole theory and math behind the Big-O notation and other notations related. At this time, just take a look of the typical code and its growth order.</p>
 
 
-<p class="p1"><img alt="" src="/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
+<p class="p1"><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%204.51.48%20PM.png" style="width: 600px; height: 427px; " /></p>
 
 
 <p>&nbsp;</p>
@@ -1066,7 +1130,7 @@
 </ol>
 
 
-<p><img alt="Login Items Mac" src="/sites/default/files/loginItems.png" style="width: 669px; height: 501px; " /></p>
+<p><img alt="Login Items Mac" src="http://adrianmejiarosario.com/sites/default/files/loginItems.png" style="width: 669px; height: 501px; " /></p>
 
 
 <p>&nbsp;</p>
@@ -1221,7 +1285,7 @@ name,line1,line2,city,zip code,country</pre>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/04/26/hello-world/">hello world</a>
+        <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and solving 406 Not Accepted</a>
       </li>
     
       <li class="post">

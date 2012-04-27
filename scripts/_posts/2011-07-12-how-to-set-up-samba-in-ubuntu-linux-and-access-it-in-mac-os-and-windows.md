@@ -2,7 +2,7 @@
 layout: post
 title: How to set up Samba in Ubuntu/Linux, and access it in Mac OS and Windows
 created: 1310520455
-categories: samba, ubuntu, linux
+categories: "[samba, ubuntu, linux]"
 ---
 <p>Samba allows to share files and printers with other computers remotely, regardless their operating system (linux, windows, Mac, ...).&nbsp;This guide show how to intall and configure the Samba service in a Ubuntu machine and access it through windows and mac.</p>
 <p><strong><u>Setting up the Samba File Server on Ubuntu/Linux:</u></strong></p>

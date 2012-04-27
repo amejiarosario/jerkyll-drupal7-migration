@@ -4,7 +4,7 @@
   <title><![CDATA[Category: svn | Adrian Mejia's Web]]></title>
   <link href="http://adrianmejia.com/blog/categories/svn/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-04-27T00:46:30-04:00</updated>
+  <updated>2012-04-27T02:20:40-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[hello world]]></title>
-    <link href="http://adrianmejia.com/blog/2012/04/26/hello-world/"/>
-    <updated>2012-04-26T18:58:00-04:00</updated>
-    <id>http://adrianmejia.com/blog/2012/04/26/hello-world</id>
-    <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Adding Subversion (SVN) Properties to your code]]></title>
@@ -127,7 +118,7 @@
     <li>
         Add the text property in the text box&nbsp;(image bellow)</li>
     <li>
-        You can also use files to avoid all the typing every time. right click and &#39;save as...&#39; to &lt;<a href="http://adrianmejia.com/sites/default/files/svn-keywords.txt" target="_blank">svn-keywords</a>&gt; and&nbsp;&lt;<a href="http://adrianmejia.com/sites/default/files/svn-eol-style.txt" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">svn-eol-property</a>&gt;.</li>
+        You can also use files to avoid all the typing every time. right click and &#39;save as...&#39; to &lt;<a href="http://adrianmejiarosario.com/sites/default/files/svn-keywords.txt" target="_blank">svn-keywords</a>&gt; and&nbsp;&lt;<a href="http://adrianmejiarosario.com/sites/default/files/svn-eol-style.txt" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">svn-eol-property</a>&gt;.</li>
     <li>
         Commit and you are all set.</li>
 </ol>
@@ -136,19 +127,19 @@
 <p>Eclipse Menu to add svn properties</p>
 
 
-<p><img alt="Eclipse SVN Property Menu" src="http://adrianmejia.com/sites/default/files/svnprop1.png" style="width: 600px; height: 564px; " /></p>
+<p><img alt="Eclipse SVN Property Menu" src="http://adrianmejiarosario.com/sites/default/files/svnprop1.png" style="width: 600px; height: 564px; " /></p>
 
 
 <p>Adding SVN properties typing</p>
 
 
-<p><img alt="" src="http://adrianmejia.com/sites/default/files/svnprop2.png" style="width: 525px; height: 520px; " /></p>
+<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/svnprop2.png" style="width: 525px; height: 520px; " /></p>
 
 
 <p>Adding SVN property from file</p>
 
 
-<p><img alt="SVN property from file" src="http://adrianmejia.com/sites/default/files/svnprop3.png" style="width: 525px; height: 520px; " /></p>
+<p><img alt="SVN property from file" src="http://adrianmejiarosario.com/sites/default/files/svnprop3.png" style="width: 525px; height: 520px; " /></p>
 
 ]]></content>
   </entry>

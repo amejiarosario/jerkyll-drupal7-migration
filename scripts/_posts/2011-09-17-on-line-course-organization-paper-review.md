@@ -2,7 +2,7 @@
 layout: post
 title: On line Course Organization - Paper Review
 created: 1316299024
-categories: Paper Review, Focused Crawling, Metadata Extraction, Learning Object Management, Ontology, e-Learning
+categories: "[paper review, focused crawling, metadata extraction, learning object management, ontology, e-learning]"
 ---
 <p>This paper [1] proposed a specialized search engine, called Fusion, which index meta-information about available courses. Google can be used to perform this search, but the result will be too broad. Fusion provides specialized results only. In order to accomplish this task, Fusion used the web crawler Nutch, which is used to extract the content of courses. The crawler does real-time decisions to parse and store only the necessary data instead of the whole content. The extraction of the metadata is done using the following technologies: NekoHTML (HTML document parser), Xalan (XSLT for transforming XML to HTML), XPath (used to navigate through elements in the XML). After all the course metadata is extracted, the information is classified according to the IEEE-LTSC LOM (Learning Object Metadata). Finally all the data is stored and used for the web portal.</p>
 <div><img alt="architecture online course crawler" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/architecture-online-course-crawler.png" style="width: 500px; height: 236px; "></div>
