@@ -1,4 +1,7 @@
-# lib/jekyll/migrators/drupal.rb
+# 
+# Jekyll migrator for Drupal 7+
+# Adapted by adrianmejia.com
+#
 
 require 'rubygems'
 require 'sequel'
@@ -10,22 +13,21 @@ require 'yaml'
 # installed, running the following commands should work:
 # $ sudo gem install sequel
 # $ sudo gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+#
+# UPDATE:
+# Install mysql2 as well you might need it as well.
+# $ gem install mysql2 -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+#
 
+OLD_DOMAIN = "http://adrianmejiarosario.com"  ## TODO replace this out
+NEW_DOMAIN = "http://adrianmejia.com"         ## TODO replace this out
 
-
-=begin
-
-USE: mysql2 instead
-gem install mysql2 -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
-
-=end
 
 module Jekyll
   module Drupal
     # Reads a MySQL database via Sequel and creates a post file for each post
     # in wp_posts that has post_status = 'publish'. This restriction is made
     # because 'draft' posts are not guaranteed to have valid dates.
-    # Drupal 7
     
     QUERY =<<SQL 
     SELECT 
@@ -51,15 +53,16 @@ module Jekyll
 
     GROUP BY n.nid
 SQL
+
+    #
+    # Main script
+    # 
     def self.process(dbname, user, pass, host = 'localhost')
       db = Sequel.mysql(dbname, :user => user, :password => pass, :host => host, :encoding => 'utf8')
 
       drupal_path = "drupal_redirect"
-      #FileUtils.remove_dir drupal_path
-      #FileUtils.remove_dir "_posts"
-      #FileUtils.remove_dir "_drafts"
-      
-      FileUtils.mkdir_p drupal_path     
+      FileUtils.mkdir_p drupal_path
+           
       File.open("#{drupal_path}/index.php", "w") { |f| f.puts permanent_redirect_to ("") }
       FileUtils.mkdir_p "_posts"
       FileUtils.mkdir_p "_drafts"
@@ -69,7 +72,10 @@ SQL
         # Get required fields and construct Jekyll compatible name
         node_id = post[:nid]
         title = post[:title]
-        content = post[:body].gsub("\"/sites/default/files/", "\"http://adrianmejiarosario.com/sites/default/files/")
+        
+        # complete relatives URLs
+        content = post[:body].gsub("\"/sites/default/files/", "\"#{OLD_DOMAIN}/sites/default/files/")
+        
         created = post[:created]
         tags = post[:tags].downcase.strip
         drupal_slug = post[:slug]
@@ -98,8 +104,9 @@ SQL
 
         # 
         # Make a file to redirect from the old Drupal URL
+        # Make refresh dirs & files according to entries in url_alias table in drupal 7+
+        # Copy the content to your drupal_redirect to the root of your all blog and that's it. It will redirect to your new site.
         #
-=begin
         if is_published
           ddir = "#{drupal_path}/#{drupal_slug}"
           FileUtils.mkdir_p ddir
@@ -108,26 +115,20 @@ SQL
             f.puts permanent_redirect_to "blog/#{time.strftime("%Y/%m/%d/") + slug}"
           end
         end
-=end
       end
 
       # TODO: Make dirs & files for nodes of type 'page'
-        # Make refresh pages for these as well
-
-      # TODO: Make refresh dirs & files according to entries in url_alias table
-    end
+      # Make refresh pages for these as well
+    end    
   end
 end
 
+#
+# PHP code to redirect permanently your users from your old website to your new
+#
 def permanent_redirect_to(location)
-  "<?php\nheader(\"HTTP/1.1 301 Moved Permanently\");\nheader(\"Location: http://adrianmejia.com/#{location}\");\necho \"redirecting...\"\n ?>"
+  "<?php\nheader(\"HTTP/1.1 301 Moved Permanently\");\nheader(\"Location: #{NEW_DOMAIN}/#{location}\");\necho \"redirecting...\"\n ?>"
 end
 
 Jekyll::Drupal.process('drupalblog','root','recrins')
-
-=begin
-gem install ruby-mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
-require 'mysql'
-db = Mysql.real_connect("localhost","root","recrins","drupalblog")
-
-=end
+#Jekyll::Drupal.process(ENV['DRUPAL_DATABASE'],ENV['DB_USER'],ENV['DB_PASSWORD'])
