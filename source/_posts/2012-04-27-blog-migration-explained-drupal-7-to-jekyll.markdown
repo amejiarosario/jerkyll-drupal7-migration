@@ -13,25 +13,16 @@ This post is a guide on how to extract your blog posts information from Drupal 7
 
 You need to extract the data from your Drupal 7, there are several ways. You can connect to your web host via ssh and generate SQL dump.
 
-
-
-{% codeblock Here's an example .rvmrc file. lang:ruby %}
+{% codeblock lang:sql %}
 mysqldump –uUSERNAME –pPASSWORD DATABASE > FILENAME.sql
 {% endcodeblock %}
-
 
 (replace the UPPERCASE letters with your settings)
 
 You can download the file *.sql to your computer and run the following command to install to upload the data in your local database.
 
-```
+{% codeblock lang:sql %}
 mysql –uUSERNAME –pPASSWORD DATABASE < FILENAME.sql
-
-```
-
-
-{% codeblock Time to be Awesome - awesome.rb %}
-puts "Awesome!" unless lame
 {% endcodeblock %}
 
 If you have a access to you phpmyadmin in your host server you can download your sql dump file through that also. Other method is to use a local port fordwarding using SSH… anyways, get access to your database.
@@ -39,7 +30,6 @@ If you have a access to you phpmyadmin in your host server you can download your
 ### Run the script
 
 The 2nd and final step is to run the script that does all the magic. Below I will explain how it works in case that you want to customize.
-
 
 {% gist 2515239 drupal2jekyll.rb %}
 
@@ -52,6 +42,7 @@ Replace the place holders with your actual values:
 * ENV['DB_USER']
 * ENV['DB_PASSWORD']
 
+
 After you run it, it will generate 3 folders:
 
 * _post: has all your post in the Jekyll style (categories and tags and everything)
@@ -59,12 +50,11 @@ After you run it, it will generate 3 folders:
 * drupal_redirect: for each url of your posts it has a folder with a redirect index.php file to your new domain.
 
 Copy each of this folder to their respective places. Copy the content to your drupal_redirect to the root of your old blog and that's it. It will redirect all your all blog URLs to your new site.
-
 ### Behind the scenes…
 
 First, you need to extract the data from your Drupal site. I reversed engineer the database in order to extract the post, title, url alias (slug), tags, publish info, format and the last version of the post. The query that does all the magic is the following one:
 
-``` sql Drupal 7 Query to extract all the post info
+{% codeblock Drupal 7 Query to extract all the post info lang:sql %}
 SELECT 
 n.nid, 
 n.title, 
@@ -87,8 +77,11 @@ AND b.revision_id = n.vid
 AND l.source = CONCAT( 'node/', n.nid ) 
 
 GROUP BY n.nid
+{% endcodeblock %}
 
-```
+As might notice, it concatenates all the tags separated by comma and also finds the alias of the url if is called node. Also you can also find the url alias for other pages such as terms or taxonomies. But let’s keep it simple and get the posts urls.
+
+Finally, the script will use the data from this query to generate the new posts files and also to create the redirect files.
 
 As might notice, it concatenates all the tags separated by comma and also finds the alias of the url if is called node. Also you can also find the url alias for other pages such as terms or taxonomies. But let’s keep it simple and get the posts urls.
 
@@ -111,33 +104,25 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
 
 The mysql gem have been abandoned, so you also need mysql2 to work propery with sequel
 
-``` bash Install MySQL gems
-
+{% codeblock  bash Install MySQL gems lang:bash %}
 $ sudo gem install sequel
 $ sudo gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
 $ sudo gem install mysql2 -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
-
-```
+{% endcodeblock %}
 
 also  you need to copy the following lib:
 
-``` shell Reference needed libs
-
+{% codeblock Reference needed libs lang:bash %}
 $ sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib
-
-```
+{% endcodeblock %}
 
 That should work.
 
 Just if you are courious there is another gem called ruby-mysql, with which you can connect to mysql. But it doesn’t work with sequel
 
-``` batch Alternative gem to connect to mysql (ruby-mysql)
+{% codeblock Alternative gem to connect to mysql (ruby-mysql) lang:bash %}
 $ gem install ruby-mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
 $ irb
 > require 'mysql'
 > db = Mysql.real_connect("SERVER","USER","PASSWORD","DATABASE")
-
-```
-
-
-
+{% endcodeblock %}

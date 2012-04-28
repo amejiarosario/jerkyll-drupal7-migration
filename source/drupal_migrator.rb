@@ -130,5 +130,4 @@ def permanent_redirect_to(location)
   "<?php\nheader(\"HTTP/1.1 301 Moved Permanently\");\nheader(\"Location: #{NEW_DOMAIN}/#{location}\");\necho \"redirecting...\"\n ?>"
 end
 
-Jekyll::Drupal.process('drupalblog','root','recrins')
-#Jekyll::Drupal.process(ENV['DRUPAL_DATABASE'],ENV['DB_USER'],ENV['DB_PASSWORD'])
+Jekyll::Drupal.process(ENV['DRUPAL_DATABASE'],ENV['DB_USER'],ENV['DB_PASSWORD'])
