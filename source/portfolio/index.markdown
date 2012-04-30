@@ -5,9 +5,9 @@ comments: false
 sharing: false
 footer: true
 ---
-<p>It's not ready yet... in the meantime you:</p>
+<p>It's not ready yet... but, in the meantime you can:</p>
 <ul>
-<li>Review my <a href="http://dl.dropbox.com/u/5846396/Adrian%20Mejia%20Resume.pdf" target="_blank">resume</a>.</li>
+<li>Review my <a href="https://www.dropbox.com/s/38w4d7hzt80dpee/Adrian%20Mejia%20Resume.pdf" target="_blank">resume</a>.</li>
 <li>Check out my <a href="http://www.linkedin.com/in/adrianmejia" target="_blank">linkedin</a> profile.</li>
-<li>View some projects I had work on in my spare time <a href="https://github.com/amejiarosario">github repository</a>.</li>
+<li>View some projects I had work on in my spare time <a href="https://github.com/amejiarosario" target="_blank">github repository</a>.</li>
 </ul>
