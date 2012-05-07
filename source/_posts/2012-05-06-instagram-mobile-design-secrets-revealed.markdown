@@ -3,7 +3,7 @@ layout: post
 title: "Instagram mobile design secrets revealed"
 date: 2012-05-06 21:45
 comments: true
-categories: mobile, apps, design, general
+categories: [mobile, apps, design, general]
 ---
 
 Instagram is a very nice iPhone App. It allows you to give effects to your photos easily. Additionally, it’s blazing fast to upload your photos, and share them in other social networks such as Facebook, Twitter and/or Foursquare.
