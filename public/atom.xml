@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Adrian Mejia's Coding Blog]]></title>
+  <title><![CDATA[Adrian Mejia's WeBlog]]></title>
   <link href="http://adrianmejia.com/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-04-29T20:48:39-04:00</updated>
+  <updated>2012-05-06T22:41:55-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Instagram mobile design secrets revealed]]></title>
+    <link href="http://adrianmejia.com/blog/2012/05/06/instagram-mobile-design-secrets-revealed/"/>
+    <updated>2012-05-06T21:45:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2012/05/06/instagram-mobile-design-secrets-revealed</id>
+    <content type="html"><![CDATA[<p>Instagram is a very nice iPhone App. It allows you to give effects to your photos easily. Additionally, it’s blazing fast to upload your photos, and share them in other social networks such as Facebook, Twitter and/or Foursquare.</p>
+
+<p>This app went from 0 to 12 million users in just 12 months! And today 30+ million users in less than 2 years. Go through the slideshows bellow and you can see why. This app has some design features that that improves a lot the user experience. One of them, it’s responding to the user actions instantly even though the task is still performing in the background… more details in the slide:</p>
+
+<script async class="speakerdeck-embed" data-id="4ede6e9cad0da6004d000175" data-ratio="1.299492385786802" src="http://adrianmejia.com//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>Scaling Instagram has also an interesting history:</p>
+
+<script async class="speakerdeck-embed" data-id="4f86746753373601f1006e39" data-ratio="1.3333333333333333" src="http://adrianmejia.com//speakerdeck.com/assets/embed.js"></script>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Blog migration explained: Drupal 7 to Jekyll]]></title>
@@ -1573,17 +1594,6 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
 <p>About this paper, I like the how it states the benefits of this e-Learning systems for companies and institutions and also the benefits web collaboration to boost learning.  Additionally, the idea of using social bookmarking to classify educational content is pretty interesting.</p>
 
 <p>[1] I. Hamburg, “eLearning 2.0 and Social, Practice-Oriented Communities to Improve Knowledge in Companies”, 2010 Fifth International Conference on Internet and Web Applications and Services, pp. 411-416, 2010.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dynamic Hypertext Generation for Reusing Open Corpus Content - Paper Review]]></title>
-    <link href="http://adrianmejia.com/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review/"/>
-    <updated>2011-09-22T00:00:00-04:00</updated>
-    <id>http://adrianmejia.com/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review</id>
-    <content type="html"><![CDATA[<p>B. Steichen, S. Lawless, V. Wade et al. (2009) [1] proposed an Adaptive Hypermedia (AH) for dynamic hypertext generation of learning content. This system provides personalized learning services, which aims to enrich the learning process and the satisfaction of the learners. In order to accomplish these tasks: the system perform open courses harvesting and identification, generate dynamically hyperlinks based on the learner experience and appropriated learning strategies, and present the content in a uniform presentation across heterogeneous content. National digital content repositories cross institution sharing of learning resources and universities open courseware seed the identification task. Web crawlers are used to harvest the open corpus. Focused crawlers, such as Nalanda and Combine are mentioned and Heritix is recommended.  The harvested data is later indexed to make it more discoverable with open sources solutions, such as Nutch and Swish-e and then retrieve using search engines like Lucene and Lemur. For the metadata classification there are 3 approaches: (i) extraction of the metadata from files that already have it; (ii) infer and generate metadata automatically. Semtag from IBM perform can do this using a Taxonomy Based Disambiguation (TBD) algorithm. Also Klarity and DC.dot are metadata generators. (iii) Use of social bookmarking (digg, flickr, facebook,…) to extract the metadata/content description. For the dynamic hypertext generation a system was develop on top of the Adaptive Personalized eLearning Service (APeLS). This facilitates students to learn about specific concepts using query of keywords. In [2] can found be found also the results of this system.</p>
-
-<p>[1] Steichen, B., Lawless, S., O’Connor, A., &amp; Wade, V. (2009). Dynamic Hypertext Generation for Reusing Open Corpus Content. HT’09, June 29–July 1, 2009, Torino, Italy, 119-128. ACM.</p>
 ]]></content>
   </entry>
   
