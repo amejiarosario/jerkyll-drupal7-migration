@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: migration | Adrian Mejia's WeBlog]]></title>
+  <title><![CDATA[Category: migration | Adrian Mejia's Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/migration/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-05-06T22:48:51-04:00</updated>
+  <updated>2012-05-06T22:53:26-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
