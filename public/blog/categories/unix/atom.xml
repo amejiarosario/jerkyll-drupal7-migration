@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: unix | Adrian Mejia's Blog]]></title>
+  <title><![CDATA[Category: unix | Adrian Mejia's code.Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/unix/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-09-12T01:08:13-04:00</updated>
+  <updated>2012-09-12T01:38:37-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>

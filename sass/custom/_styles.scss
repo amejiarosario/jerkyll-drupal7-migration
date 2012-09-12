@@ -1,2 +1,8 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+header[role="banner"] {
+     background: #263347 url(https://www.dropbox.com/s/tc6g2c4dgph2ego/trust_me_im_engineer.png?dl=1) right;
+     background-repeat: no-repeat;
+     height: 200px;
+}
