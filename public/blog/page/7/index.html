@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="In the .NET framework, the method Assembly -&gt; Get Manifest Resource Stream has a gotcha that could take some time to figure out why is not working &hellip;">
+  <meta name="description" content="Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly. You will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://adrianmejia.com/blog/page/7">
+  <link rel="canonical" href="http://adrianmejia.com/blog/page/7/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -33,9 +33,7 @@
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-24183929-4']);
-		_gaq.push(['_setDomainName', 'adrianmejia.com']);
     _gaq.push(['_trackPageview']);
- 		_gaq.push(['_setSiteSpeedSampleRate', 100]); // #protip
 
     (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -43,6 +41,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+
 
 </head>
 
@@ -79,6 +78,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/21/how-to-set-up-git-github-in-windows/">How to Set Up Git / Github in Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-21T00:00:00-04:00" pubdate data-updated="true">Jul 21<span>st</span>, 2011</time>
+        
+         | <a href="/blog/2011/07/21/how-to-set-up-git-github-in-windows/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly.</p>
+
+
+<p>You will need the following tools:</p>
+
+
+<ul>
+    <li><strong>Putty</strong>: download <a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip">latest version here</a>.</li>
+    <li><strong>TortoiseGit</strong>: download the <a href="http://code.google.com/p/tortoisegit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version here</a>. &nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/tortoisegit/downloads/detail?name=Tortoisegit-1.6.5.0-32bit.msi&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Tortoisegit-1.6.5.0-32bit.msi</a>)</li>
+    <li><strong>msysgit</strong>: As today the <a href="http://code.google.com/p/msysgit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version</a>&nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/msysgit/downloads/detail?name=Git-1.7.6-preview20110708.exe&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Git-1.7.6-preview20110708.exe</a>)</li>
+</ul>
+
+
+<p><u>Setting up Putty</u></p>
+
+
+<ol>
+    <li>Unzip the folder.&nbsp;</li>
+    <li>Generate the ssh key using the&nbsp;PUTTYGEN.EXE from the putty folder. After genete it, click &#8220;save private key&#8221; to save the *.ppk</li>
+</ol>
+
+
+<p><u>Setting up Git / TortoiseGIT on Windows</u></p>
+
+
+<ol>
+    <li>Install msysgit</li>
+    <li>Install TortoiseGit</li>
+    <li>Config TortoiseGit: do right click and in the contextual menu: TortoiseGit -&gt; Settings -&gt; Git -&gt; config (set your name and password)</li>
+    <li>Set remote git server: Settings -&gt; Git -&gt; Remote. Fill it up with your Git server info (e.g. Github, Google code, &#8230;)</li>
+</ol>
+
+
+<p><img alt="GitTortoise Remote Configuration" src="http://adrianmejiarosario.com/sites/default/files/pictures/gitTortoise-RemoteConfig.JPG"><br>
+    &nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -600,70 +672,9 @@ tcp     445</pre>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/07/12/drupal-modules-for-seo-optimation/">Drupal Modules for SEO Optimation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-12T00:00:00-04:00" pubdate data-updated="true">Jul 12<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/07/12/drupal-modules-for-seo-optimation/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Search Engine Optimizations (SEO) could be quite challenging for beginners. It&#8217;s overwhelming the amount of information that a webmaster need to understand in order to make his websites visible, in search engines like Google, Bing, Yahoo, &#8230; Moreover most of this information is quite disperse. The idea here is to provided all the needed information in one place. Starting from steps for all websites and then focusing on Drupal SEO modules. &nbsp; <strong>General Steps:</strong></p>
-
-
-<ol>
-    <li><strong>Sign up</strong>in the webmaster tools for the main search engines:
-        <ul>
-            <li><a href="http://www.google.com/webmasters/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Google Webmaster Tools</a></li>
-            <li><a href="siteexplorer.search.yahoo.com" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Yahoo! Site Explorer</a></li>
-            <li><a href="http://www.bing.com/webmaster" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Bing - Webmaster Center</a></li>
-            <li><a href="http://webmaster.yandex.com/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Yandex Webmaster</a></li>
-        </ul>
-    </li>
-    <li><strong>Verification.</strong> The next step is to get your website verify by each the search engines that you signed up. There are several options in the verification process, as you can see in their websites. You can choose from: uploading a file to you web directory, or adding a text string in your host name, or adding a meta tag and other methods.</li>
-    <li><strong>Metrics</strong>. Before&nbsp;optimizing&nbsp;your website you have to &#8221;<strong>know your number</strong>&#8221;, so you can see if what you are doing is working. Your numbers are the amount of visitors, webpage clicked, top visitied pages. For that, there are free tools available, I have used the following ones.
-        <ol>
-            <li><a href="http://www.google.com/analytics/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Google Analytics</a>: it&#8217;s a very good tool, provides a lot of information such as, number of visitors, top clicked pages, visitor&#8217;s browsers, OS, screen resolution, ISP and more!</li>
-            <li><a href="http://www.webalizer.org/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">The Webalizer</a> is a free web server log file analysis program. It produces detailed usage reports in HTML format. It&#8217;s a program installed on the linux server. (in ubuntu servers just run # sudo apt-get install webalizer)</li>
-            <li><a href="http://awstats.sourceforge.net/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">AWStats</a> is a free powerful and featureful tool that generates advanced web, streaming, ftp or mail server statistics, graphicall.</li>
-        </ol>
-    </li>
-    <li><strong>Checklist</strong>. Every webmaster tool from the&nbsp;different&nbsp;search engines has their checklist and guidelines. Go through them (in the future, I will post a summary here)</li>
-</ol>
-
-
-<p><strong>Drupal Modules</strong> Read <a href="http://yadadrop.com/services/drupal-seo-modules-search-engine-optimization" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">here</a> for now (I will make my own list in the future)</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/8/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -675,7 +686,7 @@ tcp     445</pre>
   
     <section>
   <h1>About Me</h1>
-  <p>I&#8217;m a software engineer passionate about web development and internet technologies. Currently, I&#8217;m working and living in Boston.</p>
+  <p>I&#8217;m a software engineer passionate about web development and internet technologies. Currently, I&#8217;m working and living in Boston, MA.</p>
 </section>
 
 <section class="googleplus">
@@ -703,7 +714,7 @@ tcp     445</pre>
 <section class="googleplus">
   <h1>
     <a href="https://github.com/amejiarosario">
-			<img src="http://www.darrenmothersele.com/sites/www.darrenmothersele.com/themes/darrenm/images/48/github.png" width="32" height="32">
+			<img src="http://www.darrenmothersele.com/sites/default/files/image-links/github.png" width="32" height="32">
       Github
     </a>
   </h1>
@@ -713,6 +724,10 @@ tcp     445</pre>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
@@ -728,10 +743,6 @@ tcp     445</pre>
     
       <li class="post">
         <a href="/blog/2012/02/11/adding-subversion-svn-properties-to-your-code/">Adding Subversion (SVN) Properties to your code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/02/09/how-do-i-change-the-ruby-python-version-textmate-uses/">How do I change the Ruby/Python version Textmate uses?</a>
       </li>
     
   </ul>
