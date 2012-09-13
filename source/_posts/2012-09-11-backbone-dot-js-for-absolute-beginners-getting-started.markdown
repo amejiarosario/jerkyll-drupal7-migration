@@ -12,7 +12,11 @@ Backbone.js is a JavaScript framework, among many others, that is gaining specia
 
 TL; DR: You need to use JavaScript heavily in order to make responsive and interactive web applications.
 
-The web application development process has been evolving over the years. In its beginning… the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, in web 2.0, server side programming languages (like PHP, Ruby, Java, …) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, it requiress to bring the logic closer to the client (browser).  There are a couple of languages that can run in the browsers besides JS, such as Java, Flash and others. However, these ones require extra plugins and are not universally accepted as JavaScript.Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. The user can’t wait between request. A lot of the logic/code that used to be in the server side is being moved to the client side. JS allows the web sites to render only the parts of the website that changed and not the full-page on every request. Examples of this kind of web apps are Gmail, Pandora, Pinterest, Nokia Maps 3D and others.A common problem with large JS web apps developed is that it became pretty messy really quick. The lacks of structure it’s hard to maintain. This is where Backbone comes into play. It provides structure to organize the code and increase maintainability. Backbone is not the only one; in fact, there are many JS frameworks that accomplish similar results like Ember.js, Angular.js and so on. However, I choose Backbone because is one of the most widely spread framework in its category. It has a vibrant community and it’s also being fully used in production for a considerable number of big companies like: Wal-Mart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.
+The web application development process has been evolving over the years. In its beginning… the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, in web 2.0, server side programming languages (like PHP, Ruby, Java, …) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, it requiress to bring the logic closer to the client (browser).  There are a couple of languages that can run in the browsers besides JS, such as Java, Flash and others. However, these ones require extra plugins and are not universally accepted as JavaScript.
+
+Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. The user can’t wait between request. A lot of the logic/code that used to be in the server side is being moved to the client side. JS allows the web sites to render only the parts of the website that changed and not the full-page on every request. Examples of this kind of web apps are Gmail, Pandora, Pinterest, Nokia Maps 3D and others.
+
+A common problem with large JS web apps developed is that it became pretty messy really quick. The lacks of structure it’s hard to maintain. This is where Backbone comes into play. It provides structure to organize the code and increase maintainability. Backbone is not the only one; in fact, there are many JS frameworks that accomplish similar results like Ember.js, Angular.js and so on. However, I choose Backbone because is one of the most widely spread framework in its category. It has a vibrant community and it’s also being fully used in production for a considerable number of big companies like: Wal-Mart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.
 
 ## Just enough to get started with Backbone.js 
 
@@ -26,7 +30,9 @@ Backbone.js has hard dependency on underscore.js and a soft dependency on jQuery
 
 ## Shut up and show me the code!
  
-Alright! the way we are going to explore all of these modules it’s through examples. This is a practical tutorial that I wish I have it when I stared learning. So, this is a fat-free walkthrough Backbone.js, as simple as it could be, all the code is in one file just for didactical purposes (no hidden magic tricks, all cards are in the board).The first example is a ‘Hello World’ app in Backbone and the second it’s a Todo App. After doing these 2 apps, you’ll see in action every Backbone module and have practical understanding about them.
+Alright! the way we are going to explore all of these modules it’s through examples. This is a practical tutorial that I wish I have it when I stared learning. So, this is a fat-free walkthrough Backbone.js, as simple as it could be, all the code is in one file just for didactical purposes (no hidden magic tricks, all cards are in the board).
+
+The first example is a ‘Hello World’ app in Backbone and the second it’s a Todo App. After doing these 2 apps, you’ll see in action every Backbone module and have practical understanding about them.
 
 
 ## 1. Hello World in Backbone.js
@@ -102,4 +108,4 @@ Let’s see it in action and rewrite our Hello World using template instead.
 
 Run the app again and verify that it's working with the template.
 
-### Continue with the [2nd part](/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/)!
+### Continue with the [2nd part](/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/) and learn more about backbones' Models, Collections, View and Events!

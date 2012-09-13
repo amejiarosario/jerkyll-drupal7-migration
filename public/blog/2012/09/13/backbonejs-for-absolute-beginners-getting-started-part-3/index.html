@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="The part 2 of this tutorial is here. 2.5 Todo App Features We basically have our working but there are a couple of features that could improve it. &hellip;">
+  <meta name="description" content="The part 2 of this tutorial is here. 2.5 Todo item list CRUD We basically have our working but there are a couple of features that could improve it. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,19 +108,23 @@
 
 <div class="entry-content"><p>The part 2 of this tutorial is <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">here</a>.</p>
 
-<h2>2.5 Todo App Features</h2>
+<h2>2.5 Todo item list CRUD</h2>
 
 <p>We basically have our working but there are a couple of features that could improve it. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.</p>
 
 <h3>2.5.1. C-reate</h3>
 
-<p>  We are already can create item list from the console (2.3) and also from the UI (2.4.3). So, it’s done.</p>
+<p>We are already can create item list from the console (2.3) and also from the UI (2.4.3). So, it’s done.</p>
 
 <h3>2.5.2. U-pdate</h3>
 
-<p>  What if you make a mistake and want to change the text on some of your to-do list. Furthermore, you can notice that the checkboxes states are not persistent when you reload the pages. Let’s fix both problems.
-1.- You want to respond to a double click event showing up a text box, where the user can change the text. First, let’s add the HTML in the <code>item-template</code> template below the label tag.<code>&lt;input class="edit" value="&lt;%- title %&gt;"&gt;</code>
-2.- If you refresh, you will notice that there are both displaying at the same time. So, you can hide them properly with the following CSS.</p>
+<p>What if you make a mistake and want to change the text on some of your to-do list. Furthermore, you can notice that the checkboxes states are not persistent when you reload the pages. Let’s fix both problems.</p>
+
+<p>1.- You want to respond to a double click event showing up a text box, where the user can change the text. First, let’s add the HTML in the <code>item-template</code> template below the label tag.</p>
+
+<p><code>&lt;input class="edit" value="&lt;%- title %&gt;"&gt;</code></p>
+
+<p>2.- If you refresh, you will notice that there are both displaying at the same time. So, you can hide them properly with the following CSS.</p>
 
 <figure class='code'><figcaption><span>CSS </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/3840dc802d6f311528298639150a5f52364c1975/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -224,7 +228,92 @@
 
 <h3>2.5.2. D-elete</h3>
 
-<p>[work in progress, will be ready by tomorrow]</p>
+<p>To be able to remove to-do items, we need to add a remove button in each item and listen to the click event on it, which will trigger the destroy function in the selected todo object.</p>
+
+<p>1.- Add the HTML markup for the remove button.</p>
+
+<figure class='code'><figcaption><span>Remove Button into &#8216;item template&#8217;  </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/1267e531ae3ef508eb32e5308c2cc965f02d1b45/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gu">@@ -47,6 +47,7 @@</span>
+</span><span class='line'>       &lt;input class=&quot;toggle&quot; type=&quot;checkbox&quot; &lt;%= completed ? &#39;checked&#39; : &#39;&#39; %&gt;&gt;
+</span><span class='line'>       &lt;label&gt;&lt;%- title %&gt;&lt;/label&gt;
+</span><span class='line'>       &lt;input class=&quot;edit&quot; value=&quot;&lt;%- title %&gt;&quot;&gt;
+</span><span class='line'><span class="gi">+      &lt;button class=&quot;destroy&quot;&gt;remove&lt;/button&gt;</span>
+</span><span class='line'>     &lt;/div&gt;
+</span><span class='line'>   &lt;/script&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.- Listen for the click event in the button that you just created.</p>
+
+<figure class='code'><figcaption><span>Add event listeners for the Remove Button in &#8216;app.TodoView&#8217;  </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/1267e531ae3ef508eb32e5308c2cc965f02d1b45/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gu">@@ -105,12 +106,14 @@</span>
+</span><span class='line'>       },
+</span><span class='line'>       initialize: function(){
+</span><span class='line'>         this.model.on(&#39;change&#39;, this.render, this);
+</span><span class='line'><span class="gi">+        this.model.on(&#39;destroy&#39;, this.remove, this); // remove: Convenience Backbone&#39;</span>
+</span><span class='line'>       },
+</span><span class='line'>       events: {
+</span><span class='line'>         &#39;dblclick label&#39; : &#39;edit&#39;,
+</span><span class='line'>         &#39;keypress .edit&#39; : &#39;updateOnEnter&#39;,
+</span><span class='line'>         &#39;blur .edit&#39; : &#39;close&#39;,
+</span><span class='line'><span class="gd">-        &#39;click .toggle&#39;: &#39;toggleCompleted&#39;</span>
+</span><span class='line'><span class="gi">+        &#39;click .toggle&#39;: &#39;toggleCompleted&#39;,</span>
+</span><span class='line'><span class="gi">+        &#39;click .destroy&#39;: &#39;destroy&#39;</span>
+</span><span class='line'>       },
+</span><span class='line'>       edit: function(){
+</span><span class='line'>         this.$el.addClass(&#39;editing&#39;);
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3.- Add the destroy method to the TodoView.</p>
+
+<figure class='code'><figcaption><span>Add the destroy method to &#8216;app.TodoView&#8217;  </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/1267e531ae3ef508eb32e5308c2cc965f02d1b45/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gu">@@ -130,7 +133,10 @@</span>
+</span><span class='line'>       },
+</span><span class='line'>       toggleCompleted: function(){
+</span><span class='line'>         this.model.toggle();
+</span><span class='line'><span class="gd">-      }</span>
+</span><span class='line'><span class="gi">+      },</span>
+</span><span class='line'><span class="gi">+      destroy: function(){</span>
+</span><span class='line'><span class="gi">+        this.model.destroy();</span>
+</span><span class='line'><span class="gi">+      }      </span>
+</span><span class='line'>     });
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can download the full working code so far in <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/1267e531ae3ef508eb32e5308c2cc965f02d1b45/backbone-tutorial.html">here</a> and you can visualize the changes needed to implement the delete feature in <a href="https://github.com/amejiarosario/Backbone-tutorial/commit/1267e531ae3ef508eb32e5308c2cc965f02d1b45">here</a></p>
+
+<h3>Continue with the <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">4th part</a> and learn about Backbone&#8217;s Routes!</h3>
 </div>
 
 
@@ -276,6 +365,8 @@
       
         <a class="basic-alignment left" href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/" title="Previous Post: Backbone.js for absolute beginners - getting started (part 2)">&laquo; Backbone.js for absolute beginners - getting started (part 2)</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/" title="Next Post: Backbone js for absolute beginners - getting started (part 4)">Backbone js for absolute beginners - getting started (part 4) &raquo;</a>
       
     </p>
   </footer>
@@ -333,6 +424,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone js for absolute beginners - getting started (part 4)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for absolute beginners - getting started (part 3)</a>
       </li>
     
@@ -346,10 +441,6 @@
     
       <li class="post">
         <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/27/blog-migration-explained-drupal-7-to-jekyll/">Blog migration explained: Drupal 7 to Jekyll</a>
       </li>
     
   </ul>

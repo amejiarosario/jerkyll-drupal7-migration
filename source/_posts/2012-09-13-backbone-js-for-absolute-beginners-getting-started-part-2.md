@@ -8,7 +8,7 @@ categories: [backbonejs, javascript, web frameworks, web development, agile fram
 
 The part 1 of this tutorial is [here](/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/)
 
-## 2. Todo App in Backbone
+## 2. Todo App in Backbone (Models, Collections, View and Events)
 
 After completing this example app, you will have experience and basic understanding of all the modules of Backbone.
 
@@ -199,5 +199,5 @@ The `item-template` and `app.TodoView` will render one todo item. Now, we need a
 {% endcodeblock %}
 
 
-### Continue with the [3rd part](/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/)!
+### Continue with the [3rd part](/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/) and learn how to make CRUD for your models!
 
