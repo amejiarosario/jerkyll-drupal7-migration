@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Backbone js for absolute beginners - getting started (part 4)"
+title: "Backbone.js for absolute beginners - getting started (part 4: Routers)"
 date: 2012-09-13 14:41
 comments: true
 categories: [backbonejs, javascript, web frameworks, web development, agile frameworks]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Backbone.js for absolute beginners - getting started (part 2)"
+title: "Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)"
 date: 2012-09-13 00:08
 comments: true
 categories: [backbonejs, javascript, web frameworks, web development, agile frameworks]

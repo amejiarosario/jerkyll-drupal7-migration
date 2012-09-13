@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Backbone.js for Absolute Beginners - Getting started (Part 1)"
+title: "Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)"
 date: 2012-09-11 22:50
 comments: true
 categories: [backbonejs, javascript, web frameworks, web development, agile frameworks]
