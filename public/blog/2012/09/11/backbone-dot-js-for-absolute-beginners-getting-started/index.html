@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Backbone.js for Absolute Beginners - Getting started - Adrian Mejia's [code]Blog</title>
+  <title>Backbone.js for Absolute Beginners - Getting started (Part 1	) - Adrian Mejia's [code]Blog</title>
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="Backbone.js is a javascript framework among many other that is gaining special attention in the web developmente comunity because it&#8217;s ease of &hellip;">
+  <meta name="description" content="Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it&#8217;s ease &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">Backbone.js for Absolute Beginners - Getting Started</h1>
+      <h1 class="entry-title">Backbone.js for Absolute Beginners - Getting Started (Part 1 )</h1>
     
     
       <p class="meta">
@@ -106,21 +106,17 @@
   </header>
 
 
-<div class="entry-content"><p>Backbone.js is a javascript framework among many other that is gaining special attention in the web developmente comunity because it&#8217;s ease of use and the structure that it provides to JavaScript applications.</p>
+<div class="entry-content"><p>Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it&#8217;s ease of use and the structure that it provides to JavaScript applications.</p>
 
-<h3>Brief Motivation (optional reading)</h3>
+<h3>Brief Background (optional reading)</h3>
 
-<p>TL;DR: You need to heavily use javascript to make responsive and interactive web applications.</p>
+<p>TL; DR: You need to use JavaScript heavily in order to make responsive and interactive web applications.</p>
 
-<p>The web application development process have been evolving over the years. In its beginning&#8230; the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, server side programming languages (like PHP, Ruby, Java, &#8230;) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, its required to bring the logic closer to the client (browser): JavaScript.</p>
-
-<p>Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. A lot of the logic/code that used to be in the server side, now is moving to the client. JS allows the web sites to render only the parts of the website that changes and not the full-page on every request. Examples of this kind of web apps is Gmail and others.</p>
-
-<p>A common problem with large web apps developed mostly in JS is that it lacks of structure and could be hard to maintain. This where Backbone comes into play. It provides structure to organize the code and increase maintainability.There are tons of JS frameworks that accomplish similar results like Ember.js, Angular.js and much more. But, Backbone is one of the most widely used in its category. It has a vibrant community and it&#8217;s also being fully used in production for a considerable number of companies like: Walmart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.</p>
+<p>The web application development process has been evolving over the years. In its beginning… the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, in web 2.0, server side programming languages (like PHP, Ruby, Java, …) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, it requiress to bring the logic closer to the client (browser).  There are a couple of languages that can run in the browsers besides JS, such as Java, Flash and others. However, these ones require extra plugins and are not universally accepted as JavaScript.Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. The user can’t wait between request. A lot of the logic/code that used to be in the server side is being moved to the client side. JS allows the web sites to render only the parts of the website that changed and not the full-page on every request. Examples of this kind of web apps are Gmail, Pandora, Pinterest, Nokia Maps 3D and others.A common problem with large JS web apps developed is that it became pretty messy really quick. The lacks of structure it’s hard to maintain. This is where Backbone comes into play. It provides structure to organize the code and increase maintainability. Backbone is not the only one; in fact, there are many JS frameworks that accomplish similar results like Ember.js, Angular.js and so on. However, I choose Backbone because is one of the most widely spread framework in its category. It has a vibrant community and it’s also being fully used in production for a considerable number of big companies like: Wal-Mart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.</p>
 
 <h2>Just enough to get started with Backbone.js</h2>
 
-<p>Backbone.js has hard dependency on underscore.js and a soft dependency on jQuery. It&#8217;s compose by the following modules:</p>
+<p>Backbone.js has hard dependency on underscore.js and a soft dependency on jQuery. It’s composed by the following modules:</p>
 
 <ul>
 <li>Views</li>
@@ -133,25 +129,23 @@
 
 <h2>Shut up and show me the code!</h2>
 
-<p>The way we are going to explore all of this modules it&#8217;s through examples. This is a practical tutorial that I wish I have it when I stared learning. The following it&#8217;s fat-free walkthrough Backbone all in one file for didactical purposes (no hidden magic tricks, all cards are in the board).</p>
-
-<p>The first examples is a &#8216;Hello World&#8217; in Backbone and the second it&#8217;s a Todo App.</p>
+<p>Alright! the way we are going to explore all of these modules it’s through examples. This is a practical tutorial that I wish I have it when I stared learning. So, this is a fat-free walkthrough Backbone.js, as simple as it could be, all the code is in one file just for didactical purposes (no hidden magic tricks, all cards are in the board).The first example is a ‘Hello World’ app in Backbone and the second it’s a Todo App. After doing these 2 apps, you’ll see in action every Backbone module and have practical understanding about them.</p>
 
 <h2>1. Hello World in Backbone.js</h2>
 
-<p>You can follow alone this tutorial&#8217;s code in this <a href="https://github.com/amejiarosario/Backbone-tutorial/commits/">repository</a>. Each step it&#8217;s a commit, so you can easily see what changed with every functionality implemented.</p>
+<p>You can follow alone this tutorial&#8217;s code in this <a href="https://github.com/amejiarosario/Backbone-tutorial/commits/">repository</a>. Each feature implemented it’s a new commit, so you can easily see what changed in every step.</p>
 
 <p><strong>1.1.- Simple HTML5 and Backbone boilerplate</strong></p>
 
-<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you&#8217;ll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don&#8217;t worry about the libraries we are going to explain them as we need them.</p>
+<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you&#8217;ll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don&#8217;t worry about the libraries we are going to explain them, as we need them.</p>
 
-<p>After downloading the <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">file</a>, let&#8217;s add the HTML where we are going to load text using Backbone. Add this:</p>
+<p>After downloading the <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">file</a>, let&#8217;s add the HTML where we are going to load text, using Backbone. Add this:</p>
 
 <p><code>&lt;div id="container"&gt;Loading...&lt;/div&gt;</code></p>
 
 <p><strong>1.2.- Backbone&#8217;s Views</strong></p>
 
-<p>Are the &#8216;controllers&#8217; of your application (if you are familiar with MVC frameworks). It glues together user events (click, keypress, …), render HTML views and templates, and might interact with models which contains the data of the application.</p>
+<p>Are the ‘controllers’ of your application, if you are familiar with MVC frameworks. It glues together user events (click, key press …), render HTML views and templates, and might interact with models which contains the data of the application.</p>
 
 <figure class='code'><figcaption><span>Simple Backbone.View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/0bf69185f4463a75cb2d5553f8d1ea197323ccff/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -196,9 +190,9 @@
 
 <p><code>_.template(templateString, [data], [settings])</code></p>
 
-<p>where in the template string you use the place holder <code>&lt;%= %&gt;</code> and <code>&lt;%- %&gt;</code> to subtitute them with data. The later do HTML escape. Or you can use <code>&lt;% %&gt;</code> to run any javascript code.</p>
+<p>where in the <code>templateString</code> you use the place holder <code>&lt;%= %&gt;</code> and <code>&lt;%- %&gt;</code> to substitute them with data. The later does HTML escape while the first one doesn&#8217;t. Moreover, you can use <code>&lt;% %&gt;</code> to run any javascript code.</p>
 
-<p>Let&#8217;s see it in action and rewrite our Hello Wold using template instead.</p>
+<p>Let’s see it in action and rewrite our Hello World using template instead.</p>
 
 <figure class='code'><figcaption><span>Simple Backbone.View and Templates </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/c5b131278ecde92f33882c9a2c22ee4119e57d77/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -239,15 +233,7 @@
 
 <p>Run the app again and verify that it&#8217;s working with the template.</p>
 
-<h2>2. Todo App in Backbone.js</h2>
-
-<p>After completing this example app, you will have experience and basic understanding of all the modules of Backbone.</p>
-
-<p><strong>2.1.- Todo app Boiler plate</strong></p>
-
-<p>Let&#8217;s start again with the initial file used on 1.1.</p>
-
-<p>(Example 2 is in progress&#8230;)</p>
+<p><strong>Continue with the <a href="/backbonejs-for-absolute-beginners-getting-started-part-2">2nd part</a>! </strong></p>
 </div>
 
 
@@ -299,6 +285,8 @@
       
         <a class="basic-alignment left" href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/" title="Previous Post: Instagram mobile design secrets revealed">&laquo; Instagram mobile design secrets revealed</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/" title="Next Post: Backbone.js for absolute beginners - getting started (part 2)">Backbone.js for absolute beginners - getting started (part 2) &raquo;</a>
       
     </p>
   </footer>
@@ -356,7 +344,11 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started</a>
+        <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1	)</a>
       </li>
     
       <li class="post">
@@ -369,10 +361,6 @@
     
       <li class="post">
         <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and solving 406 Not Accepted</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/02/11/adding-subversion-svn-properties-to-your-code/">Adding Subversion (SVN) Properties to your code</a>
       </li>
     
   </ul>

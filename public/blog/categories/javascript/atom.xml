@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-09-12T02:09:08-04:00</updated>
+  <updated>2012-09-13T01:29:44-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -14,25 +14,333 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Backbone.js for Absolute Beginners - Getting started]]></title>
+    <title type="html"><![CDATA[Backbone.js for absolute beginners - getting started (part 2)]]></title>
+    <link href="http://adrianmejia.com/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/"/>
+    <updated>2012-09-13T00:08:00-04:00</updated>
+    <id>http://adrianmejia.com/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2</id>
+    <content type="html"><![CDATA[<h2>2. Todo App in Backbone</h2>
+
+<p>After completing this example app, you will have experience and basic understanding of all the modules of Backbone.</p>
+
+<h3>2.1.- Todo app Boiler plate</h3>
+
+<p>Let's start again with the initial file used on 1.1. And then add the following HTML code to add the structure.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>HTML Structure </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>  <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;todoapp&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>header id=&quot;header&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>Todos<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>input id=&quot;new-todo&quot; placeholder=&quot;What needs to be done?&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/header<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>section id=&quot;main&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>ul id=&quot;todo-list&quot;<span class="ni">&amp;gt;&amp;lt;</span>/ul<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/section<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>  <span class="nt">&lt;/section&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>We are going to implement a To-do list, which is basically un-ordered list (ul) of elements with checkboxes.</p>
+
+<h3>2.2.- Backbone.Model</h3>
+
+<p>Models are the heart of every application. It contains the interactive data and the logic surrounding it, such as data validation, getters and setters, default values, data initialization, conversions and so on.
+For our example, we are going to create a model called <code>Todo</code>, which will store a string of text (title) and whether the task has been completed or not.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Todo Model </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// create namespace for our app</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">Todo</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">completed</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Notice, that for convention classes names are capitalize, while instance variables and objects are not. Another important aspect of models it’s that their properties are dynamic; they can be created on the fly and doesn’t have any specific type associated.</p>
+
+<p><strong>Test what you just your coded!</strong></p>
+
+<p>After you completed the code snippet above you can open your browser console and try this out, to get familiar with the models:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Practice in your Browser\'s console   </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">todo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">Todo</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Learn Backbone.js&#39;</span><span class="p">,</span> <span class="nx">completed</span><span class="o">:</span> <span class="kc">false</span><span class="p">});</span> <span class="c1">// create object with the attributes specified.</span>
+</span><span class='line'><span class="nx">todo</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span> <span class="c1">// &quot;Learn Backbone.js&quot;</span>
+</span><span class='line'><span class="nx">todo</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">);</span> <span class="c1">// false</span>
+</span><span class='line'><span class="nx">todo</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">);</span> <span class="c1">// undefined</span>
+</span><span class='line'><span class="nx">todo</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="nb">Date</span><span class="p">());</span>
+</span><span class='line'><span class="nx">todo</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">);</span> <span class="c1">// &quot;Wed Sep 12 2012 12:51:17 GMT-0400 (EDT)&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>2.3.- Backbone.Collection</h3>
+
+<p>As its name indicates, collections are ordered sets of models, where you can get and set models in the collection, listen for events when any element in the collection changes, and fetching for model’s data from the server.</p>
+
+<p>Models are allows linked to data persisted in some form (database, file, memory), so it requires a reference to it. Therefore, you need to specify the <code>url</code> parameter with a relative url, where the model’s resource would be located on the server. Otherwise, you will get errors like:</p>
+
+<p><code>A "url" property or function must be specified</code></p>
+
+<p>We are not going to use a backend server for simplicity; instead we are going to use HTML5’s local storage for persistence through a Backbone’s plugin. So, we need to define the localStorage property instead of URL.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Todo list Collection </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">TodoList</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">model</span><span class="o">:</span> <span class="nx">app</span><span class="p">.</span><span class="nx">Todo</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">localStorage</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Store</span><span class="p">(</span><span class="s2">&quot;backbone-todo&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// instance of the Collection</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">TodoList</span><span class="p">();</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Test what you just your coded!</strong></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Practice in your Browser\'s console   </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">todoList</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">TodoList</span><span class="p">()</span>
+</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Learn Backbone\&#39;s Collection&#39;</span><span class="p">});</span> <span class="c1">// notice: that &lt;code&gt;completed&lt;/code&gt; will be set to false by default.</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lmodel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">Todo</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Learn Models&#39;</span><span class="p">,</span> <span class="nx">completed</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">lmodel</span><span class="p">);</span> <span class="c1">// [&quot;Learn Backbone&#39;s Collection&quot;, &quot;Learn Models&quot;]</span>
+</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span> <span class="c1">// [false, true]</span>
+</span><span class='line'><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todoList</span><span class="p">);</span> <span class="c1">// &quot;[{&quot;title&quot;:&quot;Learn Backbone&#39;s Collection&quot;,&quot;completed&quot;:false,&quot;id&quot;:&quot;d9763e99-2267-75f5-62c3-9d7e40742aa6&quot;},{&quot;title&quot;:&quot;Learn Models&quot;,&quot;completed&quot;:true}]&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>2.4.- Backbone.View</h2>
+
+<p>As mentioned in 1.2, Views doesn’t have the view or markup for our application, but rather put together data with templates to finally render a view based on events or data changes.</p>
+
+<h3>2.4.1.- Basic Properties</h3>
+
+<p>There are 4 basic properties in a view: el, initialize, render, and events.</p>
+
+<h3>2.4.1.1.- <code>view.el</code></h3>
+
+<p>Every view needs to reference a DOM at all times. Therefore, the view will inject content into this element. This is the <code>el</code> property. <code>this.el</code> is created from view’s <code>el</code>,<code>tagName</code>, <code>className</code>, <code>id</code> or <code>attributes</code> properties. If none of these are specified, then this.el is an empty <code>div</code>. The <code>view.$el</code> it’s a cached jQuery object of the view’s element (view.el).</p>
+
+<h3>2.4.1.2.- Initialize/construtor</h3>
+
+<p>Here you have the option to pass parameters that will be attached to a model, collection or view.el.</p>
+
+<h3>2.4.1.3.- <code>render</code></h3>
+
+<p>In this function, you inject the markup into the elements. Not all views require having a render function, as you are going to see in the sample code, they can call other view’s render functions.</p>
+
+<h3>2.4.1.5.- delegated events</h3>
+
+<p>Events are written in the <code>{"event selector": "callback"}</code> format.</p>
+
+<h2>2.4.2.- Todo View</h2>
+
+<p>Now back, to our To-do application. We need a view that renders each of the todo model objects into the page.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Todo View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// renders individual todo items list (li)</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">TodoView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#item-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// enable chained calls</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>2.4.3.- App View</h2>
+
+<p>The <code>item-template</code> and <code>app.TodoView</code> will render one todo item. Now, we need another view that take a collection and render each of the individual items. We are going to call it ‘AppView’. Take a look through this code and try to identify each of the elements (we have already describe them in the previous sections).</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Todo View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// renders the full list of todo items calling TodoView for each one.</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">AppView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#todoapp&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new-todo&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addAll</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;reset&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addAll</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">fetch</span><span class="p">();</span> <span class="c1">// Loads list from local storage</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s1">&#39;keypress #new-todo&#39;</span><span class="o">:</span> <span class="s1">&#39;createTodoOnEnter&#39;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">createTodoOnEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span> <span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">!==</span> <span class="mi">13</span> <span class="o">||</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">().</span><span class="nx">trim</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span> <span class="c1">// ENTER_KEY = 13</span>
+</span><span class='line'>      <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">newAttributes</span><span class="p">());</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="c1">// clean input box</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">addOne</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">todo</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">TodoView</span><span class="p">({</span><span class="nx">model</span><span class="o">:</span> <span class="nx">todo</span><span class="p">});</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todo-list&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">().</span><span class="nx">el</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">addAll</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#todo-list&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="c1">// clean the todo list</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">addOne</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">newAttributes</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">().</span><span class="nx">trim</span><span class="p">(),</span>
+</span><span class='line'>      <span class="nx">completed</span><span class="o">:</span> <span class="kc">false</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//--------------</span>
+</span><span class='line'><span class="c1">// Initializers</span>
+</span><span class='line'><span class="c1">//--------------   </span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">appView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">AppView</span><span class="p">();</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Backbone.js for Absolute Beginners - Getting started (Part 1	)]]></title>
     <link href="http://adrianmejia.com/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/"/>
     <updated>2012-09-11T22:50:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started</id>
-    <content type="html"><![CDATA[<p>Backbone.js is a javascript framework among many other that is gaining special attention in the web developmente comunity because it's ease of use and the structure that it provides to JavaScript applications.</p>
+    <content type="html"><![CDATA[<p>Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it's ease of use and the structure that it provides to JavaScript applications.</p>
 
-<h3>Brief Motivation (optional reading)</h3>
+<h3>Brief Background (optional reading)</h3>
 
-<p>TL;DR: You need to heavily use javascript to make responsive and interactive web applications.</p>
+<p>TL; DR: You need to use JavaScript heavily in order to make responsive and interactive web applications.</p>
 
-<p>The web application development process have been evolving over the years. In its beginning... the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, server side programming languages (like PHP, Ruby, Java, ...) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, its required to bring the logic closer to the client (browser): JavaScript.</p>
-
-<p>Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. A lot of the logic/code that used to be in the server side, now is moving to the client. JS allows the web sites to render only the parts of the website that changes and not the full-page on every request. Examples of this kind of web apps is Gmail and others.</p>
-
-<p>A common problem with large web apps developed mostly in JS is that it lacks of structure and could be hard to maintain. This where Backbone comes into play. It provides structure to organize the code and increase maintainability.There are tons of JS frameworks that accomplish similar results like Ember.js, Angular.js and much more. But, Backbone is one of the most widely used in its category. It has a vibrant community and it's also being fully used in production for a considerable number of companies like: Walmart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.</p>
+<p>The web application development process has been evolving over the years. In its beginning… the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, in web 2.0, server side programming languages (like PHP, Ruby, Java, …) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, it requiress to bring the logic closer to the client (browser).  There are a couple of languages that can run in the browsers besides JS, such as Java, Flash and others. However, these ones require extra plugins and are not universally accepted as JavaScript.Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. The user can’t wait between request. A lot of the logic/code that used to be in the server side is being moved to the client side. JS allows the web sites to render only the parts of the website that changed and not the full-page on every request. Examples of this kind of web apps are Gmail, Pandora, Pinterest, Nokia Maps 3D and others.A common problem with large JS web apps developed is that it became pretty messy really quick. The lacks of structure it’s hard to maintain. This is where Backbone comes into play. It provides structure to organize the code and increase maintainability. Backbone is not the only one; in fact, there are many JS frameworks that accomplish similar results like Ember.js, Angular.js and so on. However, I choose Backbone because is one of the most widely spread framework in its category. It has a vibrant community and it’s also being fully used in production for a considerable number of big companies like: Wal-Mart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.</p>
 
 <h2>Just enough to get started with Backbone.js</h2>
 
-<p>Backbone.js has hard dependency on underscore.js and a soft dependency on jQuery. It's compose by the following modules:</p>
+<p>Backbone.js has hard dependency on underscore.js and a soft dependency on jQuery. It’s composed by the following modules:</p>
 
 <ul>
 <li>Views</li>
@@ -45,25 +353,23 @@
 
 <h2>Shut up and show me the code!</h2>
 
-<p>The way we are going to explore all of this modules it's through examples. This is a practical tutorial that I wish I have it when I stared learning. The following it's fat-free walkthrough Backbone all in one file for didactical purposes (no hidden magic tricks, all cards are in the board).</p>
-
-<p>The first examples is a 'Hello World' in Backbone and the second it's a Todo App.</p>
+<p>Alright! the way we are going to explore all of these modules it’s through examples. This is a practical tutorial that I wish I have it when I stared learning. So, this is a fat-free walkthrough Backbone.js, as simple as it could be, all the code is in one file just for didactical purposes (no hidden magic tricks, all cards are in the board).The first example is a ‘Hello World’ app in Backbone and the second it’s a Todo App. After doing these 2 apps, you’ll see in action every Backbone module and have practical understanding about them.</p>
 
 <h2>1. Hello World in Backbone.js</h2>
 
-<p>You can follow alone this tutorial's code in this <a href="https://github.com/amejiarosario/Backbone-tutorial/commits/">repository</a>. Each step it's a commit, so you can easily see what changed with every functionality implemented.</p>
+<p>You can follow alone this tutorial's code in this <a href="https://github.com/amejiarosario/Backbone-tutorial/commits/">repository</a>. Each feature implemented it’s a new commit, so you can easily see what changed in every step.</p>
 
 <p><strong>1.1.- Simple HTML5 and Backbone boilerplate</strong></p>
 
-<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you'll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don't worry about the libraries we are going to explain them as we need them.</p>
+<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you'll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don't worry about the libraries we are going to explain them, as we need them.</p>
 
-<p>After downloading the <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">file</a>, let's add the HTML where we are going to load text using Backbone. Add this:</p>
+<p>After downloading the <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">file</a>, let's add the HTML where we are going to load text, using Backbone. Add this:</p>
 
 <p><code>&lt;div id="container"&gt;Loading...&lt;/div&gt;</code></p>
 
 <p><strong>1.2.- Backbone's Views</strong></p>
 
-<p>Are the 'controllers' of your application (if you are familiar with MVC frameworks). It glues together user events (click, keypress, …), render HTML views and templates, and might interact with models which contains the data of the application.</p>
+<p>Are the ‘controllers’ of your application, if you are familiar with MVC frameworks. It glues together user events (click, key press …), render HTML views and templates, and might interact with models which contains the data of the application.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Simple Backbone.View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/0bf69185f4463a75cb2d5553f8d1ea197323ccff/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -117,9 +423,9 @@
 
 <p><code>_.template(templateString, [data], [settings])</code></p>
 
-<p>where in the template string you use the place holder <code>&lt;%= %&gt;</code> and <code>&lt;%- %&gt;</code> to subtitute them with data. The later do HTML escape. Or you can use <code>&lt;% %&gt;</code> to run any javascript code.</p>
+<p>where in the <code>templateString</code> you use the place holder <code>&lt;%= %&gt;</code> and <code>&lt;%- %&gt;</code> to substitute them with data. The later does HTML escape while the first one doesn't. Moreover, you can use <code>&lt;% %&gt;</code> to run any javascript code.</p>
 
-<p>Let's see it in action and rewrite our Hello Wold using template instead.</p>
+<p>Let’s see it in action and rewrite our Hello World using template instead.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Simple Backbone.View and Templates </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/c5b131278ecde92f33882c9a2c22ee4119e57d77/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -165,15 +471,7 @@
 
 <p>Run the app again and verify that it's working with the template.</p>
 
-<h2>2. Todo App in Backbone.js</h2>
-
-<p>After completing this example app, you will have experience and basic understanding of all the modules of Backbone.</p>
-
-<p><strong>2.1.- Todo app Boiler plate</strong></p>
-
-<p>Let's start again with the initial file used on 1.1.</p>
-
-<p>(Example 2 is in progress...)</p>
+<p><strong>Continue with the <a href="/backbonejs-for-absolute-beginners-getting-started-part-2">2nd part</a>! </strong></p>
 ]]></content>
   </entry>
   
