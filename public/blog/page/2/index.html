@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="When you are coding in a team enviroment it&#39;s good to have the subversion properties in your files, that way any other developer can see quickly &hellip;">
+  <meta name="description" content="I wanted to add AJAX to Spring MVC application. So, I did what most us do, go through the documentation or blog of the Spring Source. But, after &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,108 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and Solving 406 Not Accepted</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-27T02:17:00-04:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I wanted to add AJAX to Spring MVC application. So, I did what most us do, go through the documentation or blog of the Spring Source. But, after playing around I didn&#8217;t get it to work properly so here are some details that might save you some time.</p>
+
+
+<p>After I follow the instructions in <a href="http://blog.springsource.org/2010/01/25/ajax-simplifications-in-spring-3-0/%20" target="_blank">AJAX in Spring 3.0</a> I got some error &#8220;406 Not Accepted&#8221;, so let&#8217;s explain how to make it work:</p>
+
+
+<h2>Server Side</h2>
+
+
+<p>First you need to setup the actions/methods that the ajax client will call and provide that data in a request. In the server side we are going to use Spring MVC and reply using a JSON format.</p>
+
+
+<p>1. You need the annotation <strong>&lt;mvc:annotation-driven /&gt;</strong> in your spring.xml or servelet-web-context.xml<br />2. Then, you need to create your controller action that will reply to the AJAX invocation. Let&#8217;s see the following example. E.g. ProductController.java&nbsp;</p>
+
+
+<pre>@RequestMapping (value="/itemdescription", method=RequestMethod.GET, headers="Accept=application/json")<br />public <strong>@ResponseBody</strong> Product getItemDescription(@RequestParam String id){ <br />// code... <br />return yourProduct<br />}</pre>
+
+
+<p>There are a couple of things to point out here. Notice the return @ResponseBody Product type. So, you need to create create a POJO (Plain java class with the data that you want to send along with it&#8217;s getters and setters). E.g. Product.java.&nbsp;</p>
+
+
+<p>Also, notice the @ResponseBody annotation. This annotation allow you to translate the Product object into a JSON representation. But, this is not magic! and you need a couple of JARs to make it work (additionally to the annotation metined in step (1):</p>
+
+
+<ol>
+<li>http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl</li>
+<li>http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl</li>
+</ol>
+
+
+<p>Use maven or download and place this JARs in the lib manually.</p>
+
+
+<h2>Client Side</h2>
+
+
+<p>On the client side, I&#8217;m using jQuery and the code looks like this:</p>
+
+
+<pre>var jqxhr = $.getJSON("/&lt;your-servlet-name&gt;/itemdescription?id="+ itemId, function(result) {<br />&nbsp; //res=jQuery.stringify(result);<br /><br />&nbsp; if(result != null){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $.each(result, function(key, value) {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if(key==="descr"){ <br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; descr.val(value);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; userdescr.val(value);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br />&nbsp;&nbsp;&nbsp; } else {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; descr.val("");<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; userdescr.val("");<br />&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br />})<br />// .success(function() { console.log("2nd function second success"); })<br />.error(function(XMLHttpRequest, textStatus, errorThrown) { console.log("error "+textStatus+": "+errorThrown); })<br />// .complete(function() { console.log("complete"); });</pre>
+
+
+<p>There are some function there that are useful for debugging like printing out errors to the console and complete function. Notice also that $.getJSON is expenting the reponse in of a appplication/json type. So be sure that you have the &#8220;Accept=application/json&#8221; in your controller on the server side.</p>
+
+
+<p>Finally you can customize the javascript fragment shown above and place it in your webpage (JSP, HTML,&#8230;) in a ready document. (Also, It was also useful for me to add a delay after the document ready function because otherwise it conflicted with dojo framework apply to the same component. But remove the timeout if you want to)</p>
+
+
+<pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(document).ready(function() {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; console.log("document.ready");<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; setTimeout(function(){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(_itemId).keyup(function(){checkItemId($(_itemId).val(), $(_descr), $(_userdescr));});<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(_itemId).blur(function(){checkItemId($(_itemId).val(), $(_descr), $(_userdescr));});&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; },100);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });</pre>
+
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;That&#8217;s all you need.</p>
+
+
+<h2>Troubleshooting</h2>
+
+
+<p>As mentioned before the spring mvc blog explain more in details each of the steps but lack some minor details that are key to make it work. I was getting &#8220;406 Not Accepted&#8221; because I didn&#8217;t have the jackson jars that the @ResponseBody needs to convert java objects to JSON. And also you need to add the Accept Request header in the controller.</p>
+
+
+<p>Using Firebug in Firefox is very tab Net &gt; XHR you can see all your ajax request and reponses. Very useful for debugging. Hope this save you some time and frustration. Any question or suggestion fee free to comment below or contact me.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -677,130 +779,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/04/concentration-problems-procastination-youre-not-the-only-one/">Concentration Problems? Procastination? You&#8217;re Not the Only One.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-04T00:00:00-05:00" pubdate data-updated="true">Jan 4<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/04/concentration-problems-procastination-youre-not-the-only-one/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&nbsp;</p>
-
-
-<p>Procastination and concentration problems are big deals from a lot of people, specially for students. There are too many distractions that are more fun than our homework.</p>
-
-
-<p>I read an interesting&nbsp;<a href="http://altmedicine.about.com/od/optimumhealthessentials/a/Concentration.htm">article about concentration</a>&nbsp;that I&#39;d like to share a summary with my own notes:</p>
-
-
-<p>There is no substitute for paying attention&#8230; here are Five tips to improve your attention/concentration/focus/productivity:</p>
-
-
-<p><strong>F =&nbsp;</strong><u><strong>Five More Rule</strong></u></p>
-
-
-<div>
-    There are two kinds of people &#8211; those who have learned how to work through frustration, and those who wish they had. From now on, if you&#39;re in the middle of a task and tempted to give up &#8211; just do 5 MORE. Read 5 MORE pages. Finish 5 MORE math problems. Work 5 MORE minutes.</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <strong>O =&nbsp;<u>One Think At a Time</u></strong></div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    Quite self-explantory, isn&#39;t it? We know the theory, now let&#39;s put in practice.</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <div>
-        <strong>C =&nbsp;<u>Conquer Procrastination</u></strong></div>
-    <div>
-        &nbsp;</div>
-    <div>
-        Don&#39;t feel like concentrating? Are you putting off a task or project you&#39;re supposed to be working on? That&#39;s a form of procrastination. R. D. Clyde said, &quot;It&#39;s amazing how long it takes to complete something we&#39;re not working on.&quot; ~ Every time you catch yourself doing something that you are not suppose to be doing (facebook, twitter, 9gag) quite it right away, and get back to your homework/work.</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>U =&nbsp;<u>Use Your Hands as Blinkers</u></strong></div>
-    <div>
-        &nbsp;</div>
-    <div>
-        Give multi-tasking a rest. Focus in one task at time!</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <strong>S =&nbsp;<u>See As If For the First or Last Time</u></strong></div>
-    <div>
-        &nbsp;</div>
-    <div>
-        uhm&#8230; maybe not very useful but it says: Want to know how to be &quot;here and now&quot; and fully present instead of mindlessly rushing here, there, and everywhere? Frederick Franck said, &quot;When the eye wakes up to see again, it suddenly stops taking anything for granted.&quot; Evelyn Underhill said, &quot;For lack of attention, a thousand forms of loveliness elude us every day.&quot;</div>
-    <div>
-        &nbsp;</div>
-    <div>
-        <div>
-            <strong>What people have said about concentration</strong></div>
-        <ul>
-            <li>
-                &quot;I used to think the human brain was the most fascinating part of the body, and then I realized, &#39;What is telling me that?&#39;&quot; - Emo Phillips</li>
-            <li>
-                &quot;I&#39;m getting so absent-minded and forgetful. Sometimes in the middle of a sentence, I &#8230; &quot; - Milton Berle&nbsp;</li>
-            <li>
-                &quot;Iron rusts from disuse, stagnant water loses its purity and in cold weather becomes frozen, even so does inaction sap the vigors of the mind.&quot; Leonardo da Vinci&nbsp;</li>
-            <li>
-                &quot;Tell me to what you pay attention, and I will tell you who you are.&quot; - Jose Ortega y Gasset</li>
-            <li>
-                I would go without shirt or shoe sooner than lose for a minute the two separate sides of my head.&quot; - Rudyard Kipling</li>
-            <li>
-                &quot;It&#39;s not that I don&#39;t want to listen to people. I very much want to listen to people. I jut can&#39;t hear them over my talking.&quot; - Paula Poundstone</li>
-        </ul>
-    </div>
-</div>
-
-
-<p>&nbsp;</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -855,11 +833,15 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for absolute beginners - getting started (part 3)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1	)</a>
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1)</a>
       </li>
     
       <li class="post">
@@ -868,10 +850,6 @@
     
       <li class="post">
         <a href="/blog/2012/04/27/blog-migration-explained-drupal-7-to-jekyll/">Blog migration explained: Drupal 7 to Jekyll</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and solving 406 Not Accepted</a>
       </li>
     
   </ul>

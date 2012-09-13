@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="I have been working with websites for a while and also with different web hosts. The default way to upload content is through FTP but it takes a lot &hellip;">
+  <meta name="description" content="Sometimes is quicker to use SQL statements than create tables using the MS Access Visual Designer. For instance, if you already have the SQL code &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access/">How to Execute SQL Statements on MS Access?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-09T00:00:00-05:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sometimes is quicker to use SQL statements than create tables using the MS Access Visual Designer. For instance, if you already have the SQL code from other databases this could be useful.</p>
+
+<p>Here are the steps of how to create a new table programmatically in Access (2007):</p>
+
+<ol>
+<li>Open/create your database on MS Access</li>
+<li>Menu: &#8216;Databases Tools&#8217; > &#8216;Visual Basic&#8217; (this will open the visual basic editor</li>
+<li>in the Visual Basic Editor, Menu: Run</li>
+<li>Insert the name of your macro and click &#8216;create&#8217; button</li>
+<li>Insert a code similar to the shown below. Replace the path in &#8216;OpenDatabase&#8217; with your database path; and fill &#8216;dbs.Execute&#8217; with your own SQL statements</li>
+</ol>
+
+
+<p>Sub createdb()</p>
+
+<pre><code>Dim dbs As Database
+
+' Modify this line to include the path to Northwind
+' on your computer.
+Set dbs = OpenDatabase("C:\\amr\\projects\\sites\\files\\tf_pledge_reminder_email.accdb")
+
+' Create a table with two text fields.
+dbs.Execute "create table RIT_TF_PLG_REM_EMAIL_TEST2 (   pref_mail_name  VARCHAR(60), pd_to_date      NUMBER,   this_payment    NUMBER )"
+
+dbs.Close
+</code></pre>
+
+<p>End Sub</p>
+
+<ol>
+<li>Menu: Run</li>
+<li>You are all set.</li>
+</ol>
+
+
+<p>If you have any questions you can contact me or write a comment</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -346,48 +419,6 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/04/focused-crawling-for-automatic-service-discovery-annotation-and-classification-in-industrial-digital-ecosystems-paper-review/">Focused Crawling for Automatic Service Discovery, Annotation, and Classification in Industrial Digital Ecosystems - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-04T00:00:00-04:00" pubdate data-updated="true">Oct 4<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/04/focused-crawling-for-automatic-service-discovery-annotation-and-classification-in-industrial-digital-ecosystems-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>H. Dong et al. (2011) [1] introduce an approach to enhance disperse and heterogeneous industrial digital ecosystem for e-Learning. Its target is to discover and classify the industrial information automatically using focused crawlers. The focused crawler perform 5 operations: webpage fetcher (multithreading web crawling given a URL list), policy center  (fetching boundaries, max. depth, multithreading priority), webpage pool (store data as plain text), webpage parser (use heuristics rules on website layouts to extract desired data), service metadata generator (produce metadata and in ontology markup language), and service metadata classifier (used structured domains of knowledge to classify the data). [4] also explain in detail the Ontology Markup Language (OML) and perform several test and performance measures, such as harvest rate, precision, recall, harmony, f-measure, fallout rate, and more.</p>
-
-<p>This paper provides a detailed methodology to perform focused web crawling of educational content. It also provides great details about the classification of the content using web semantics and ontology services. Examples of Web Ontology Language (OWL) are shown. Another thing that I like is the amount of metrics they have to measure the performance of the system. However, this project doesn&#8217;t explain how the user is going to interact with the recollected data and the presentation layer.</p>
-
-<p>[1] H. Dong and F. K. Hussain, “Focused Crawling for Automatic Service Discovery, Annotation, and Classification in Industrial Digital Ecosystems,” IEEE Transactions on Industrial Electronics, vol. 58, no. 6, pp. 2106-2116, Jun. 2011.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -442,11 +473,15 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for absolute beginners - getting started (part 3)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1	)</a>
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1)</a>
       </li>
     
       <li class="post">
@@ -455,10 +490,6 @@ V. Mihál and M. Bieliková, “An Approach to Annotation of Learning Texts on P
     
       <li class="post">
         <a href="/blog/2012/04/27/blog-migration-explained-drupal-7-to-jekyll/">Blog migration explained: Drupal 7 to Jekyll</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and solving 406 Not Accepted</a>
       </li>
     
   </ul>

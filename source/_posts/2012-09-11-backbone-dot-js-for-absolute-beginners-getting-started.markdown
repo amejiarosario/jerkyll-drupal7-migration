@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Backbone.js for Absolute Beginners - Getting started (Part 1	)"
+title: "Backbone.js for Absolute Beginners - Getting started (Part 1)"
 date: 2012-09-11 22:50
 comments: true
 categories: [backbonejs, javascript, web frameworks, web development, agile frameworks]
@@ -102,4 +102,4 @@ Let’s see it in action and rewrite our Hello World using template instead.
 
 Run the app again and verify that it's working with the template.
 
-**Continue with the [2nd part](/backbonejs-for-absolute-beginners-getting-started-part-2)! **
+### Continue with the [2nd part](/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/)!

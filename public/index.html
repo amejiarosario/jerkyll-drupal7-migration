@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="2. Todo App in Backbone After completing this example app, you will have experience and basic understanding of all the modules of Backbone. 2.1.- &hellip;">
+  <meta name="description" content="The part 2 of this tutorial is here. 2.5 Todo App Features We basically have our working but there are a couple of features that could improve it. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,162 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for Absolute Beginners - Getting Started (Part 3)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-13T01:37:00-04:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The part 2 of this tutorial is <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">here</a>.</p>
+
+<h2>2.5 Todo App Features</h2>
+
+<p>We basically have our working but there are a couple of features that could improve it. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.</p>
+
+<h3>2.5.1. C-reate</h3>
+
+<p>  We are already can create item list from the console (2.3) and also from the UI (2.4.3). So, it’s done.</p>
+
+<h3>2.5.2. U-pdate</h3>
+
+<p>  What if you make a mistake and want to change the text on some of your to-do list. Furthermore, you can notice that the checkboxes states are not persistent when you reload the pages. Let’s fix both problems.
+1.- You want to respond to a double click event showing up a text box, where the user can change the text. First, let’s add the HTML in the <code>item-template</code> template below the label tag.<code>&lt;input class="edit" value="&lt;%- title %&gt;"&gt;</code>
+2.- If you refresh, you will notice that there are both displaying at the same time. So, you can hide them properly with the following CSS.</p>
+
+<figure class='code'><figcaption><span>CSS </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/3840dc802d6f311528298639150a5f52364c1975/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>    <span class="nf">#todo-list</span> <span class="nt">input</span><span class="nc">.edit</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="c">/* Hides input box*/</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nf">#todo-list</span> <span class="nc">.editing</span> <span class="nt">label</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="c">/* Hides label text when .editing*/</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nf">#todo-list</span> <span class="nc">.editing</span> <span class="nt">input</span><span class="nc">.edit</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span> <span class="c">/* Shows input text box when .editing*/</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3.- Then, we need to add the events to the TodoView class to respond to the changes.</p>
+
+<figure class='code'><figcaption><span>Todo Model </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/3840dc802d6f311528298639150a5f52364c1975/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="c1">// renders individual todo items list (li)</span>
+</span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">TodoView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">tagName</span><span class="o">:</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#item-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()),</span>
+</span><span class='line'>      <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()));</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.edit&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// enable chained calls</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="s1">&#39;dblclick label&#39;</span> <span class="o">:</span> <span class="s1">&#39;edit&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s1">&#39;keypress .edit&#39;</span> <span class="o">:</span> <span class="s1">&#39;updateOnEnter&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s1">&#39;blur .edit&#39;</span> <span class="o">:</span> <span class="s1">&#39;close&#39;</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">edit</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;editing&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">().</span><span class="nx">trim</span><span class="p">();</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="nx">value</span><span class="p">});</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;editing&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">updateOnEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">==</span> <span class="mi">13</span><span class="p">){</span>
+</span><span class='line'>          <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>       <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can find the <a href="https://github.com/amejiarosario/Backbone-tutorial/commit/3840dc802d6f311528298639150a5f52364c1975">diff</a> that were added to implement the update feature.</p>
+
+<p><a href="https://github.com/amejiarosario/Backbone-tutorial/commit/19fa69e654ae5d370385675e4ffed615532b9934">Here</a> are the changes to fix the update for the checkboxes.</p>
+
+<h3>2.5.2. D-elete</h3>
+
+<p>[work in progress, will be ready by tomorrow]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for Absolute Beginners - Getting Started (Part 2)</a></h1>
     
     
@@ -109,7 +265,9 @@
   </header>
 
 
-  <div class="entry-content"><h2>2. Todo App in Backbone</h2>
+  <div class="entry-content"><p>The part 1 of this tutorial is <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">here</a></p>
+
+<h2>2. Todo App in Backbone</h2>
 
 <p>After completing this example app, you will have experience and basic understanding of all the modules of Backbone.</p>
 
@@ -369,7 +527,7 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>Continue with the <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">3rd part</a>!</h3>
 </div>
   
   
@@ -382,7 +540,7 @@ For our example, we are going to create a model called <code>Todo</code>, which 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting Started (Part 1 )</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting Started (Part 1)</a></h1>
     
     
       <p class="meta">
@@ -534,7 +692,7 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 
 <p>Run the app again and verify that it&#8217;s working with the template.</p>
 
-<p><strong>Continue with the <a href="/backbonejs-for-absolute-beginners-getting-started-part-2">2nd part</a>! </strong></p>
+<h3>Continue with the <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">2nd part</a>!</h3>
 </div>
   
   
@@ -930,108 +1088,6 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and Solving 406 Not Accepted</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-27T02:17:00-04:00" pubdate data-updated="true">Apr 27<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I wanted to add AJAX to Spring MVC application. So, I did what most us do, go through the documentation or blog of the Spring Source. But, after playing around I didn&#8217;t get it to work properly so here are some details that might save you some time.</p>
-
-
-<p>After I follow the instructions in <a href="http://blog.springsource.org/2010/01/25/ajax-simplifications-in-spring-3-0/%20" target="_blank">AJAX in Spring 3.0</a> I got some error &#8220;406 Not Accepted&#8221;, so let&#8217;s explain how to make it work:</p>
-
-
-<h2>Server Side</h2>
-
-
-<p>First you need to setup the actions/methods that the ajax client will call and provide that data in a request. In the server side we are going to use Spring MVC and reply using a JSON format.</p>
-
-
-<p>1. You need the annotation <strong>&lt;mvc:annotation-driven /&gt;</strong> in your spring.xml or servelet-web-context.xml<br />2. Then, you need to create your controller action that will reply to the AJAX invocation. Let&#8217;s see the following example. E.g. ProductController.java&nbsp;</p>
-
-
-<pre>@RequestMapping (value="/itemdescription", method=RequestMethod.GET, headers="Accept=application/json")<br />public <strong>@ResponseBody</strong> Product getItemDescription(@RequestParam String id){ <br />// code... <br />return yourProduct<br />}</pre>
-
-
-<p>There are a couple of things to point out here. Notice the return @ResponseBody Product type. So, you need to create create a POJO (Plain java class with the data that you want to send along with it&#8217;s getters and setters). E.g. Product.java.&nbsp;</p>
-
-
-<p>Also, notice the @ResponseBody annotation. This annotation allow you to translate the Product object into a JSON representation. But, this is not magic! and you need a couple of JARs to make it work (additionally to the annotation metined in step (1):</p>
-
-
-<ol>
-<li>http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl</li>
-<li>http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl</li>
-</ol>
-
-
-<p>Use maven or download and place this JARs in the lib manually.</p>
-
-
-<h2>Client Side</h2>
-
-
-<p>On the client side, I&#8217;m using jQuery and the code looks like this:</p>
-
-
-<pre>var jqxhr = $.getJSON("/&lt;your-servlet-name&gt;/itemdescription?id="+ itemId, function(result) {<br />&nbsp; //res=jQuery.stringify(result);<br /><br />&nbsp; if(result != null){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $.each(result, function(key, value) {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if(key==="descr"){ <br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; descr.val(value);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; userdescr.val(value);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br />&nbsp;&nbsp;&nbsp; } else {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; descr.val("");<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; userdescr.val("");<br />&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br />})<br />// .success(function() { console.log("2nd function second success"); })<br />.error(function(XMLHttpRequest, textStatus, errorThrown) { console.log("error "+textStatus+": "+errorThrown); })<br />// .complete(function() { console.log("complete"); });</pre>
-
-
-<p>There are some function there that are useful for debugging like printing out errors to the console and complete function. Notice also that $.getJSON is expenting the reponse in of a appplication/json type. So be sure that you have the &#8220;Accept=application/json&#8221; in your controller on the server side.</p>
-
-
-<p>Finally you can customize the javascript fragment shown above and place it in your webpage (JSP, HTML,&#8230;) in a ready document. (Also, It was also useful for me to add a delay after the document ready function because otherwise it conflicted with dojo framework apply to the same component. But remove the timeout if you want to)</p>
-
-
-<pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(document).ready(function() {<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; console.log("document.ready");<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; setTimeout(function(){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(_itemId).keyup(function(){checkItemId($(_itemId).val(), $(_descr), $(_userdescr));});<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(_itemId).blur(function(){checkItemId($(_itemId).val(), $(_descr), $(_userdescr));});&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; },100);<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });</pre>
-
-
-<p>&nbsp;</p>
-
-
-<p>&nbsp;That&#8217;s all you need.</p>
-
-
-<h2>Troubleshooting</h2>
-
-
-<p>As mentioned before the spring mvc blog explain more in details each of the steps but lack some minor details that are key to make it work. I was getting &#8220;406 Not Accepted&#8221; because I didn&#8217;t have the jackson jars that the @ResponseBody needs to convert java objects to JSON. And also you need to add the Accept Request header in the controller.</p>
-
-
-<p>Using Firebug in Firefox is very tab Net &gt; XHR you can see all your ajax request and reponses. Very useful for debugging. Hope this save you some time and frustration. Any question or suggestion fee free to comment below or contact me.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1084,11 +1140,15 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for absolute beginners - getting started (part 3)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1	)</a>
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1)</a>
       </li>
     
       <li class="post">
@@ -1097,10 +1157,6 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
     
       <li class="post">
         <a href="/blog/2012/04/27/blog-migration-explained-drupal-7-to-jekyll/">Blog migration explained: Drupal 7 to Jekyll</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/27/spring-mvc-3-plus-ajax-getjson-and-solving-406-not-accepted/">Spring MVC 3 + AJAX (getJSON) and solving 406 Not Accepted</a>
       </li>
     
   </ul>
