@@ -3,7 +3,7 @@ layout: post
 title: "Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)"
 date: 2012-09-13 00:08
 comments: true
-categories: [backbonejs, javascript, web frameworks, web development, agile frameworks]
+categories: [backbonejs, javascript, web frameworks, web development, agile frameworks, tutorials]
 ---
 
 The part 1 of this tutorial is [here](/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/)

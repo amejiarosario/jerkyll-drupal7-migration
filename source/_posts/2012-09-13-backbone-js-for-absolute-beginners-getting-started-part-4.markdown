@@ -3,7 +3,7 @@ layout: post
 title: "Backbone.js for absolute beginners - getting started (part 4: Routers)"
 date: 2012-09-13 14:41
 comments: true
-categories: [backbonejs, javascript, web frameworks, web development, agile frameworks]
+categories: [backbonejs, javascript, web frameworks, web development, agile frameworks, tutorials]
 ---
 
 The part 3 of this tutorial is [here](/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/).

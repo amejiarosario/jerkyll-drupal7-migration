@@ -4,7 +4,7 @@
   <title><![CDATA[Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-09-13T16:13:29-04:00</updated>
+  <updated>2012-09-16T23:47:08-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -890,7 +890,7 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 <div><script src='https://gist.github.com/2515239.js?file=drupal2jekyll.rb'></script>
 <noscript><pre><code># 
 # Jekyll migrator for Drupal 7+
-# adrianmejia.com
+# Adapted by adrianmejia.com
 #
 
 require 'rubygems'
