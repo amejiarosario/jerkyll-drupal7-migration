@@ -4,6 +4,7 @@ title: "social networks and graph theory"
 date: 2012-09-29 13:45
 comments: true
 categories: [graph theory, computer science, gephi, visualization tools, facebook, data mining, social networks]
+published: false
 ---
 
 After taking graph theory in my Algorithm class at school, I became very interested in graphs. All kind of them: social network graph representations, and graph databases. 

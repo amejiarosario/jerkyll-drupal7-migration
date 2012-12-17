@@ -4,7 +4,7 @@
   <title><![CDATA[Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-09-16T23:47:08-04:00</updated>
+  <updated>2012-12-17T17:17:26-05:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -603,6 +603,23 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 <h2>2.4.3.- App View</h2>
 
 <p>The <code>item-template</code> and <code>app.TodoView</code> will render one todo item. Now, we need another view that take a collection and render each of the individual items. We are going to call it ‘AppView’. Take a look through this code and try to identify each of the elements (we have already describe them in the previous sections).</p>
+
+<figure class='code'><figcaption><span>item-template </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>   <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/template&quot;</span> <span class="na">id=</span><span class="s">&quot;item-template&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;view&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nx">input</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;toggle&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;checkbox&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;&lt;%-</span> <span class="nx">title</span> <span class="o">%&gt;&lt;</span><span class="err">/label&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <figure class='code'><figcaption><span>Todo View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

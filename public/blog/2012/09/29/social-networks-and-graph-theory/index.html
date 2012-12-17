@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>social networks and graph theory - Adrian Mejia's [code]Blog</title>
+  <meta name="author" content="Adrian Mejia">
+
+  
+  <meta name="description" content="After taking graph theory in my Algorithm class at school, I became very interested in graphs. All kind of them: social network graph representations &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Adrian Mejia's [code]Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24183929-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Adrian Mejia's [code]Blog</a></h1>
+  
+    <h2>var life = { "work_hard","have_fun","make_history" };</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:adrianmejia.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<!-- <li><a href="/about">about</a></li> -->
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Social Networks and Graph Theory</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-29T13:45:00-04:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After taking graph theory in my Algorithm class at school, I became very interested in graphs. All kind of them: social network graph representations, and graph databases.</p>
+
+<h2>Facebook Graph</h2>
+
+<h2>Twitter Graph</h2>
+
+<p>Ruby
+https://github.com/sferik/twitter</p>
+
+<p>Python
+https://github.com/tweepy/tweepy
+https://github.com/sixohsix/twitter - http://mike.verdone.ca/twitter/
+https://github.com/ryanmcgrath/twython</p>
+
+<p>User Profile
+http://api.twitter.com/1/users/show.json?screen_name=amejiarosario
+http://api.twitter.com/1/users/show.json?user_id=102254970</p>
+
+<p>Following
+http://api.twitter.com/1/statuses/friends/amejiarosario.json</p>
+
+<p>http://api.twitter.com/1/friends/ids.json?screen_name=amejiarosario
+http://api.twitter.com/1/followers/ids.json?screen_name=amejiarosario</p>
+
+<p>Followers
+http://api.twitter.com/1/statuses/followers/amejiarosario.json</p>
+
+<p>Frienships
+https://api.twitter.com/1/friendships/lookup.json?screen_name=adriansky,h17k,youtube,amejiarosario</p>
+
+<p>http://api.twitter.com/1/friendships/show.json?target_screen_name=amejiarosario&amp;source_screen_name=estherannb</p>
+
+<p>Trends
+https://api.twitter.com/1/trends/1.json</p>
+
+<p>Twitter Census: Influence Metrics</p>
+
+<p>http://api.infochimps.com/social/network/tw/influence/metrics?apikey=api_test-W1cipwpcdu9Cbd9pmm8D4Cjc469&amp;screen_name=amejiarosario</p>
+
+<p>{
+  &#8220;at_trstrank&#8221;: 0.15243542,
+  &#8220;chattiness&#8221;: 0.026666667,
+  &#8220;created_at&#8221;: 20081021190219,
+  &#8220;enthusiasm&#8221;: 0.026666667,
+  &#8220;feedness&#8221;: 0.053333335,
+  &#8220;fo_trstrank&#8221;: 0.5010339,
+  &#8220;follow_churn&#8221;: 0.61,
+  &#8220;follow_rate&#8221;: 0.08368201,
+  &#8220;followers&#8221;: 92,
+  &#8220;influx&#8221;: 119.835144,
+  &#8220;interesting&#8221;: 0.013333334,
+  &#8220;outflux&#8221;: 0.31380752,
+  &#8220;sway&#8221;: 0.013333334,
+  &#8220;user_id&#8221;: 16891516
+}</p>
+
+<p>Word Count
+http://www.infochimps.com/datasets/twitter-wordbag#api-explorer_tab
+{
+  &#8220;user_id&#8221;: 16891516,
+  &#8220;screen_name&#8221;: &#8220;amejiarosario&#8221;,
+  &#8220;tokens&#8221;: [</p>
+
+<pre><code>[
+  "laura_fermin",
+  0.155544457029359
+],
+[
+  "que",
+  0.132667872902021
+],
+[
+  "amar",
+  0.117188755245813
+],
+[
+  "herir",
+  0.103290383457027
+],
+[
+  "cuando",
+  0.0922951279656876
+],
+</code></pre>
+
+<h2>LinkedIn</h2>
+
+<p>http://inmaps.linkedinlabs.com/</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Adrian Mejia</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-29T13:45:00-04:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/computer-science/'>computer science</a>, <a class='category' href='/blog/categories/data-mining/'>data mining</a>, <a class='category' href='/blog/categories/facebook/'>facebook</a>, <a class='category' href='/blog/categories/gephi/'>gephi</a>, <a class='category' href='/blog/categories/graph-theory/'>graph theory</a>, <a class='category' href='/blog/categories/social-networks/'>social networks</a>, <a class='category' href='/blog/categories/visualization-tools/'>visualization tools</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory/" data-via="amejiarosario" data-counturl="http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/" title="Previous Post: Backbone.js for absolute beginners - getting started (part 4: Routers)">&laquo; Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>I'm a software engineer passionate about web development and internet technologies. Currently, I'm working and living in Boston, MA.</p>
+</section>
+
+<section class="googleplus">
+  <h1>
+    <a href="mailto:me@adrianmejia.com">
+			<img src="http://www.elainebellcatering.com/img/email.png" width="32" height="32">
+      Email
+    </a>
+  </h1>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="http://www.linkedin.com/in/adrianmejia">
+			<img src="http://cdn3.iconfinder.com/data/icons/socialnetworking/32/linkedin.png" width="32" height="32">
+      Linkedin
+    </a>
+  </h1>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://github.com/amejiarosario">
+			<img src="http://www.darrenmothersele.com/sites/default/files/image-links/github.png" width="32" height="32">
+      Github
+    </a>
+  </h1>
+</section>
+
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for absolute beginners - getting started (part 3: CRUD)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/amejiarosario">@amejiarosario</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'amejiarosario',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/adriansky?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/adriansky">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("amejiarosario", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/amejiarosario" class="twitter-follow-button" data-show-count="false">Follow @amejiarosario</a>
+  
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011-2012 | <a href="http://adrianmejia.com">Adrian Mejia</a>
+  <!-- <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -->
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'adrianmejia';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory/';
+        var disqus_url = 'http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
