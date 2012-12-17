@@ -153,6 +153,17 @@ Now back, to our To-do application. We need a view that renders each of the todo
 
 The `item-template` and `app.TodoView` will render one todo item. Now, we need another view that take a collection and render each of the individual items. We are going to call it ‘AppView’. Take a look through this code and try to identify each of the elements (we have already describe them in the previous sections).
 
+{% codeblock item-template lang:html https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html Full Code %}
+
+	  <script type="text/template" id="item-template">
+	    <div class="view">
+	      <input class="toggle" type="checkbox">
+	      <label><%- title %></label>
+	    </div>
+	  </script>
+
+{% endcodeblock%}
+
 {% codeblock Todo View lang:js https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html Full Code %}
 
     // renders the full list of todo items calling TodoView for each one.
