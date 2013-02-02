@@ -4,7 +4,7 @@
   <title><![CDATA[Category: algorithms | Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/algorithms/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2012-12-17T17:17:26-05:00</updated>
+  <updated>2013-02-02T14:18:33-05:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Algorithms for Dummies (Part 1)]]></title>
+    <link href="http://adrianmejia.com/blog/2013/01/28/algorithms-for-dummies-part-1/"/>
+    <updated>2013-01-28T20:03:00-05:00</updated>
+    <id>http://adrianmejia.com/blog/2013/01/28/algorithms-for-dummies-part-1</id>
+    <content type="html"><![CDATA[<p>Right now, you have two options: you spend the rest of your life trying to improve your programming skills by trial-and-error -or- you spent some time studying algorithms and be awesome instead. I guess you are here for the second purpose: learn to design efficient algorithms!</p>
+
+<p>First of all, we need to know how bad is our actual code to be able to improve it</p>
+
+<p>"If you can not measure it, you can not improve it." ~ Lord Kelvin</p>
+
+<p><strong>Note</strong>: this tutorial will be as practical as it could be. No pseudocode but real working code. No too much theory, just the enough amount that we need right now.
+Why? because there are a lot of fat books full of theory, maths formulas and pseudocode. This is a lean attempt to get you started writing efficient code as soon as posible.</p>
+
+<h1>Measuring your code</h1>
+
+<p>You can give the same problem to 10 developers and most likely they will write 10 diffent programs. Which one is more efficient? Which one runs faster on most of the cases? To answer these questions we are going to learn to do run-time analysis of algorithms using the big-oh.</p>
+
+<p>Big O notation allows us to classify algorithms by their procesing time in function of the program input. The bigger is the data a program has to process, the longer it will take to process it. However, some programs behaves differently when the input grows. Some of them will take will increase their processing time proportionally with the increase of input elements length (linear), other will take much more longer (cuadratic, cubic, exponential) time with the same increase of the input elements.</p>
+
+<p>The following graph show us the orders of growth of the mentioned functions:</p>
+
+<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202011-12-22%20at%203.22.12%20PM.png" style="width: 300px; height: 306px; " /></p>
+
+<p>If we represent the number of input elements as 'n' we have the following table.</p>
+
+<table border=1>
+<tr><td>Growth Rate</td><td>Name</td></tr>
+<tr><td>1</td><td>Constant</td></tr>
+<tr><td>log(n)</td><td>Logarithmic</td></tr>
+<tr><td>n</td><td>Linear</td></tr>
+<tr><td>n*log(n)</td><td>Linearithmic</td></tr>
+<tr><td>n^2</td><td>Quadratic</td></tr>
+<tr><td>n^3</td><td>Cubic</td></tr>
+<tr><td>2^n</td><td>Exponential</td></tr>
+</table>
+
+
+<p></p>
+
+<p>This is kinda abstract let's see what it means in code:</p>
+
+<table border=1>
+<tr><td>Growth Rate</td><td>Name</td><td>Code e.g.</td><td>description</td></tr>
+<tr><td>1</td><td>Constant</td><td>a=1+3;</td><td>statement (one line of code)</td></tr>
+<tr><td>log(n)</td><td>Logarithmic</td><td>while(n>1){n=n/2;}</td><td>Divide in half (binary search)</td></tr>
+<tr><td>n</td><td>Linear</td><td>for(c=0;c&lt;n;c++){a=1+n;}</td><td>Loop</td></tr>
+<!--<tr><td>n*log(n)</td><td>Linearithmic</td><td></td><td></td></tr>-->
+<tr><td>n^2</td><td>Quadratic</td><td>for(c=0;c&lt;n;c++){for(i=0;i&lt;n;i++){…}}</td><td>Double loop</td></tr>
+<tr><td>n^3</td><td>Cubic</td><td>for(c=0;c&lt;n;c++){for(i=0;i&lt;n;i++){for(x=0;x&lt;n;x++){…}}}</td><td>Triple loop</td></tr>
+<!--<tr><td>2^n</td><td>Exponential</td></tr>-->
+</table>
+
+
+<p></p>
+
+<h2>Cases</h2>
+
+<p>You might have notice that when you run a program it takes different amount of time to compute the result, even with the same number of inputs. Why? because the order of the input matters! We have 3 basic cases: (1) worse-case scenario, (2) average-case scenario and (3) best-case scenario. Well there is a fouth which is in the dimension of space instead of time: (4) worse-case space scenario (also called worse-case space complexity).</p>
+
+<ol>
+<li>Worse case performance (Big Theta):</li>
+<li>Best case performance (Big Omega):</li>
+<li>Average case performance (Big O):</li>
+</ol>
+
+
+<p>kjsd</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Learning Algorithms from Scratch / Algorithms for Dummies]]></title>

@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="It have been a pain for me to upload images and deal with tons of WYSIWYG editors&#8230; After many trials in this post I recompiled my experiences &hellip;">
+  <meta name="description" content="Well&#8230; I have done this so many times in Windows (it&#39;s just executing &quot;msconfig&quot; you can edit the startup items).&nbsp;Today, I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,192 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x/">How to Remove Programs From the Start Up in Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-18T00:00:00-05:00" pubdate data-updated="true">Nov 18<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well&#8230; I have done this so many times in Windows (it&#39;s just executing &quot;msconfig&quot; you can edit the startup items).&nbsp;Today, I had the need to do the same in the Mac OS X Lion.</p>
+
+
+<p>Here is how to do it</p>
+
+
+<ol>
+    <li>
+        System Preferences &gt; Users &amp; Groups</li>
+    <li>
+        Tab &quot;Login Items&quot;</li>
+    <li>
+        You can remove the programs (-) from the list and they won&#39;t show up in the next startup.</li>
+</ol>
+
+
+<p><img alt="Login Items Mac" src="http://adrianmejiarosario.com/sites/default/files/loginItems.png" style="width: 669px; height: 501px; " /></p>
+
+
+<p>&nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/10/regular-expressions-in-c-and-java-csv-example/">Regular Expressions in C# and Java - CSV Example</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-10T00:00:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/11/10/regular-expressions-in-c-and-java-csv-example/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Regular expressions are used to find matches in texts. The following is a real application of Regex in C# and Java.&nbsp;</p>
+
+
+<div>
+    <div>
+        CSV are files that all the data is separated by a comma. E.g:</div>
+    <pre>
+name,line1,line2,city,zip code,country</pre>
+    <div>
+        You cand easily use String.Split() in C# to get all the values. But, there are cases when the data can contain comma. E.g:</div>
+    <pre>
+&quot;Mr. John Doe, Jr.&quot;,7926 Glenbrook Dr., 14623</pre>
+    <div>
+        In this case a regular expression (regex) could be use to determine if the comma is inside a quote or not.</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        C# Example:</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        <pre>
+    public string[] parseCSV(string line)
+    {
+        List&lt;string&gt; datalist = new List&lt;string&gt;();
+
+        /*
+         * Define a regular expression for csv.
+         * This Pattern will match on either quoted text or text between commas, including
+         * whitespace, and accounting for beginning and end of line.
+         */
+
+        Regex rx = new Regex(&quot;\&quot;([^\&quot;]*)\&quot;|(?&lt;=,|^)([^,]*)(?:,|$)&quot;,
+          RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        // Find matches.
+        MatchCollection matches = rx.Matches(line);
+
+        // Report the number of matches found.
+        Console.WriteLine(&quot;{0} matches found.&quot;, matches.Count);
+
+        // Report on each match.
+        foreach (Match match in matches)
+        {
+            if (match.Groups[1].Value.Length &gt; 0)
+                datalist.Add(match.Groups[1].Value); // match csv values inside commas
+            else
+                datalist.Add(match.Groups[2].Value); // match csv values outside commas
+        }
+        return datalist.ToArray();
+    }</pre>
+    </div>
+    <div>
+        &nbsp;</div>
+    <div>
+        &nbsp;</div>
+    <div>
+        Java Example:</div>
+    <div>
+        <pre>
+    public String[] parse(String csvLine) {
+        Pattern csvPattern = Pattern.compile(&quot;\&quot;([^\&quot;]*)\&quot;|(?&lt;=,|^)([^,]*)(?:,|$)&quot;);
+        matcher = csvPattern.matcher(csvLine);
+        allMatches.clear();
+        String match;
+
+        while (matcher.find()) {
+                match = matcher.group(1);
+
+                if (match!=null) {
+                        allMatches.add(match);
+                }
+                else {
+                        allMatches.add(matcher.group(2));
+                }
+        }
+
+        size = allMatches.size();               
+        if (size &gt; 0) {
+                return allMatches.toArray(new String[size]);
+        }
+        else {
+                return new String[0];
+        }                       
+    } </pre>
+    </div>
+</div>
+
+
+<p>&nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -424,111 +610,6 @@ sites/*/private</pre>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/04/update-drupal-sites/">Update Drupal Sites</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-04T00:00:00-04:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/11/04/update-drupal-sites/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The better way to learn is by a concrete example. I update a site called &#8220;heyshuga&#8221; from Drupal 7.8 to 7.9. Here are the steps</p>
-
-<ol>
-<li>Download the latest version of drupal</li>
-</ol>
-
-
-<p>$ wget http://drupal.org/files/projects/drupal-x.y.tar.gz
-$ tar -zxvf drupal-x.y.tar.gz</p>
-
-<p>-or using drush-</p>
-
-<p>$ drush dl drupal</p>
-
-<ol>
-<li>Copy the new files to the old directory</li>
-</ol>
-
-
-<p>$ cp -R drupal-x.y/* drupal-x.y/.htaccess /path/to/your/installation</p>
-
-<ol>
-<li>Run the drupal update</li>
-</ol>
-
-
-<p>www.yousite.com/update.php</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/26/integration-of-visualization-techniques-and-completion-strategy-to-improve-learning-in-computer-programming/">Integration of Visualization Techniques and Completion Strategy to Improve Learning in Computer Programming</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T00:00:00-04:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/26/integration-of-visualization-techniques-and-completion-strategy-to-improve-learning-in-computer-programming/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The advantages of different presentation media are explored in the work of N. Hashim and S. Salam in “Integration of Visualization Techniques and Completion Strategy to Improve Learning in Computer Programming” [1]. They compare the advantages of Mobile-based training (MBT) over Web-based training (WBT) for learning computer programming. Additionally, they explain some features that aid the learning process, such as visualization techniques and completion strategy. Visualization techniques refers to the use of static (images and text) and dynamic (animation, voice and videos) presentation. Completion strategy is an assessment technique in which the learner have to prove their knowledge gained. This is done by filling blanks of incomplete code snippets, rewrite programs to improve performance, and so forth.</p>
-
-<p>Reference
-[1] N. Hashim and S. Salam, “Integration of Visualization Techniques and Completion Strategy to Improve Learning in Computer Programming,” 2009 IEEE International Conference of Soft Computing and Pattern Recognition, pp. 665-669, 2009.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -583,6 +664,14 @@ $ tar -zxvf drupal-x.y.tar.gz</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/01/28/algorithms-for-dummies-part-1/">Algorithms for Dummies (Part 1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
       </li>
     
@@ -592,14 +681,6 @@ $ tar -zxvf drupal-x.y.tar.gz</p>
     
       <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
       </li>
     
   </ul>
@@ -666,7 +747,7 @@ $ tar -zxvf drupal-x.y.tar.gz</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2011-2012 | <a href="http://adrianmejia.com">Adrian Mejia</a>
+  Copyright &copy; 2011-2013 | <a href="http://adrianmejia.com">Adrian Mejia</a>
   <!-- <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -->
 </p>
 

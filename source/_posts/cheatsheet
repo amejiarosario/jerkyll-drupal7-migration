@@ -1,0 +1,2 @@
+rake generate                  # Generate jekyll site
+rake preview                   # preview the site in a web browser

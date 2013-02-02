@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="This post is a guide on how to extract your blog posts information from Drupal 7 to other systems. And also automatically create a redirect files &hellip;">
+  <meta name="description" content="Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it&#8217;s ease &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,231 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting Started (Part 1: Intro)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-11T22:50:00-04:00" pubdate data-updated="true">Sep 11<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it&#8217;s ease of use and the structure that it provides to JavaScript applications.</p>
+
+<p>(Revised: 2013-02-02)</p>
+
+<h3>Brief Background (optional reading)</h3>
+
+<p><a href="#start">TL; DR</a>: You need to use JavaScript heavily in order to make responsive and interactive web applications. <a href="#start">Jump to this and get started.</a></p>
+
+<p>The web application development process has been evolving over the years. In its beginning… the they were just static HTML pages, which required programmers change the code (HTML, CSS, JS) to change the content. Later, in web 2.0, server side programming languages (like PHP, Ruby, Java, …) were added to generate HTML pages dynamically based on user inputs and data stored in database. That was huge improvement, and most of the pages served today use this approach. However, to provide even more responsiveness of the website, speed and enhance the user interaction, it requiress to bring the logic closer to the client (browser).  There are a couple of languages that can run in the browsers besides JS, such as Java, Flash and others. However, these ones require extra plugins and are not universally accepted as JavaScript.</p>
+
+<p>Therefore, web apps nowadays require heavy use of JavaScript to generate content on the fly and quickly. The user can’t wait between request. A lot of the logic/code that used to be in the server side is being moved to the client side. JS allows the web sites to render only the parts of the website that changed and not the full-page on every request. Examples of this kind of web apps are Gmail, Pandora, Pinterest, Nokia Maps 3D and others.</p>
+
+<p>A common problem with large JS web apps developed is that it became pretty messy really quick. The lacks of structure it’s hard to maintain. This is where Backbone comes into play. It provides structure to organize the code and increase maintainability. Backbone is not the only one; in fact, there are many JS frameworks that accomplish similar results like Ember.js, Angular.js and so on. However, I choose Backbone because is one of the most widely spread framework in its category. It has a vibrant community and it’s also being fully used in production for a considerable number of big companies like: Wal-Mart mobile, Groupon, Khan Academy, Pandora, Wordpress, Foursquare, and so on.</p>
+
+<p><a id="start"></a></p>
+
+<h2>Just enough to get started with Backbone.js</h2>
+
+<p>Backbone.js has hard dependency on underscore.js and a soft dependency on jQuery. It’s composed by the following modules:</p>
+
+<ul>
+<li> Views</li>
+<li> Events</li>
+<li> Models</li>
+<li> Collections</li>
+<li> Routers</li>
+</ul>
+
+
+<h2>Shut up and show me the code!</h2>
+
+<p>Alright! the way we are going to explore all of these modules it’s through examples. This is a practical tutorial that I wished I had it when I stared learning. So, this is a fat-free walkthrough Backbone.js, as simple as it could be, all the code is in one file just for didactical purposes (no hidden magic tricks, all cards are on the board).</p>
+
+<p>The first example is a ‘Hello World’ app in Backbone and the second it’s a Todo App. After doing these 2 apps, you’ll see in action every Backbone module and have practical understanding about them.</p>
+
+<h2>1. Hello World in Backbone.js</h2>
+
+<p>You can follow alone this tutorial&#8217;s code in this <a href="https://github.com/amejiarosario/Backbone-tutorial/commits/">repository</a>. Each feature implemented it’s a new commit, so you can easily see what changed in every step.</p>
+
+<p><strong>1.1.- Simple HTML5 and Backbone boilerplate</strong></p>
+
+<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you&#8217;ll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don&#8217;t worry about the libraries we are going to explain them, as we need them.</p>
+
+<p>After downloading the <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">file</a>, notice the HTML where all your page will be built using Backbone.Views!</p>
+
+<p>All your js app will be loaded here:</p>
+
+<p><code>&lt;div id="container"&gt;Loading...&lt;/div&gt;</code></p>
+
+<p><strong>1.2.- Backbone&#8217;s Views</strong></p>
+
+<p>Backbone&#8217;s Views are the equivalent of ‘controllers’ on MVC frameworks (like Ruby on Rails), if you are not familiar with MVC frameworks nevermind. Backbone&#8217;s Views glues together user events (clicks, pressed keys …), render HTML views and templates, and interacts with models which contains the data of the application.</p>
+
+<p>Here is an example of a Backbone.view: READ the code and COMMENTS, then insert this code in the javascript block in the HTML file that you downloaded.</p>
+
+<figure class='code'><figcaption><span>Simple Backbone.View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/0bf69185f4463a75cb2d5553f8d1ea197323ccff/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="kd">var</span> <span class="nx">AppView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>      <span class="c1">// el - stands for element. Every view has a element associate in with HTML content will be rendered.</span>
+</span><span class='line'>      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#container&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="c1">// It&#39;s the first function called when this view it&#39;s instantiated.</span>
+</span><span class='line'>      <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="c1">// $el - it&#39;s a cached jQuery object (el), in which you can use jQuery functions to push content. Like the Hello World in this case.</span>
+</span><span class='line'>      <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>1.3.- Test the app</strong></p>
+
+<p>After copying the code, open the file, refresh the browser and you should see the &#8216;Hello World&#8217; message… right? Wait, if you just seeing just &#8216;Loading…&#8217; it&#8217;s because you need to initialize the view first.</p>
+
+<p><code>var appView = new AppView();</code></p>
+
+<p>Yay! you have your Hello Wold in Backbone and intro to the View module. (Full code it&#8217;s <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/0bf69185f4463a75cb2d5553f8d1ea197323ccff/backbone-tutorial.html">here</a>)</p>
+
+<p><strong>1.4.- Backbone&#8217;s Templates</strong></p>
+
+<p>Backbones has a utility/helper library called <a href="http://underscorejs.org/?utm_source=adrianmejia.com">underscore.js</a> and you can use their template solution out-of-the-box, but you can use any other template solution that you want like <a href="https://github.com/janl/mustache.js">mustage</a> or <a href="https://github.com/wycats/handlebars.js">handlerbars</a>. Let&#8217;s stick with _.js&#8217;s template for simplicity sake.</p>
+
+<p>Underscore.js template has the following signature:</p>
+
+<p><code>_.template(templateString, [data], [settings])</code></p>
+
+<p>where in the <code>templateString</code> you use the place holder <code>&lt;%= %&gt;</code> and <code>&lt;%- %&gt;</code> to substitute them with data. The later does HTML escape while the first one doesn&#8217;t. Moreover, you can use <code>&lt;% %&gt;</code> to run any javascript code.</p>
+
+<p>Let’s see it in action and rewrite our Hello World using template instead.</p>
+
+<figure class='code'><figcaption><span>Simple Backbone.View and Templates </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/c5b131278ecde92f33882c9a2c22ee4119e57d77/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="kd">var</span> <span class="nx">AppView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">el</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#container&#39;</span><span class="p">),</span>
+</span><span class='line'>      <span class="c1">// template which has the placeholder &#39;who&#39; to be substitute later </span>
+</span><span class='line'>      <span class="nx">template</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;Hello &lt;%= who %&gt;&lt;h3&gt;&quot;</span><span class="p">),</span>
+</span><span class='line'>      <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="c1">// render the function using substituting the varible &#39;who&#39; for &#39;world!&#39;. </span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">template</span><span class="p">({</span><span class="nx">who</span><span class="o">:</span> <span class="s1">&#39;world!&#39;</span><span class="p">}));</span>
+</span><span class='line'>        <span class="c1">//***Try putting your name instead of world.</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">appView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AppView</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run the app again and verify that it&#8217;s working with the template.</p>
+
+<h3>Continue with the <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">2nd part</a> and learn more about backbones&#8217; Models, Collections, View and Events!</h3>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram Mobile Design Secrets Revealed</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-06T21:45:00-04:00" pubdate data-updated="true">May 6<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Instagram is a very nice iPhone App. It allows you to give effects to your photos easily. Additionally, it’s blazing fast to upload your photos, and share them in other social networks such as Facebook, Twitter and/or Foursquare.</p>
+
+<p>This app went from 0 to 12 million users in just 12 months! And today 30+ million users in less than 2 years. Go through the slideshows bellow and you can see why. This app has some design features that that improves a lot the user experience. One of them, it’s responding to the user actions instantly even though the task is still performing in the background… more details in the slide:</p>
+
+<script async class="speakerdeck-embed" data-id="4ede6e9cad0da6004d000175" data-ratio="1.299492385786802" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>Scaling Instagram has also an interesting history:</p>
+
+<script async class="speakerdeck-embed" data-id="4f86746753373601f1006e39" data-ratio="1.3333333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -679,393 +904,6 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/09/how-do-i-change-the-ruby-python-version-textmate-uses/">How Do I Change the Ruby/Python Version Textmate Uses?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-09T00:00:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/02/09/how-do-i-change-the-ruby-python-version-textmate-uses/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&nbsp;</p>
-
-
-<p>I&#39;m using textMate to develop ruby code. It&#39;s very handy because I can run it just pressing (cmd-R). But by default it&#39;s running ruby 1.8.7 and I want 1.9.2 version.</p>
-
-
-<p>This is the steps to change it:</p>
-
-
-<p>Find the right path with</p>
-
-
-<div>
-    <div>
-        <strong>~$ &nbsp;which rvm-auto-ruby</strong></div>
-    <div>
-        /Users/adrian/.rvm/bin/rvm-auto-ruby</div>
-</div>
-
-
-<div>
-    <strong>~$ &nbsp;which python3.2</strong></div>
-
-
-<div>
-    /usr/local/bin/python3.2</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<p>Then copy it to TextMate preferences in a new variable called &quot;TM_RUBY&quot;, and &quot;TM_PYTHON&quot; as shown bellow:</p>
-
-
-<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202012-02-09%20at%201.50.41%20AM.png" style="width: 792px; height: 402px; " /></p>
-
-
-<p><img alt="" src="http://adrianmejiarosario.com/sites/default/files/Screen%20Shot%202012-02-09%20at%2012.48.17%20AM.png" style="width: 600px; height: 320px; " /></p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/04/get-started-with-the-web-crawler-apache-nutch-1-x/">Get Started With the Web Crawler Apache Nutch 1.x</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-04T00:00:00-05:00" pubdate data-updated="true">Feb 4<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/02/04/get-started-with-the-web-crawler-apache-nutch-1-x/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Apache Nutch is an open source <strong>scalable</strong> Web crawler written in Java and based on Lucene/Solr for the indexing and search part.&nbsp;It has a highly modular architecture, allowing developers to create plug-ins for media-type parsing, data retrieval, querying and clustering. [<a href="http://en.wikipedia.org/wiki/Nutch">*</a>]</p>
-
-
-<div>
-    <u><strong>Motivation</strong></u></div>
-
-
-<div>
-    By using Nutch, we can find web page hyperlinks in an automated manner, reduce lots of maintenance work, for example checking broken links, and create a copy of all the visited pages for searching over. That&rsquo;s where Apache Solr comes in. Solr is an open source full text search framework, with Solr we can search the visited pages from Nutch. Luckily, integration between Nutch and Solr is pretty straightforward.</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    Whole-web crawling is designed to handle very large crawls which may take weeks to complete, running on multiple machines. This also permits more control over the crawl process, and incremental crawling. It is important to note that whole web crawling does not necessarily mean crawling the entire world wide web. We can limit a whole web crawl to just a list of the URLs we want to crawl. This is done by using a filter just like we the one we used when we did the crawl command. [<a href="http://wiki.apache.org/nutch/NutchTutorial">*</a>]</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    Some of the advantages of Nutch, when compared to a simple Fetcher</div>
-
-
-<ul>
-    <li>
-        highly scalable and relatively feature rich crawler</li>
-    <li>
-        features like politeness which obeys robots.txt rules</li>
-    <li>
-        robust and scalable - you can run Nutch on a cluster of 100 machines</li>
-    <li>
-        quality - you can bias the crawling to fetch &ldquo;important&rdquo; pages first</li>
-</ul>
-
-
-<p><u><strong>Basics about Nutch</strong></u></p>
-
-
-<p>First you need to know that, Nutch data is composed of:</p>
-
-
-<ul>
-    <li>
-        The crawl database, or <strong>crawldb</strong>. This contains information about every url known to Nutch, including whether it was fetched, and, if so, when.</li>
-    <li>
-        The link database, or <strong>linkdb</strong>. This contains the list of known links to each url, including both the source url and anchor text of the link.</li>
-    <li>
-        A set of <strong>segments</strong>. Each segment is a set of urls that are fetched as a unit. Segments are directories with the following subdirectories:</li>
-</ul>
-
-
-<ol>
-    <li>
-        <strong>crawl_generate</strong> names a set of urls to be fetche</li>
-    <li>
-        <strong>crawl_fetch</strong> contains the status of fetching each url</li>
-    <li>
-        <strong>content</strong> contains the raw content retrieved from each url</li>
-    <li>
-        <strong>parse_text</strong> contains the parsed text of each url</li>
-    <li>
-        <strong>parse_data</strong> contains outlinks and metadata parsed from each url</li>
-    <li>
-        <strong>crawl_parse</strong> contains the outlink urls, used to update the crawldb</li>
-</ol>
-
-
-<p><u><strong>Nutch and Hadoop</strong></u></p>
-
-
-<p>As of the official Nutch 1.3 release the source code architecture has been greatly simplified to allow us to run Nutch in one of two modes; namely local and deploy. By default, Nutch no longer comes with a Hadoop distribution, however when run in local mode e.g. running Nutch in a single process on one machine, then we use Hadoop as a dependency. This may suit you fine if you have a small site to crawl and index, but most people choose Nutch because of its capability to run on in deploy mode, within a Hadoop cluster. This gives you the benefit of a distributed file system (HDFS) and MapReduce processing style. &nbsp;If you are interested in deployed mode <a href="http://wiki.apache.org/nutch/NutchHadoopTutorial">read here</a>.</p>
-
-
-<p><u><strong>Getting hands dirt with Nutch</strong></u></p>
-
-
-<p><strong>1 Setup Nutch from binary distribution</strong></p>
-
-
-<ol>
-    <li>
-        Unzip your binary Nutch package to $HOME/nutch-1.3</li>
-    <li>
-        cd $HOME/nutch-1.3/runtime/local</li>
-    <li>
-        From now on, we are going to use ${NUTCH_RUNTIME_HOME} to refer to the current directory.</li>
-</ol>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <strong>2. Verify your Nutch installation</strong></div>
-
-
-<ol>
-    <li>
-        run &quot;bin/nutch&quot;</li>
-    <li>
-        You can confirm a correct installation if you seeing the following: &nbsp;Usage: nutch [-core] COMMAND</li>
-</ol>
-
-
-<div>
-    <u>Some troubleshooting tips:</u></div>
-
-
-<div>
-    Run the following command if you are seeing &quot;Permission denied&quot;:</div>
-
-
-<div>
-    chmod +x bin/nutch</div>
-
-
-<div>
-    Setup JAVA_HOME if you are seeing JAVA_HOME not set. On Mac, you can run the following command or add it to ~/.bashrc:</div>
-
-
-<div>
-    export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home #mac</div>
-
-
-<div>
-    Ubuntu:</div>
-
-
-<div>
-    export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk&nbsp;</div>
-
-
-<div>
-    export NUTCH_HOME=/var/www/nutch-1.3/runtime/local</div>
-
-
-<div>
-    &nbsp;</div>
-
-
-<div>
-    <u>Example of using Nutch to crawl wikipedia pages:</u></div>
-
-
-<div>
-    Here we are try to crawl&nbsp;<span class="s2"><a href="http://en.wikipedia.org/wiki/Collective_intelligence">http://en.wikipedia.org/wiki/Collective_intelligence</a>&nbsp;and sublinks in the same domain.</span></div>
-
-
-<ol class="ol1">
-    <li class="li1">
-        $ cd NUTCH_HOME/runtime/local</li>
-    <li class="li2">
-        <span class="s1">$ echo &quot;<a href="http://en.wikipedia.org/wiki/Collective_intelligence"><span class="s2">http://en.wikipedia.org/wiki/Collective_intelligence</span></a>&quot; &gt; urls</span></li>
-    <li class="li1">
-        add: `+^http://([a-z0-9]*&#46;)*wikipedia.org/` in&nbsp;conf/regex-urlfilter.txt</li>
-    <li class="li1">
-        $ bin/nutch crawl urls -dir crawl-wiki-ci -depth 2</li>
-    <li class="li1">
-        <b>statistics associated with the crawldb</b>
-        <ol class="ol1">
-            <li class="li1">
-                $ nutch readdb crawl-wiki-ci/crawldb/ -stats
-                <ol class="ol1">
-                    <li class="li1">
-                        CrawlDb statistics start: crawl-wiki-ci/crawldb/Statistics for CrawlDb: crawl-wiki-ci/crawldb/<br />
-                        TOTAL urls:&nbsp;&nbsp;&nbsp;&nbsp; 2727<br />
-                        retry 0:&nbsp;&nbsp;&nbsp;&nbsp; 2727<br />
-                        min score:&nbsp;&nbsp;&nbsp;&nbsp; 0.0<br />
-                        avg score:&nbsp;&nbsp;&nbsp;&nbsp; 8.107811E-4<br />
-                        max score:&nbsp;&nbsp;&nbsp;&nbsp; 1.341<br />
-                        status 1 (db_unfetched):&nbsp;&nbsp;&nbsp;&nbsp; 2665<br />
-                        status 2 (db_fetched):&nbsp;&nbsp;&nbsp;&nbsp; 61<br />
-                        status 3 (db_gone):&nbsp;&nbsp;&nbsp;&nbsp; 1<br />
-                        CrawlDb statistics: done</li>
-                </ol>
-            </li>
-        </ol>
-    </li>
-    <li class="li1">
-        <b>Dump of the URLs from the crawldb</b>
-        <ol class="ol1">
-            <li class="li1">
-                $ nutch readdb crawl-wiki-ci/crawldb/ -dump crawl-wiki-ci/stats
-                <ol class="ol1">
-                    <li class="li1">
-                        <span class="s3"><a href="http://en.wikipedia.org/wiki/Special:RecentChangesLinked/MIT_Center_for_Collective_Intelligence"><span class="s2">http://en.wikipedia.org/wiki/Special:RecentChangesLinked/MIT_Center_for_Collective_Intelligence</span></a></span>&nbsp;&nbsp;&nbsp;&nbsp; Version: 7Status: 1 (db_unfetched)<br />
-                        Fetch time: Sat Feb 04 00:50:50 EST 2012<br />
-                        Modified time: Wed Dec 31 19:00:00 EST 1969<br />
-                        Retries since fetch: 0<br />
-                        Retry interval: 2592000 seconds (30 days)<br />
-                        Score: 1.9607843E-4<br />
-                        Signature: null<br />
-                        Metadata:<br />
-                        &hellip;.&nbsp;</li>
-                </ol>
-            </li>
-        </ol>
-    </li>
-    <li class="li1">
-        <b>Top 10 highest rate links</b>
-        <ol class="ol1">
-            <li class="li1">
-                $ nutch readdb crawl-wiki-ci/crawldb/ -topN 10 crawl-wiki-ci/stats/top10/
-                <ol class="ol1">
-                    <li class="li2">
-                        <span class="s1">1.3416613&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Collective_intelligence"><span class="s2">http://en.wikipedia.org/wiki/Collective_intelligence</span></a>0.030499997&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Howard_Bloom"><span class="s2">http://en.wikipedia.org/wiki/Howard_Bloom</span></a><br />
-                        0.02763889&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Groupthink"><span class="s2">http://en.wikipedia.org/wiki/Groupthink</span></a><br />
-                        0.02591739&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Wikipedia"><span class="s2">http://en.wikipedia.org/wiki/Wikipedia</span></a><br />
-                        0.024347823&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Pierre_L%C3%A9vy_(philosopher)"><span class="s2">http://en.wikipedia.org/wiki/Pierre_L%C3%A9vy_(philosopher)</span></a><br />
-                        0.023733648&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Wikipedia:Citation_needed"><span class="s2">http://en.wikipedia.org/wiki/Wikipedia:Citation_needed</span></a><br />
-                        0.017142152&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/w/opensearch_desc.php"><span class="s2">http://en.wikipedia.org/w/opensearch_desc.php</span></a><br />
-                        0.016599996&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Artificial_intelligence"><span class="s2">http://en.wikipedia.org/wiki/Artificial_intelligence</span></a><br />
-                        0.016499996&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Consensus_decision_making"><span class="s2">http://en.wikipedia.org/wiki/Consensus_decision_making</span></a><br />
-                        0.015199998&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://en.wikipedia.org/wiki/Group_selection"><span class="s2">http://en.wikipedia.org/wiki/Group_selection</span></a></span></li>
-                </ol>
-            </li>
-        </ol>
-    </li>
-    <li class="li1">
-        <b>Dump of a Nutch segment</b>
-        <ol class="ol1">
-            <li class="li1">
-                $ nutch readseg -dump crawl-wiki-ci/segments/20120204004509/ crawl-wiki-ci/stats/segments
-                <ol class="ol1">
-                    <li class="li1">
-                        CrawlDatum::Version: 7<br />
-                        Status: 1 (db_unfetched)<br />
-                        Fetch time: Sat Feb 04 00:45:03 EST 2012<br />
-                        Modified time: Wed Dec 31 19:00:00 EST 1969<br />
-                        Retries since fetch: 0<br />
-                        Retry interval: 2592000 seconds (30 days)<br />
-                        Score: 1.0<br />
-                        Signature: null<br />
-                        Metadata: _ngt_: 1328334307529</li>
-                    <li class="li1">
-                        <br />
-                        Content::<br />
-                        Version: -1<br />
-                        url: <a href="http://en.wikipedia.org/wiki/Collective_intelligence"><span class="s4">http://en.wikipedia.org/wiki/Collective_intelligence</span></a><br />
-                        base: <a href="http://en.wikipedia.org/wiki/Collective_intelligence"><span class="s4">http://en.wikipedia.org/wiki/Collective_intelligence</span></a><br />
-                        contentType: application/xhtml+xml<br />
-                        metadata: Content-Language=en Age=52614 Content-Length=29341 Last-Modified=Sat, 28 Jan 2012 17:27:22 GMT _fst_=33 nutch.segment.name=20120204004509 Connection=close X-Cache-Lookup=MISS from <a href="http://sq72.wikimedia.org/"><span class="s4">sq72.wikimedia.org:80</span></a> Server=Apache X-Cache=MISS from <a href="http://sq72.wikimedia.org/"><span class="s4">sq72.wikimedia.org</span></a> X-Content-Type-Options=nosniff Cache-Control=private, s-maxage=0, max-age=0, must-revalidate Vary=Accept-Encoding,Cookie Date=Fri, 03 Feb 2012 15:08:18 GMT Content-Encoding=gzip nutch.crawl.score=1.0 Content-Type=text/html; charset=UTF-8<br />
-                        Content:<br />
-                        &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><span class="s4">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span></a>&quot;&gt;<br />
-                        &lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; class=&quot;client-nojs&quot; xmlns=&quot;<a href="http://www.w3.org/1999/xhtml"><span class="s4">http://www.w3.org/1999/xhtml</span></a>&quot;&gt;<br />
-                        &lt;head&gt;<br />
-                        &lt;title&gt;Collective intelligence - Wikipedia, the free encyclopedia&lt;/title&gt;<br />
-                        &lt;meta &hellip;.<b>&nbsp;</b></li>
-                </ol>
-            </li>
-        </ol>
-    </li>
-</ol>
-
-
-<p class="li1">&nbsp;</p>
-
-
-<p class="li1"><b>References:</b></p>
-
-
-<ul>
-    <li class="li1">
-        http://wiki.apache.org/nutch/NutchTutorial</li>
-    <li class="li1">
-        http://en.wikipedia.org/wiki/Nutch</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1120,6 +958,14 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/01/28/algorithms-for-dummies-part-1/">Algorithms for Dummies (Part 1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
       </li>
     
@@ -1129,14 +975,6 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
     
       <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
       </li>
     
   </ul>
@@ -1203,7 +1041,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2011-2012 | <a href="http://adrianmejia.com">Adrian Mejia</a>
+  Copyright &copy; 2011-2013 | <a href="http://adrianmejia.com">Adrian Mejia</a>
   <!-- <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -->
 </p>
 

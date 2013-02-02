@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="The paper [1] is proposing a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). It presents how digital libraries can &hellip;">
+  <meta name="description" content="S. R. Kruk et al. (2007) [1] implemented a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). The goal of the SSCF is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/27/elearning-2-0-and-social-practice-oriented-communities-to-improve-knowledge-in-companies-paper-review/">eLearning 2.0 and Social, Practice-Oriented Communities to Improve Knowledge in Companies - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-27T00:00:00-04:00" pubdate data-updated="true">Sep 27<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/27/elearning-2-0-and-social-practice-oriented-communities-to-improve-knowledge-in-companies-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>S. R. Kruk et al. (2007) [1] implemented a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). The goal of the SSCF is to enhance individual bookmarks with shared knowledge of the community. It also presents how digital libraries can be combined with social semantic information sources and it exemplifies how these techniques can improve e-Learning. Digital Libraries and other open courses can leverage their potential with the collaborative architectures. Learners can use it to exchange information, and express and synthetize knowledge e-Learning environments. It also makes use of the social bookmarking, web semantics and ontology services in other to organize and classify knowledge.</p>
+
+<p>About this paper, I like the how it states the benefits of this e-Learning systems for companies and institutions and also the benefits web collaboration to boost learning.  Additionally, the idea of using social bookmarking to classify educational content is pretty interesting.</p>
+
+<p>[1] I. Hamburg, “eLearning 2.0 and Social, Practice-Oriented Communities to Improve Knowledge in Companies”, 2010 Fifth International Conference on Internet and Web Applications and Services, pp. 411-416, 2010.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review/">Dynamic Hypertext Generation for Reusing Open Corpus Content - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-22T00:00:00-04:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/22/dynamic-hypertext-generation-for-reusing-open-corpus-content-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>B. Steichen, S. Lawless, V. Wade et al. (2009) [1] proposed an Adaptive Hypermedia (AH) for dynamic hypertext generation of learning content. This system provides personalized learning services, which aims to enrich the learning process and the satisfaction of the learners. In order to accomplish these tasks: the system perform open courses harvesting and identification, generate dynamically hyperlinks based on the learner experience and appropriated learning strategies, and present the content in a uniform presentation across heterogeneous content. National digital content repositories cross institution sharing of learning resources and universities open courseware seed the identification task. Web crawlers are used to harvest the open corpus. Focused crawlers, such as Nalanda and Combine are mentioned and Heritix is recommended.  The harvested data is later indexed to make it more discoverable with open sources solutions, such as Nutch and Swish-e and then retrieve using search engines like Lucene and Lemur. For the metadata classification there are 3 approaches: (i) extraction of the metadata from files that already have it; (ii) infer and generate metadata automatically. Semtag from IBM perform can do this using a Taxonomy Based Disambiguation (TBD) algorithm. Also Klarity and DC.dot are metadata generators. (iii) Use of social bookmarking (digg, flickr, facebook,…) to extract the metadata/content description. For the dynamic hypertext generation a system was develop on top of the Adaptive Personalized eLearning Service (APeLS). This facilitates students to learn about specific concepts using query of keywords. In [2] can found be found also the results of this system.</p>
+
+<p>[1] Steichen, B., Lawless, S., O’Connor, A., &amp; Wade, V. (2009). Dynamic Hypertext Generation for Reusing Open Corpus Content. HT’09, June 29–July 1, 2009, Torino, Italy, 119-128. ACM.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -322,122 +404,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/07/automated-reverse-engineering-java-swing-gui-paper-review/">Automated Reverse Engineering Java-Swing GUI - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-07T00:00:00-04:00" pubdate data-updated="true">Sep 7<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/09/07/automated-reverse-engineering-java-swing-gui-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The extraction of Java-Swing GUI information using AspectJ seems like an way to do Reverse Engineering. The extracted information could be use later to migrate applications Java-Swing applications to the web, enhance program understating, generate UML diagrams and a myriad of other uses. This article will be summary of the paper about this topic [1].</p>
-
-<p>The authors of the paper [1] are using aspect oriented programming (AOP) to intercept the application while is running and extract desired information. The information wanted in this case is the following ones: user events, windows and widgets. This type of reverse engineering is performed dynamically. The information is gathered while the user is using the application as usual. The more time the user use the application the more information is gathered. For this task, AspectJ is used. AspectJ is aspect-oriented extension created for Java programming language. AspectJ can interact with java-compiled code (bytecode) and it intercepts specific function calls.  For instance to extract windows and widget the aspect code will detect the Java-Swing calls of: “showFrame()”, “setVisible()”, “show()” in the JFrames, JPanels and widgets. In order to extract the user events, the aspect code intercepts the calls to “JTextField.setText()” for user input in text fields and so forth. Finally, all the information extracted is stored in XML and then can be used for different uses: migration of java-swing applications to web, generate UML design diagrams, you name it!</p>
-
-<p>Something about the title of the paper [1], it&#8217;s that it mention web migration; however, in the content of the paper there are not depth in that topic. It only explain in detail how to extract information needed for the reverse engineering, but there is no detail in how to use the extracted information to do it web-enabled.</p>
-
-<p>Reference
-[1] Samir, H.; Kamel, A.; , &#8220;Automated reverse engineering of Java graphical user interfaces for web migration,&#8221; Information and Communications Technology, 2007. ICICT 2007. ITI 5th International Conference on , vol., no., pp.157-162, 16-18 Dec. 2007</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/15/git-auto-commit-with-crontab/">Git Auto-commit With Crontab</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-15T00:00:00-04:00" pubdate data-updated="true">Aug 15<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/08/15/git-auto-commit-with-crontab/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>You might want to commit from a git repository from time to time for several purposes (backup, control version, continuous integration, etc). One way to accomplish that is using the CronTab (Cron is used to run periodic task in Unix-like systems).</p>
-
-<p>Here is an example.</p>
-
-<p>1.- Create an script. e.g. baskitup.sh with:</p>
-
-<pre>
-<code># MySQL-dump: save a copy of the actual content in the database. (this is for a Drupal site, the backup is done using drupal's drush)
-php -c ~/www/php.ini  ~/drush/drush.php -r /home/adrimej0/www -u 1 sql-dump --result-file=latest.sql
-
-# Git: add and commit changes
-cd /home/adrimej0/www && /home/adrimej0/opt/bin/git commit -a -m "weekly crontab backup `date`"
-
-# send data to Git server
-cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
-</pre>
-
-
-<p>2.- Set up the cron. In the shell write the following</p>
-
-<pre>
-<code>$ crontab -e</code>
-</pre>
-
-
-<p>add the following command line for weekly auto-commits:</p>
-
-<pre>
-<code>MAILTO="youremail@domain.com"
-0 0 * * 0 /home/adrimej0/www/backitup.sh</code>
-</pre>
-
-
-<p>Done. Now your (drupal) site will be backed up every week automatically (every Sunday at midnight).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -492,6 +458,14 @@ cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/01/28/algorithms-for-dummies-part-1/">Algorithms for Dummies (Part 1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
       </li>
     
@@ -501,14 +475,6 @@ cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
     
       <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
       </li>
     
   </ul>
@@ -575,7 +541,7 @@ cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2011-2012 | <a href="http://adrianmejia.com">Adrian Mejia</a>
+  Copyright &copy; 2011-2013 | <a href="http://adrianmejia.com">Adrian Mejia</a>
   <!-- <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -->
 </p>
 
