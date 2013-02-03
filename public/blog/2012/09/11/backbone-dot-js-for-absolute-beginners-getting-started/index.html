@@ -155,7 +155,8 @@
 
 <p><code>&lt;div id="container"&gt;Loading...&lt;/div&gt;</code></p>
 
-<p><strong>1.2.- Backbone&#8217;s Views</strong></p>
+<p><a id="1.2"></a>
+<strong>1.2.- Backbone&#8217;s Views</strong></p>
 
 <p>Backbone&#8217;s Views are the equivalent of ‘controllers’ on MVC frameworks (like Ruby on Rails), if you are not familiar with MVC frameworks nevermind. Backbone&#8217;s Views glues together user events (clicks, pressed keys …), render HTML views and templates, and interacts with models which contains the data of the application.</p>
 
@@ -173,14 +174,18 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="kd">var</span> <span class="nx">AppView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
-</span><span class='line'>      <span class="c1">// el - stands for element. Every view has a element associate in with HTML content will be rendered.</span>
+</span><span class='line'>      <span class="c1">// el - stands for element. Every view has a element associate in with HTML </span>
+</span><span class='line'>      <span class="c1">//      content will be rendered.</span>
 </span><span class='line'>      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#container&#39;</span><span class="p">,</span>
 </span><span class='line'>      <span class="c1">// It&#39;s the first function called when this view it&#39;s instantiated.</span>
 </span><span class='line'>      <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
 </span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
 </span><span class='line'>      <span class="p">},</span>
-</span><span class='line'>      <span class="c1">// $el - it&#39;s a cached jQuery object (el), in which you can use jQuery functions to push content. Like the Hello World in this case.</span>
+</span><span class='line'>      <span class="c1">// $el - it&#39;s a cached jQuery object (el), in which you can use jQuery functions </span>
+</span><span class='line'>      <span class="c1">//       to push content. Like the Hello World in this case.</span>
 </span><span class='line'>      <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
 </span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
 </span><span class='line'>      <span class="p">}</span>
@@ -354,14 +359,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/01/28/algorithms-for-dummies-part-1/">Algorithms for Dummies (Part 1)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
       </li>
     
@@ -371,6 +368,14 @@
     
       <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
       </li>
     
   </ul>

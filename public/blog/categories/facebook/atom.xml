@@ -4,7 +4,7 @@
   <title><![CDATA[Category: facebook | Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/facebook/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2013-02-02T14:18:33-05:00</updated>
+  <updated>2013-02-03T18:44:44-05:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -12,102 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[social networks and graph theory]]></title>
-    <link href="http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory/"/>
-    <updated>2012-09-29T13:45:00-04:00</updated>
-    <id>http://adrianmejia.com/blog/2012/09/29/social-networks-and-graph-theory</id>
-    <content type="html"><![CDATA[<p>After taking graph theory in my Algorithm class at school, I became very interested in graphs. All kind of them: social network graph representations, and graph databases.</p>
-
-<h2>Facebook Graph</h2>
-
-<h2>Twitter Graph</h2>
-
-<p>Ruby
-https://github.com/sferik/twitter</p>
-
-<p>Python
-https://github.com/tweepy/tweepy
-https://github.com/sixohsix/twitter - http://mike.verdone.ca/twitter/
-https://github.com/ryanmcgrath/twython</p>
-
-<p>User Profile
-http://api.twitter.com/1/users/show.json?screen_name=amejiarosario
-http://api.twitter.com/1/users/show.json?user_id=102254970</p>
-
-<p>Following
-http://api.twitter.com/1/statuses/friends/amejiarosario.json</p>
-
-<p>http://api.twitter.com/1/friends/ids.json?screen_name=amejiarosario
-http://api.twitter.com/1/followers/ids.json?screen_name=amejiarosario</p>
-
-<p>Followers
-http://api.twitter.com/1/statuses/followers/amejiarosario.json</p>
-
-<p>Frienships
-https://api.twitter.com/1/friendships/lookup.json?screen_name=adriansky,h17k,youtube,amejiarosario</p>
-
-<p>http://api.twitter.com/1/friendships/show.json?target_screen_name=amejiarosario&amp;source_screen_name=estherannb</p>
-
-<p>Trends
-https://api.twitter.com/1/trends/1.json</p>
-
-<p>Twitter Census: Influence Metrics</p>
-
-<p>http://api.infochimps.com/social/network/tw/influence/metrics?apikey=api_test-W1cipwpcdu9Cbd9pmm8D4Cjc469&amp;screen_name=amejiarosario</p>
-
-<p>{
-  "at_trstrank": 0.15243542,
-  "chattiness": 0.026666667,
-  "created_at": 20081021190219,
-  "enthusiasm": 0.026666667,
-  "feedness": 0.053333335,
-  "fo_trstrank": 0.5010339,
-  "follow_churn": 0.61,
-  "follow_rate": 0.08368201,
-  "followers": 92,
-  "influx": 119.835144,
-  "interesting": 0.013333334,
-  "outflux": 0.31380752,
-  "sway": 0.013333334,
-  "user_id": 16891516
-}</p>
-
-<p>Word Count
-http://www.infochimps.com/datasets/twitter-wordbag#api-explorer_tab
-{
-  "user_id": 16891516,
-  "screen_name": "amejiarosario",
-  "tokens": [</p>
-
-<pre><code>[
-  "laura_fermin",
-  0.155544457029359
-],
-[
-  "que",
-  0.132667872902021
-],
-[
-  "amar",
-  0.117188755245813
-],
-[
-  "herir",
-  0.103290383457027
-],
-[
-  "cuando",
-  0.0922951279656876
-],
-</code></pre>
-
-<h2>LinkedIn</h2>
-
-<p>http://inmaps.linkedinlabs.com/</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[What technologies are using the most influential Internet companies?]]></title>

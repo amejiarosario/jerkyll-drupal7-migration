@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="The extraction of Java-Swing GUI information using AspectJ seems like an way to do Reverse Engineering. The extracted information could be use later &hellip;">
+  <meta name="description" content="1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Introduction Ruby on Rails (RoR) is open source web framework written in the Ruby programming &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,122 +78,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/07/automated-reverse-engineering-java-swing-gui-paper-review/">Automated Reverse Engineering Java-Swing GUI - Paper Review</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-07T00:00:00-04:00" pubdate data-updated="true">Sep 7<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/09/07/automated-reverse-engineering-java-swing-gui-paper-review/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The extraction of Java-Swing GUI information using AspectJ seems like an way to do Reverse Engineering. The extracted information could be use later to migrate applications Java-Swing applications to the web, enhance program understating, generate UML diagrams and a myriad of other uses. This article will be summary of the paper about this topic [1].</p>
-
-<p>The authors of the paper [1] are using aspect oriented programming (AOP) to intercept the application while is running and extract desired information. The information wanted in this case is the following ones: user events, windows and widgets. This type of reverse engineering is performed dynamically. The information is gathered while the user is using the application as usual. The more time the user use the application the more information is gathered. For this task, AspectJ is used. AspectJ is aspect-oriented extension created for Java programming language. AspectJ can interact with java-compiled code (bytecode) and it intercepts specific function calls.  For instance to extract windows and widget the aspect code will detect the Java-Swing calls of: “showFrame()”, “setVisible()”, “show()” in the JFrames, JPanels and widgets. In order to extract the user events, the aspect code intercepts the calls to “JTextField.setText()” for user input in text fields and so forth. Finally, all the information extracted is stored in XML and then can be used for different uses: migration of java-swing applications to web, generate UML design diagrams, you name it!</p>
-
-<p>Something about the title of the paper [1], it&#8217;s that it mention web migration; however, in the content of the paper there are not depth in that topic. It only explain in detail how to extract information needed for the reverse engineering, but there is no detail in how to use the extracted information to do it web-enabled.</p>
-
-<p>Reference
-[1] Samir, H.; Kamel, A.; , &#8220;Automated reverse engineering of Java graphical user interfaces for web migration,&#8221; Information and Communications Technology, 2007. ICICT 2007. ITI 5th International Conference on , vol., no., pp.157-162, 16-18 Dec. 2007</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/15/git-auto-commit-with-crontab/">Git Auto-commit With Crontab</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-15T00:00:00-04:00" pubdate data-updated="true">Aug 15<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/08/15/git-auto-commit-with-crontab/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>You might want to commit from a git repository from time to time for several purposes (backup, control version, continuous integration, etc). One way to accomplish that is using the CronTab (Cron is used to run periodic task in Unix-like systems).</p>
-
-<p>Here is an example.</p>
-
-<p>1.- Create an script. e.g. baskitup.sh with:</p>
-
-<pre>
-<code># MySQL-dump: save a copy of the actual content in the database. (this is for a Drupal site, the backup is done using drupal's drush)
-php -c ~/www/php.ini  ~/drush/drush.php -r /home/adrimej0/www -u 1 sql-dump --result-file=latest.sql
-
-# Git: add and commit changes
-cd /home/adrimej0/www && /home/adrimej0/opt/bin/git commit -a -m "weekly crontab backup `date`"
-
-# send data to Git server
-cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
-</pre>
-
-
-<p>2.- Set up the cron. In the shell write the following</p>
-
-<pre>
-<code>$ crontab -e</code>
-</pre>
-
-
-<p>add the following command line for weekly auto-commits:</p>
-
-<pre>
-<code>MAILTO="youremail@domain.com"
-0 0 * * 0 /home/adrimej0/www/backitup.sh</code>
-</pre>
-
-
-<p>Done. Now your (drupal) site will be backed up every week automatically (every Sunday at midnight).</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -728,6 +612,145 @@ cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/21/how-to-set-up-git-github-in-windows/">How to Set Up Git / Github in Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-21T00:00:00-04:00" pubdate data-updated="true">Jul 21<span>st</span>, 2011</time>
+        
+         | <a href="/blog/2011/07/21/how-to-set-up-git-github-in-windows/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly.</p>
+
+
+<p>You will need the following tools:</p>
+
+
+<ul>
+    <li><strong>Putty</strong>: download <a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip">latest version here</a>.</li>
+    <li><strong>TortoiseGit</strong>: download the <a href="http://code.google.com/p/tortoisegit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version here</a>. &nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/tortoisegit/downloads/detail?name=Tortoisegit-1.6.5.0-32bit.msi&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Tortoisegit-1.6.5.0-32bit.msi</a>)</li>
+    <li><strong>msysgit</strong>: As today the <a href="http://code.google.com/p/msysgit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version</a>&nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/msysgit/downloads/detail?name=Git-1.7.6-preview20110708.exe&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Git-1.7.6-preview20110708.exe</a>)</li>
+</ul>
+
+
+<p><u>Setting up Putty</u></p>
+
+
+<ol>
+    <li>Unzip the folder.&nbsp;</li>
+    <li>Generate the ssh key using the&nbsp;PUTTYGEN.EXE from the putty folder. After genete it, click &#8220;save private key&#8221; to save the *.ppk</li>
+</ol>
+
+
+<p><u>Setting up Git / TortoiseGIT on Windows</u></p>
+
+
+<ol>
+    <li>Install msysgit</li>
+    <li>Install TortoiseGit</li>
+    <li>Config TortoiseGit: do right click and in the contextual menu: TortoiseGit -&gt; Settings -&gt; Git -&gt; config (set your name and password)</li>
+    <li>Set remote git server: Settings -&gt; Git -&gt; Remote. Fill it up with your Git server info (e.g. Github, Google code, &#8230;)</li>
+</ol>
+
+
+<p><img alt="GitTortoise Remote Configuration" src="http://adrianmejiarosario.com/sites/default/files/pictures/gitTortoise-RemoteConfig.JPG"><br>
+    &nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/18/cs-getmanifestresourcestream-gotcha/">C#&#8217;s GetManifestResourceStream Gotcha</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-18T00:00:00-04:00" pubdate data-updated="true">Jul 18<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/07/18/cs-getmanifestresourcestream-gotcha/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the .NET framework, the method Assembly -&gt; Get Manifest Resource Stream has a gotcha that could take some time to figure out why is not working as intented. I was working in a piece of code (show below), and the GetManifestResourceStream always returned NULL exception error. Even though the file was there&#8230;</p>
+
+
+<p>C# example:</p>
+
+
+<div>
+    <pre>public XmlTextReader GetSyntaxModeFile(SyntaxMode syntaxMode)
+{
+&nbsp;&nbsp; &nbsp;Assembly assembly = typeof(SyntaxMode).Assembly;
+&nbsp;&nbsp; &nbsp;var stream = assembly.GetManifestResourceStream("ICSharpCode.TextEditor.Resources." + syntaxMode.FileName);
+&nbsp;&nbsp; &nbsp;if(stream == null)
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw new Exception("The resource "+syntaxMode.FileName+" was not loaded properly.");
+&nbsp;&nbsp; &nbsp;return new XmlTextReader(stream);
+}</pre>
+</div>
+
+
+<p><strong>Solution:</strong></p>
+
+
+<p>The GetManifestResourceStream method will always returns NULL if the resource &#8217;<strong>built action</strong>&#8217; property is not set to &#8217;<strong>embedded resource</strong>&#8217;</p>
+
+
+<p><img alt="Build action property set to embedded resource" src="http://adrianmejiarosario.com/sites/default/files/pictures/GetManifestResourceStream.JPG" style="width: 488px; height: 332px;"></p>
+
+
+<p>After setting this property with all the needed files assembly.<u><strong>GetManifestResourceStream</strong></u> starts returning the corrent stream instead of NULL</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -782,14 +805,6 @@ cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/01/28/algorithms-for-dummies-part-1/">Algorithms for Dummies (Part 1)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
       </li>
     
@@ -799,6 +814,14 @@ cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
     
       <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
       </li>
     
   </ul>

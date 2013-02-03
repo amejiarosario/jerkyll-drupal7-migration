@@ -54,6 +54,7 @@ All your js app will be loaded here:
 `<div id="container">Loading...</div>`
 
 
+<a id="1.2"></a>
 **1.2.- Backbone's Views**
 
 Backbone's Views are the equivalent of ‘controllers’ on MVC frameworks (like Ruby on Rails), if you are not familiar with MVC frameworks nevermind. Backbone's Views glues together user events (clicks, pressed keys …), render HTML views and templates, and interacts with models which contains the data of the application.
@@ -62,13 +63,15 @@ Here is an example of a Backbone.view: READ the code and COMMENTS, then insert t
 
 {% codeblock Simple Backbone.View lang:js https://raw.github.com/amejiarosario/Backbone-tutorial/0bf69185f4463a75cb2d5553f8d1ea197323ccff/backbone-tutorial.html Full Code %}
     var AppView = Backbone.View.extend({
-      // el - stands for element. Every view has a element associate in with HTML content will be rendered.
+      // el - stands for element. Every view has a element associate in with HTML 
+      //      content will be rendered.
       el: '#container',
       // It's the first function called when this view it's instantiated.
       initialize: function(){
         this.render();
       },
-      // $el - it's a cached jQuery object (el), in which you can use jQuery functions to push content. Like the Hello World in this case.
+      // $el - it's a cached jQuery object (el), in which you can use jQuery functions 
+      //       to push content. Like the Hello World in this case.
       render: function(){
         this.$el.html("Hello World");
       }

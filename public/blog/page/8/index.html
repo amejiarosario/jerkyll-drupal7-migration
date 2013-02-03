@@ -9,7 +9,7 @@
   <meta name="author" content="Adrian Mejia">
 
   
-  <meta name="description" content="Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly. You will &hellip;">
+  <meta name="description" content="At work, I use an Windows XP machine and it some times get really slowly. I noticed from the task manager (ctrl+shift+esc) that the process MsMpEng. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,145 +78,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/07/21/how-to-set-up-git-github-in-windows/">How to Set Up Git / Github in Windows</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-21T00:00:00-04:00" pubdate data-updated="true">Jul 21<span>st</span>, 2011</time>
-        
-         | <a href="/blog/2011/07/21/how-to-set-up-git-github-in-windows/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Installing Git in Windows is not as straight forward as in a *nix machine like Linux and Mac. This guide help you to get started quickly.</p>
-
-
-<p>You will need the following tools:</p>
-
-
-<ul>
-    <li><strong>Putty</strong>: download <a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip">latest version here</a>.</li>
-    <li><strong>TortoiseGit</strong>: download the <a href="http://code.google.com/p/tortoisegit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version here</a>. &nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/tortoisegit/downloads/detail?name=Tortoisegit-1.6.5.0-32bit.msi&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Tortoisegit-1.6.5.0-32bit.msi</a>)</li>
-    <li><strong>msysgit</strong>: As today the <a href="http://code.google.com/p/msysgit/downloads/list" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">latest version</a>&nbsp;(e.g.&nbsp;<a href="http://code.google.com/p/msysgit/downloads/detail?name=Git-1.7.6-preview20110708.exe&amp;can=2&amp;q=" style="color: rgb(0, 0, 204); text-decoration: underline; white-space: nowrap; ">Git-1.7.6-preview20110708.exe</a>)</li>
-</ul>
-
-
-<p><u>Setting up Putty</u></p>
-
-
-<ol>
-    <li>Unzip the folder.&nbsp;</li>
-    <li>Generate the ssh key using the&nbsp;PUTTYGEN.EXE from the putty folder. After genete it, click &#8220;save private key&#8221; to save the *.ppk</li>
-</ol>
-
-
-<p><u>Setting up Git / TortoiseGIT on Windows</u></p>
-
-
-<ol>
-    <li>Install msysgit</li>
-    <li>Install TortoiseGit</li>
-    <li>Config TortoiseGit: do right click and in the contextual menu: TortoiseGit -&gt; Settings -&gt; Git -&gt; config (set your name and password)</li>
-    <li>Set remote git server: Settings -&gt; Git -&gt; Remote. Fill it up with your Git server info (e.g. Github, Google code, &#8230;)</li>
-</ol>
-
-
-<p><img alt="GitTortoise Remote Configuration" src="http://adrianmejiarosario.com/sites/default/files/pictures/gitTortoise-RemoteConfig.JPG"><br>
-    &nbsp;</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/07/18/cs-getmanifestresourcestream-gotcha/">C#&#8217;s GetManifestResourceStream Gotcha</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-18T00:00:00-04:00" pubdate data-updated="true">Jul 18<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/07/18/cs-getmanifestresourcestream-gotcha/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the .NET framework, the method Assembly -&gt; Get Manifest Resource Stream has a gotcha that could take some time to figure out why is not working as intented. I was working in a piece of code (show below), and the GetManifestResourceStream always returned NULL exception error. Even though the file was there&#8230;</p>
-
-
-<p>C# example:</p>
-
-
-<div>
-    <pre>public XmlTextReader GetSyntaxModeFile(SyntaxMode syntaxMode)
-{
-&nbsp;&nbsp; &nbsp;Assembly assembly = typeof(SyntaxMode).Assembly;
-&nbsp;&nbsp; &nbsp;var stream = assembly.GetManifestResourceStream("ICSharpCode.TextEditor.Resources." + syntaxMode.FileName);
-&nbsp;&nbsp; &nbsp;if(stream == null)
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw new Exception("The resource "+syntaxMode.FileName+" was not loaded properly.");
-&nbsp;&nbsp; &nbsp;return new XmlTextReader(stream);
-}</pre>
-</div>
-
-
-<p><strong>Solution:</strong></p>
-
-
-<p>The GetManifestResourceStream method will always returns NULL if the resource &#8217;<strong>built action</strong>&#8217; property is not set to &#8217;<strong>embedded resource</strong>&#8217;</p>
-
-
-<p><img alt="Build action property set to embedded resource" src="http://adrianmejiarosario.com/sites/default/files/pictures/GetManifestResourceStream.JPG" style="width: 488px; height: 332px;"></p>
-
-
-<p>After setting this property with all the needed files assembly.<u><strong>GetManifestResourceStream</strong></u> starts returning the corrent stream instead of NULL</p>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -672,9 +533,70 @@ tcp     445</pre>
 
     </article>
   
-  <div class="pagination">
+  
+    <article>
+      
+  <header>
     
-      <a class="prev" href="/blog/page/9/">&larr; Older</a>
+      <h1 class="entry-title"><a href="/blog/2011/07/12/drupal-modules-for-seo-optimation/">Drupal Modules for SEO Optimation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-12T00:00:00-04:00" pubdate data-updated="true">Jul 12<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/07/12/drupal-modules-for-seo-optimation/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Search Engine Optimizations (SEO) could be quite challenging for beginners. It&#8217;s overwhelming the amount of information that a webmaster need to understand in order to make his websites visible, in search engines like Google, Bing, Yahoo, &#8230; Moreover most of this information is quite disperse. The idea here is to provided all the needed information in one place. Starting from steps for all websites and then focusing on Drupal SEO modules. &nbsp; <strong>General Steps:</strong></p>
+
+
+<ol>
+    <li><strong>Sign up</strong>in the webmaster tools for the main search engines:
+        <ul>
+            <li><a href="http://www.google.com/webmasters/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Google Webmaster Tools</a></li>
+            <li><a href="siteexplorer.search.yahoo.com" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Yahoo! Site Explorer</a></li>
+            <li><a href="http://www.bing.com/webmaster" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Bing - Webmaster Center</a></li>
+            <li><a href="http://webmaster.yandex.com/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Yandex Webmaster</a></li>
+        </ul>
+    </li>
+    <li><strong>Verification.</strong> The next step is to get your website verify by each the search engines that you signed up. There are several options in the verification process, as you can see in their websites. You can choose from: uploading a file to you web directory, or adding a text string in your host name, or adding a meta tag and other methods.</li>
+    <li><strong>Metrics</strong>. Before&nbsp;optimizing&nbsp;your website you have to &#8221;<strong>know your number</strong>&#8221;, so you can see if what you are doing is working. Your numbers are the amount of visitors, webpage clicked, top visitied pages. For that, there are free tools available, I have used the following ones.
+        <ol>
+            <li><a href="http://www.google.com/analytics/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Google Analytics</a>: it&#8217;s a very good tool, provides a lot of information such as, number of visitors, top clicked pages, visitor&#8217;s browsers, OS, screen resolution, ISP and more!</li>
+            <li><a href="http://www.webalizer.org/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">The Webalizer</a> is a free web server log file analysis program. It produces detailed usage reports in HTML format. It&#8217;s a program installed on the linux server. (in ubuntu servers just run # sudo apt-get install webalizer)</li>
+            <li><a href="http://awstats.sourceforge.net/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">AWStats</a> is a free powerful and featureful tool that generates advanced web, streaming, ftp or mail server statistics, graphicall.</li>
+        </ol>
+    </li>
+    <li><strong>Checklist</strong>. Every webmaster tool from the&nbsp;different&nbsp;search engines has their checklist and guidelines. Go through them (in the future, I will post a summary here)</li>
+</ol>
+
+
+<p><strong>Drupal Modules</strong> Read <a href="http://yadadrop.com/services/drupal-seo-modules-search-engine-optimization" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">here</a> for now (I will make my own list in the future)</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -726,14 +648,6 @@ tcp     445</pre>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/01/28/algorithms-for-dummies-part-1/">Algorithms for Dummies (Part 1)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/29/social-networks-and-graph-theory/">social networks and graph theory</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
       </li>
     
@@ -743,6 +657,14 @@ tcp     445</pre>
     
       <li class="post">
         <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
       </li>
     
   </ul>
