@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adrian Mejia's [code]Blog</title>
+  <meta name="author" content="Adrian Mejia">
+
+  
+  <meta name="description" content="The paper [1] is proposing a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). It presents how digital libraries can &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://adrianmejia.com/blog/page/6/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Adrian Mejia's [code]Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24183929-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Adrian Mejia's [code]Blog</a></h1>
+  
+    <h2>var life = { "work_hard","have_fun","make_history" };</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:adrianmejia.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<!-- <li><a href="/about">about</a></li> -->
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/21/e-learning-on-the-social-semantic-information-sources-paper-review/">E-Learning on the Social Semantic Information Sources - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00-04:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/21/e-learning-on-the-social-semantic-information-sources-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The paper [1] is proposing a social bookmarking system called Social Semantic Collaborative Filtering (SSCF). It presents how digital libraries can be combined with social semantic information sources and it exemplifies how these techniques can improve e-Learning. The goal of the SSCF is to enhance individual bookmarks with shared knowledge of the community. The Fig. 1 shows the dificulty (or time-consumptions) of bookmarking all the interested links and then share all of them in a blog for other users.</p>
+
+
+<p><img alt="Use Case Scenario for SSCF" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.24.35%20PM.png" style="width: 600px; height: 222px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>In order to solve this problem, they [1] proposed a SSCF bookmarking system, which is based on JeremeDL. This platform joins 3 separated applications: blog, Digital Library, and bookmarking application (Fig. 3), to solve the problems above-mentioned.</p>
+
+
+<p><img alt="SSCF solution" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.26.20%20PM.png" style="width: 600px; height: 442px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>JeromeDL can be use to reduce the time of login in 3 different applications as show in the Fig. 5</p>
+
+
+<p><img alt="JeromeDL time comparison with other systems" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/Screen%20shot%202011-09-21%20at%201.26.39%20PM.png" style="width: 600px; height: 196px; "></p>
+
+
+<p>Source: [1]</p>
+
+
+<p>The process that includes SOIC ontology support and alignment is the following:</p>
+
+
+<ol>
+    <li>Users can bookmark blog post, forums, or URL site.</li>
+    <li>Extract metadata from the bookmarked site using SOIC browser (<a href="http://sparql.captsolo.net/browser/browser.py?url=URL" target="_blank">http://sparql.captsolo.net/browser/browser.py?url=URL</a>).</li>
+    <li>All relevant information is saved to the SSCF RDF repository.</li>
+    <li>SSCF module generates bookmark trees and also displays SIOC information.</li>
+    <li>Ontology alignment: creating some content using SIOC metadata and delivery mediation mechanism for other SSCF/JeromeDL content.</li>
+</ol>
+
+
+<p>I like the idea of organizing and categorizing URL sites using existing ontologies and web semantics. This allow to group similar content together and enhance navigability of the information. It’s also interesting the way they join multiple applications (library, bookmarks and blog) in other to reduce the time as shown in the Fig. 5. However, it’s not clear to me how if the SSCF is an addon to the JeremeDL system or if is a fork of this project.</p>
+
+
+<p><strong>Mentions</strong>:</p>
+
+
+<ul>
+    <li>Semantic Web,&nbsp;<a href="http://en.wikipedia.org/wiki/Semantic_Web" target="_blank">http://en.wikipedia.org/wiki/Semantic_Web</a>,</li>
+    <li>Ping Semantic Web,&nbsp;<a href="http://pingthesemanticweb.com/" target="_blank">http://pingthesemanticweb.com/</a>, repository for RDF documents</li>
+    <li>SIOC (Semantically-Interlinked Online Communities),&nbsp;<a href="http://sioc-project.org/" target="_blank">http://sioc-project.org/</a>, aims to enable the integration of online community information</li>
+    <li>Connotea,&nbsp;<a href="http://www.connotea.org/" target="_blank">http://www.connotea.org/</a>, Free online reference management for all researchers, clinicians and scientists.</li>
+    <li>Open directory, dmoz.org, uses a hierarchical ontology scheme for organizing site listings.</li>
+    <li>RDF (Resource Description Framework),<a href="http://en.wikipedia.org/wiki/Resource_Description_Framework" target="_blank">http://en.wikipedia.org/wiki/Resource_Description_Framework</a>, description or modeling of information that is implemented in web resources</li>
+    <li>JeromeDL,&nbsp;<a href="http://www.jeromedl.org/" target="_blank">http://www.jeromedl.org/</a>, Social Semantic Digital Library. As a digital library, it allows institutions to easily publish documents on the Web. It supports a variety of document formats and allows to store and query a rich bibliographic description of each document</li>
+</ul>
+
+
+<p><strong>Ideas</strong>:</p>
+
+
+<ul>
+    <li>Uses a hierarchical ontology scheme for organizing site listings and also uses web semantics to categorize information.</li>
+    <li>Join multiple applications to reduce time user&#8217;s time performing common tasks.</li>
+</ul>
+
+
+<p><strong>Reference</strong>:<br>
+    [1] Sebastian Ryszard Kruk, Adam Gzella, Jaros law Dobrzanski,Bill McDaniel, and Tomasz Woroniecki; &#8220;E-Learning on the Social Semantic Information&nbsp;Sources&#8221;; EC-TEL 2007, LNCS 4753, pp. 172–186, 2007. Springer-Verlag Berlin Heidelberg 2007.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/17/on-line-course-organization-paper-review/">On Line Course Organization - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-17T00:00:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/17/on-line-course-organization-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This paper [1] proposed a specialized search engine, called Fusion, which index meta-information about available courses. Google can be used to perform this search, but the result will be too broad. Fusion provides specialized results only. In order to accomplish this task, Fusion used the web crawler Nutch, which is used to extract the content of courses. The crawler does real-time decisions to parse and store only the necessary data instead of the whole content. The extraction of the metadata is done using the following technologies: NekoHTML (HTML document parser), Xalan (XSLT for transforming XML to HTML), XPath (used to navigate through elements in the XML). After all the course metadata is extracted, the information is classified according to the IEEE-LTSC LOM (Learning Object Metadata). Finally all the data is stored and used for the web portal.</p>
+
+
+<div><img alt="architecture online course crawler" src="http://www.adrianmejiarosario.com/sites/default/files/pictures/architecture-online-course-crawler.png" style="width: 500px; height: 236px; "></div>
+
+
+<div style="text-align: left; ">Source: [1]</div>
+
+
+<div style="text-align: right; ">&nbsp;</div>
+
+
+<div>I like the amount of specialized tools used to develop the Fusion (shown bellow). However, as they said in their conclusion this extraction could be extended to support eLearning 2.0 features: personal spaces, user contributions, user feedbacks, user tags, and user comments.</div>
+
+
+<div>&nbsp;</div>
+
+
+<div>
+    <div>This paper [1] proposed a specialized search engine, called Fusion, which index meta-information about available courses. Google can be used to perform this search, but the result will be too broad. Fusion provides specialized results only. In order to accomplish this task, Fusion used the web crawler Nutch, which is used to extract the content of courses. The crawler does real-time decisions to parse and store only the necessary data instead of the whole content. The extraction of the metadata is done using the following technologies: NekoHTML (HTML document parser), Xalan (XSLT for transforming XML to HTML), XPath (used to navigate through elements in the XML). After all the course metadata is extracted, the information is classified according to the IEEE-LTSC LOM (Learning Object Metadata). Finally all the data is stored and used for the web portal.</div>
+    <div>&nbsp;</div>
+    <div>I like the amount of specialized tools used to develop the Fusion (shown bellow). However, as they said in their conclusion this extraction could be extended to support eLearning 2.0 features: personal spaces, user contributions, user feedbacks, user tags, and user comments.</div>
+    <div>&nbsp;</div>
+    <div><strong>Highlighted Mentions:</strong></div>
+    <ul>
+        <li>Web crawlers: JSpider, Wget and Nutch. Preferred: Nutch.</li>
+        <li>Online courses resources: MIT OCW, UIUC, GreatLearning</li>
+        <li>Commercial elearning: BlackBoard, WebCT, and Desire2Learn. Open-source: Moodle</li>
+        <li>Metadata extraction: Dom-tree approaches: HMM (Hidden Markov Model), CRF (Conditional Random Fields) and SVM (Support Vector Machine)</li>
+        <li>HTML Scanner: NekoHTML, XPath</li>
+        <li>XSLT processor: “Xalan”</li>
+        <li>Glossary: SCORM (Sharable Content Object Reference Model), LOM (Learning Object Management), IEEE-LTSC LOM (Learning Object Metadata), which is developed upon IMS metadata.</li>
+        <li>Crawling approaches:&nbsp;Intelligent Crawling with keywords,&nbsp;OPIC algorithm com- puting the importance value of websites,&nbsp;Learnable Crawler using URL seeds, topic keywords and URL prediction,&nbsp;Decision Tree method,&#8230;</li>
+    </ul>
+    <div>&nbsp;</div>
+    <div>References:</div>
+    <div>[1] Zhang, M., W. Wang, et al. &#8220;On Line Course Organization&#8221;, Advances in Web Based Learning – ICWL 2007. H. Leung, F. Li, R. Lau and Q. Li, Springer Berlin / Heidelberg. 4823: 148-159. 2008</div>
+</div>
+
+
+<p>&nbsp;</p>
+
+
+<ul style="border-style: initial; border-color: initial; ">
+    <li style="border-style: initial; border-color: initial; ">ChinaGrid GreatLearning project, http://greatlearning.grids.cn</li>
+    <li style="border-style: initial; border-color: initial; ">MIT’s Open Courseware (OCW), http://ocw.mit.edu/index.html</li>
+    <li style="border-style: initial; border-color: initial; ">BlackBoard, http://www.blackboard.com/</li>
+    <li style="border-style: initial; border-color: initial; ">WebCT, http://www.webct.com/</li>
+    <li style="border-style: initial; border-color: initial; ">Desire2Learn, http://www.desire2learn.com/</li>
+    <li style="border-style: initial; border-color: initial; ">Nutch, http://lucene.apache.org/nutch/</li>
+    <li style="border-style: initial; border-color: initial; ">LOM, WG12: Learning Object Metadata, http://ltsc.ieee.org/wg12/</li>
+    <li style="border-style: initial; border-color: initial; ">SCRORM, http://www.adlnet.org/index.cfm?fuseaction=scormabt</li>
+    <li style="border-style: initial; border-color: initial; ">Jena – A Semantic Web Framework for Java, http://jena.sourceforge.net/</li>
+</ul>
+
+
+<p>&nbsp;</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/14/determining-granularity-of-independent-tasks-for-reengineering-a-legacy-system-into-an-oo-system-paper-review/">Determining Granularity of Independent Tasks for Reengineering a Legacy System Into an OO System - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-14T00:00:00-04:00" pubdate data-updated="true">Sep 14<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/14/determining-granularity-of-independent-tasks-for-reengineering-a-legacy-system-into-an-oo-system-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this work [1] the authors explain the process of reengineering a legacy system in COBOL for object-oriented. Reengineering is a multi-step process to convert sequential and procedural-driven system into object-oriented and event-driven system. The proposed method [1] to accomplish this task is to transform the legacy system source code into an intermediary language: Wide Spectrum Language (WSL). The WSL code is used to apply an algorithm to identify the optimal granular unit for independent tasks taking into consideration factors as size, dependencies, and coupling. The detailed techniques used to determine the level of granularity are the following four: Determining Data and Control Dependencies (determine the dependency, if any, between data, variables, and controls), Program Block Identification (identify logical unit of execution of the legacy system), Individual Code line Evaluation (is the minimal granular unit of the legacy system: an code statement), and Procedure Granularity (is the largest self-contained granular units possible).</p>
+
+<p>In my opinion, It’s a good idea to transform legacy system into an intermediary language. This way the process will be language independent. However, they should explain in more detail about the WSL intermediary language. And also, give more details in the transformation from COBOL to WSL and how it can be transform to OO systems.</p>
+
+<p>Reference:
+[1] Millham, R.; Ward, M.; Hongji Yang; , &#8220;Determining granularity of independent tasks for reengineering a legacy system into an OO system,&#8221; Computer Software and Applications Conference, 2003. COMPSAC 2003. Proceedings. 27th Annual International , vol., no., pp. 342- 347, 3-6 Nov. 2003</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/07/automated-reverse-engineering-java-swing-gui-paper-review/">Automated Reverse Engineering Java-Swing GUI - Paper Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-07T00:00:00-04:00" pubdate data-updated="true">Sep 7<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/07/automated-reverse-engineering-java-swing-gui-paper-review/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The extraction of Java-Swing GUI information using AspectJ seems like an way to do Reverse Engineering. The extracted information could be use later to migrate applications Java-Swing applications to the web, enhance program understating, generate UML diagrams and a myriad of other uses. This article will be summary of the paper about this topic [1].</p>
+
+<p>The authors of the paper [1] are using aspect oriented programming (AOP) to intercept the application while is running and extract desired information. The information wanted in this case is the following ones: user events, windows and widgets. This type of reverse engineering is performed dynamically. The information is gathered while the user is using the application as usual. The more time the user use the application the more information is gathered. For this task, AspectJ is used. AspectJ is aspect-oriented extension created for Java programming language. AspectJ can interact with java-compiled code (bytecode) and it intercepts specific function calls.  For instance to extract windows and widget the aspect code will detect the Java-Swing calls of: “showFrame()”, “setVisible()”, “show()” in the JFrames, JPanels and widgets. In order to extract the user events, the aspect code intercepts the calls to “JTextField.setText()” for user input in text fields and so forth. Finally, all the information extracted is stored in XML and then can be used for different uses: migration of java-swing applications to web, generate UML design diagrams, you name it!</p>
+
+<p>Something about the title of the paper [1], it&#8217;s that it mention web migration; however, in the content of the paper there are not depth in that topic. It only explain in detail how to extract information needed for the reverse engineering, but there is no detail in how to use the extracted information to do it web-enabled.</p>
+
+<p>Reference
+[1] Samir, H.; Kamel, A.; , &#8220;Automated reverse engineering of Java graphical user interfaces for web migration,&#8221; Information and Communications Technology, 2007. ICICT 2007. ITI 5th International Conference on , vol., no., pp.157-162, 16-18 Dec. 2007</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/08/15/git-auto-commit-with-crontab/">Git Auto-commit With Crontab</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-15T00:00:00-04:00" pubdate data-updated="true">Aug 15<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/08/15/git-auto-commit-with-crontab/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>You might want to commit from a git repository from time to time for several purposes (backup, control version, continuous integration, etc). One way to accomplish that is using the CronTab (Cron is used to run periodic task in Unix-like systems).</p>
+
+<p>Here is an example.</p>
+
+<p>1.- Create an script. e.g. baskitup.sh with:</p>
+
+<pre>
+<code># MySQL-dump: save a copy of the actual content in the database. (this is for a Drupal site, the backup is done using drupal's drush)
+php -c ~/www/php.ini  ~/drush/drush.php -r /home/adrimej0/www -u 1 sql-dump --result-file=latest.sql
+
+# Git: add and commit changes
+cd /home/adrimej0/www && /home/adrimej0/opt/bin/git commit -a -m "weekly crontab backup `date`"
+
+# send data to Git server
+cd /home/adrimej0/www && /home/adrimej0/opt/bin/git push origin master</code>
+</pre>
+
+
+<p>2.- Set up the cron. In the shell write the following</p>
+
+<pre>
+<code>$ crontab -e</code>
+</pre>
+
+
+<p>add the following command line for weekly auto-commits:</p>
+
+<pre>
+<code>MAILTO="youremail@domain.com"
+0 0 * * 0 /home/adrimej0/www/backitup.sh</code>
+</pre>
+
+
+<p>Done. Now your (drupal) site will be backed up every week automatically (every Sunday at midnight).</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/7/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/5/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>I&#8217;m a software engineer passionate about web development and internet technologies. Currently, I&#8217;m working and living in Boston, MA.</p>
+</section>
+
+<section class="googleplus">
+  <h1>
+    <a href="mailto:me@adrianmejia.com">
+			<img src="http://www.elainebellcatering.com/img/email.png" width="32" height="32">
+      Email
+    </a>
+  </h1>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="http://www.linkedin.com/in/adrianmejia">
+			<img src="http://cdn3.iconfinder.com/data/icons/socialnetworking/32/linkedin.png" width="32" height="32">
+      Linkedin
+    </a>
+  </h1>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://github.com/amejiarosario">
+			<img src="http://www.darrenmothersele.com/sites/default/files/image-links/github.png" width="32" height="32">
+      Github
+    </a>
+  </h1>
+</section>
+
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-4/">Backbone.js for absolute beginners - getting started (part 4: Routers)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/13/backbonejs-for-absolute-beginners-getting-started-part-3/">Backbone.js for absolute beginners - getting started (part 3: CRUD)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">Backbone.js for absolute beginners - getting started (part 2: Models, Collections and Views)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/">Backbone.js for Absolute Beginners - Getting started (Part 1: Intro)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/06/instagram-mobile-design-secrets-revealed/">Instagram mobile design secrets revealed</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/amejiarosario">@amejiarosario</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'amejiarosario',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/adriansky?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/adriansky">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("amejiarosario", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/amejiarosario" class="twitter-follow-button" data-show-count="false">Follow @amejiarosario</a>
+  
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2011-2013 | <a href="http://adrianmejia.com">Adrian Mejia</a>
+  <!-- <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -->
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'adrianmejia';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
