@@ -9,7 +9,7 @@ categories: [backbonejs, javascript, web frameworks, web development, agile fram
 The part 2 of this tutorial is [here](/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/).
 
 ## 2.5 Todo item list CRUD
-We basically have our working but there are a couple of features that could improve it. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.  
+There are a couple of features that we could improve. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.  
 
 ### 2.5.1. C-reate
   

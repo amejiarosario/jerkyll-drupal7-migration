@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2013-02-03T18:44:44-05:00</updated>
+  <updated>2013-02-03T19:03:13-05:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -340,7 +340,7 @@
 
 <h2>2.5 Todo item list CRUD</h2>
 
-<p>We basically have our working but there are a couple of features that could improve it. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.</p>
+<p>There are a couple of features that we could improve. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.</p>
 
 <h3>2.5.1. C-reate</h3>
 
