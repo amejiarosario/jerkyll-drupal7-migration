@@ -1,0 +1,4 @@
+rake generate
+git add -u .
+git commit -m 'blog updated'
+git push heroku --force

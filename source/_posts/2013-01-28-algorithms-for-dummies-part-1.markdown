@@ -46,10 +46,10 @@ This is kinda abstract let's see what it means in code:
 <tr><td>1</td><td>Constant</td><td>a=1+3;</td><td>statement (one line of code)</td></tr>
 <tr><td>log(n)</td><td>Logarithmic</td><td>while(n>1){n=n/2;}</td><td>Divide in half (binary search)</td></tr>
 <tr><td>n</td><td>Linear</td><td>for(c=0;c&lt;n;c++){a=1+n;}</td><td>Loop</td></tr>
-<!--<tr><td>n*log(n)</td><td>Linearithmic</td><td></td><td></td></tr>-->
+<tr><td>n*log(n)</td><td>Linearithmic</td><td></td><td></td></tr>
 <tr><td>n^2</td><td>Quadratic</td><td>for(c=0;c&lt;n;c++){for(i=0;i&lt;n;i++){…}}</td><td>Double loop</td></tr>
 <tr><td>n^3</td><td>Cubic</td><td>for(c=0;c&lt;n;c++){for(i=0;i&lt;n;i++){for(x=0;x&lt;n;x++){…}}}</td><td>Triple loop</td></tr>
-<!--<tr><td>2^n</td><td>Exponential</td></tr>-->
+<tr><td>2^n</td><td>Exponential</td></tr>
 </table>  
 
 
