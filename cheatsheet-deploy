@@ -1,4 +1,9 @@
-rake generate
-git add -u .
+rvm use 1.9.3-p448
+bundle install
+bundle exec rake new_post["title"]
+bundle exec rake new_page[super-awesome]
+bundle exec rake preview
+bundle exec rake generate
 git commit -m 'blog updated'
 git push heroku --force
+

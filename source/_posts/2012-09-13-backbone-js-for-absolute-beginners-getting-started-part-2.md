@@ -12,11 +12,12 @@ The part 1 of this tutorial is [here](/blog/2012/09/11/backbone-dot-js-for-absol
 
 After completing this example app, you will have experience and basic understanding of all the modules of Backbone!
 
-(Revised: 2013-02-02)
+(Updated: 2013-02-02, 2013-11-24)
+Notice: This tutorial was written using Backbone v.0.9.x, now version 1.1.x or later are out. However, all the principles exaplained here applies for both.
 
 ### 2.1.- Todo app Boiler plate
 
-Let's start again with the initial [HTML file](https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html) used on 1.1. Now, instead of div#container let's add the following HTML code:
+Let's start again with the initial [HTML file](https://raw.github.com/amejiarosario/Backbone-tutorial/439ff34409dfc01adca7f9f96efcd726295f1aac/backbone-tutorial.html) used on 1.1. Now, instead of div#container let's add the following HTML code:
 
 {% codeblock HTML Structure lang:html https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html Full Code %}
 
@@ -71,6 +72,8 @@ todo.get('created_at'); // "Wed Sep 12 2012 12:51:17 GMT-0400 (EDT)"
 
 As its name indicates, collections are ordered sets of models, where you can get and set models in the collection, listen for events when any element in the collection changes, and fetching for model’s data from the server. 
 
+E.g.: `todoList.fetch();`
+
 
 Collections allows to save data (in database, file, memory), and it requires a reference to it. Therefore, you need to specify the `url` parameter with a relative url, where the model’s resource would be located on the server. Otherwise, you will get errors like:
 
@@ -78,7 +81,9 @@ Collections allows to save data (in database, file, memory), and it requires a r
 `A "url" property or function must be specified` 
 
 
-We are not going to use a backend server for simplicity (I will do a new post for that); instead we are going to use HTML5’s local storage for persistence through a Backbone’s plugin. So, we need to define the localStorage property instead of URL.
+We are not going to use a backend server for simplicity (I will do a new post for that); instead we are going to use HTML5’s local storage for persistence through a Backbone’s plugin. So, we need to define the localStorage property instead of URL. You need to include the backbone-localstorage.js with the rest of your libs as [shown in the full code](https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html):
+
+`<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript">`
 
 {% codeblock Todo list Collection lang:js https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html Full Code %}
 
@@ -100,9 +105,10 @@ We are not going to use a backend server for simplicity (I will do a new post fo
 var todoList = new app.TodoList()
 todoList.create({title: 'Learn Backbone\'s Collection'}); // notice: that `completed` will be set to false by default.
 var lmodel = new app.Todo({title: 'Learn Models', completed: true});
-todoList.add(lmodel); // ["Learn Backbone's Collection", "Learn Models"]
-todoList.pluck('title'); // [false, true]
-JSON.stringify(todoList); // "[{"title":"Learn Backbone's Collection","completed":false,"id":"d9763e99-2267-75f5-62c3-9d7e40742aa6"},{"title":"Learn Models","completed":true}]"
+todoList.add(lmodel); 
+todoList.pluck('title');     // ["Learn Backbone's Collection", "Learn Models"]
+todoList.pluck('completed'); // [false, true]
+JSON.stringify(todoList);    // "[{"title":"Learn Backbone's Collection","completed":false,"id":"d9763e99-2267-75f5-62c3-9d7e40742aa6"},{"title":"Learn Models","completed":true}]"
 {% endcodeblock %}
 
 
@@ -146,12 +152,22 @@ Here you have the option to pass parameters that will be attached to a model, co
 
 ### 2.4.1.3.- `render`
 
-In this function, you inject the markup into the elements. Not all views require having a render function, as you are going to see in the sample code, they can call other view’s render functions.    
+This function injects the markup into the elements. Not all views require having a render function, as you are going to see in the sample code, they can call other view’s render functions.    
 
 ### 2.4.1.5.- delegated events
       
-Events are written in the `{"<EVENT_NAME> <ELEMENT_ID>": "<FUNCTION_CALLBACK>"}` format. 
-E.g. `events: {'keypress #new-todo': 'createTodoOnEnter'}`
+Events are written in the following format:
+
+`{"<EVENT_TYPE> <ELEMENT_ID>": "<CALLBACK_FUNTION>"}` 
+
+E.g. 
+
+`events: {'keypress #new-todo': 'createTodoOnEnter'}`
+
+in jQuery it would be something like:
+
+`$('#new-todo').keypress(createTodoOnEnter);`
+
 
 ## 2.4.2.- Todo View
 
@@ -168,6 +184,8 @@ Now back to our To-do application: We need a view that renders each of the todo 
 
 {% endcodeblock%}
 
+In the following block of code we have the Backbone.View which uses the above template (`#item-template`) to fill it out the title from the `model` we pass along.
+
 {% codeblock Todo View lang:js https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html Full Code %}
 
     // renders individual todo items list (li)
@@ -182,8 +200,40 @@ Now back to our To-do application: We need a view that renders each of the todo 
 
 {% endcodeblock %}
 
+When we instanciate the views, they can receive any parameter that we need. In our case we call it `model` so we need to instanciated with a model (e.g. todo):
 
-## 2.4.3.- App View
+`var view = new app.TodoView({model: todo});`
+
+Also notice that it's using a `tagName: li` instead of the just `el` from before. This mean that the new render elements will be wrapped around a `<li></li>`
+
+## 2.5.- Backbone.Events
+
+This module can be mixed with any object and give it the pub/sub (observer patter) behaviour. Events provides a couple of methods from which we are going to discuss: `on`, `off` and `trigger`. (If this you are familiar with then in jQuery, they will work the same way + some nice built-in features)
+
+### 2.5.1 on 
+`object.on(event, callback, [context])`
+
+Also called bind. It binds an object to an event and a callback. When that event it's triggered it executes the callback.
+
+E.g.
+`todoList.on('add', this.addAll, this);`
+
+Everytime a new item is `add`ed to a Backbone.Collection the event `add` is triggered. In the example above, after the event is triggered the todoList's callback `addAll()` is executed and the current object is passed with `this` as a `context`.
+
+Events can also be set on arbitrary objects using underscore.js `extend` function:
+
+{% codeblock lang:js %}
+var object = {}, 
+    callback = function(msg) { console.log("Triggered " + msg); };
+
+_.extend(object, Backbone.Events);
+
+object.on("my_event", callback);
+
+object.trigger("my_event", "my custom event");
+{% endcodeblock %}
+
+## App View
 
 Now, we need another view that take a collection and render each of the individual items. We are going to call it ‘AppView’. Take a look through this code and try to identify each of the elements (we have already describe them in the previous sections).
 
@@ -194,7 +244,8 @@ Now, we need another view that take a collection and render each of the individu
       el: '#todoapp',
       initialize: function () {
         this.input = this.$('#new-todo');
-        app.todoList.on('add', this.addAll, this);
+        // when new elements are added to the collection render then with addOne
+        app.todoList.on('add', this.addOne, this);
         app.todoList.on('reset', this.addAll, this);
         app.todoList.fetch(); // Loads list from local storage
       },

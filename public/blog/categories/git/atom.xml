@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2013-03-07T13:20:07-05:00</updated>
+  <updated>2013-11-24T18:32:30-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[git+ftp: Publish Git repository over FTP ]]></title>
     <link href="http://adrianmejia.com/blog/2011/11/09/gitftp-publish-git-repository-over-ftp/"/>
-    <updated>2011-11-09T00:00:00-05:00</updated>
+    <updated>2011-11-09T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/11/09/gitftp-publish-git-repository-over-ftp</id>
     <content type="html"><![CDATA[<p>I have been working with websites for a while and also with different web hosts. The default way to upload content is through FTP but it takes a lot of time because upload the entire site each time. Some web hosts &nbsp;have ssh and git, which is great for deployement because you can keep track of the versions and also upload only the files that changes.</p>
 

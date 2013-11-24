@@ -130,8 +130,7 @@ Now, if you try again adding the hash-tags it will work! But, it will be better 
 
 Well, that's all! If completed these 4 parts tutorial you will be familiar with the main Backbone modules (Models, Collections, Views, Events, and Routes). To increase you knowledge you can follow the following resources:
 
-  * [Developing Backbone.js Applications](http://addyosmani.github.com/backbone-fundamentals/?utm_source=adrianmejia.com)
+  * [Backbone's Source code - it's the ultimate source of true](https://github.com/documentcloud/backbone/blob/master/backbone.js)
   * [Official documentation](http://backbonejs.org/?utm_source=adrianmejia.com)
-  * [Source code - it's the ultimate source of true](https://github.com/documentcloud/backbone/blob/master/backbone.js)
 
-Hope it was helpful!  
+Hope it was helpful!

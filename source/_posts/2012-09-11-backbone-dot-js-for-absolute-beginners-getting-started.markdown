@@ -8,7 +8,7 @@ categories: [backbonejs, javascript, web frameworks, web development, agile fram
 
 Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it's ease of use and the structure that it provides to JavaScript applications.
 
-(Revised: 2013-02-02)
+(Updated: 2013-02-02, 2013-11-24)
 
 ### Brief Background (optional reading)
 
@@ -45,9 +45,9 @@ You can follow alone this tutorial's code in this [repository](https://github.co
 
 **1.1.- Simple HTML5 and Backbone boilerplate**
 
-To get started download [this simple html file](https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html). This file  contains the libraries that you'll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don't worry about the libraries we are going to explain them, as we need them.
+To get started download [this simple html file](https://raw.github.com/amejiarosario/Backbone-tutorial/439ff34409dfc01adca7f9f96efcd726295f1aac/backbone-tutorial.html). This file  contains the libraries that you'll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don't worry about the libraries we are going to explain them, as we need them.
 
-After downloading the [file](https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html), notice the HTML where all your page will be built using Backbone.Views!
+After downloading the afored mentioned file, notice the HTML where all your page will be built using Backbone.Views!
 
 All your js app will be loaded here:
 
@@ -88,7 +88,7 @@ Yay! you have your Hello Wold in Backbone and intro to the View module. (Full co
 
 **1.4.- Backbone's Templates**
 
-Backbones has a utility/helper library called [underscore.js](http://underscorejs.org/?utm_source=adrianmejia.com) and you can use their template solution out-of-the-box, but you can use any other template solution that you want like [mustage](https://github.com/janl/mustache.js) or [handlerbars](https://github.com/wycats/handlebars.js). Let's stick with _.js's template for simplicity sake.
+Backbones has a utility/helper library called [underscore.js](http://underscorejs.org/?utm_source=adrianmejia.com) and you can use their template solution out-of-the-box, but you can use any other template solution that you want like [mustache](https://github.com/janl/mustache.js) or [handlerbars](https://github.com/wycats/handlebars.js). Let's stick with _.js's template for simplicity sake.
 
 Underscore.js template has the following signature:
 
@@ -118,4 +118,4 @@ Let’s see it in action and rewrite our Hello World using template instead.
 
 Run the app again and verify that it's working with the template.
 
-### Continue with the [2nd part](/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/) and learn more about backbones' Models, Collections, View and Events!
+### Continue with the [2nd part](/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/) and learn more about Backbone's Models, Collections, View and Events!
