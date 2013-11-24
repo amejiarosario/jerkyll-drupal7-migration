@@ -4,7 +4,7 @@
   <title><![CDATA[Adrian Mejia's [code]Blog]]></title>
   <link href="http://adrianmejia.com/atom.xml" rel="self"/>
   <link href="http://adrianmejia.com/"/>
-  <updated>2013-02-03T18:28:53-05:00</updated>
+  <updated>2013-11-24T18:15:27-04:00</updated>
   <id>http://adrianmejia.com/</id>
   <author>
     <name><![CDATA[Adrian Mejia]]></name>
@@ -194,9 +194,8 @@
 <p>Well, that&#8217;s all! If completed these 4 parts tutorial you will be familiar with the main Backbone modules (Models, Collections, Views, Events, and Routes). To increase you knowledge you can follow the following resources:</p>
 
 <ul>
-<li><a href="http://addyosmani.github.com/backbone-fundamentals/?utm_source=adrianmejia.com">Developing Backbone.js Applications</a></li>
+<li><a href="https://github.com/documentcloud/backbone/blob/master/backbone.js">Backbone&#8217;s Source code - it&#8217;s the ultimate source of true</a></li>
 <li><a href="http://backbonejs.org/?utm_source=adrianmejia.com">Official documentation</a></li>
-<li><a href="https://github.com/documentcloud/backbone/blob/master/backbone.js">Source code - it&#8217;s the ultimate source of true</a></li>
 </ul>
 
 
@@ -213,7 +212,7 @@
 
 <h2>2.5 Todo item list CRUD</h2>
 
-<p>We basically have our working but there are a couple of features that could improve it. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.</p>
+<p>There are a couple of features that we could improve. Let’s implement the CRUD (Create-Read-Update-Delete) for the item list.</p>
 
 <h3>2.5.1. C-reate</h3>
 
@@ -431,11 +430,12 @@
 
 <p>After completing this example app, you will have experience and basic understanding of all the modules of Backbone!</p>
 
-<p>(Revised: 2013-02-02)</p>
+<p>(Updated: 2013-02-02, 2013-11-24)
+Notice: This tutorial was written using Backbone v.0.9.x, now version 1.1.x or later are out. However, all the principles exaplained here applies for both.</p>
 
 <h3>2.1.- Todo app Boiler plate</h3>
 
-<p>Let&#8217;s start again with the initial <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">HTML file</a> used on 1.1. Now, instead of div#container let&#8217;s add the following HTML code:</p>
+<p>Let&#8217;s start again with the initial <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/439ff34409dfc01adca7f9f96efcd726295f1aac/backbone-tutorial.html">HTML file</a> used on 1.1. Now, instead of div#container let&#8217;s add the following HTML code:</p>
 
 <figure class='code'><figcaption><span>HTML Structure </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -512,11 +512,15 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 
 <p>As its name indicates, collections are ordered sets of models, where you can get and set models in the collection, listen for events when any element in the collection changes, and fetching for model’s data from the server.</p>
 
+<p>E.g.: <code>todoList.fetch();</code></p>
+
 <p>Collections allows to save data (in database, file, memory), and it requires a reference to it. Therefore, you need to specify the <code>url</code> parameter with a relative url, where the model’s resource would be located on the server. Otherwise, you will get errors like:</p>
 
 <p><code>A "url" property or function must be specified</code></p>
 
-<p>We are not going to use a backend server for simplicity (I will do a new post for that); instead we are going to use HTML5’s local storage for persistence through a Backbone’s plugin. So, we need to define the localStorage property instead of URL.</p>
+<p>We are not going to use a backend server for simplicity (I will do a new post for that); instead we are going to use HTML5’s local storage for persistence through a Backbone’s plugin. So, we need to define the localStorage property instead of URL. You need to include the backbone-localstorage.js with the rest of your libs as <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html">shown in the full code</a>:</p>
+
+<p><code>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"&gt;</code></p>
 
 <figure class='code'><figcaption><span>Todo list Collection </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -546,12 +550,14 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">todoList</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">TodoList</span><span class="p">()</span>
 </span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Learn Backbone\&#39;s Collection&#39;</span><span class="p">});</span> <span class="c1">// notice: that `completed` will be set to false by default.</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">lmodel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">app</span><span class="p">.</span><span class="nx">Todo</span><span class="p">({</span><span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Learn Models&#39;</span><span class="p">,</span> <span class="nx">completed</span><span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
-</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">lmodel</span><span class="p">);</span> <span class="c1">// [&quot;Learn Backbone&#39;s Collection&quot;, &quot;Learn Models&quot;]</span>
-</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span> <span class="c1">// [false, true]</span>
-</span><span class='line'><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todoList</span><span class="p">);</span> <span class="c1">// &quot;[{&quot;title&quot;:&quot;Learn Backbone&#39;s Collection&quot;,&quot;completed&quot;:false,&quot;id&quot;:&quot;d9763e99-2267-75f5-62c3-9d7e40742aa6&quot;},{&quot;title&quot;:&quot;Learn Models&quot;,&quot;completed&quot;:true}]&quot;</span>
+</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">lmodel</span><span class="p">);</span>
+</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>     <span class="c1">// [&quot;Learn Backbone&#39;s Collection&quot;, &quot;Learn Models&quot;]</span>
+</span><span class='line'><span class="nx">todoList</span><span class="p">.</span><span class="nx">pluck</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">);</span> <span class="c1">// [false, true]</span>
+</span><span class='line'><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">todoList</span><span class="p">);</span>    <span class="c1">// &quot;[{&quot;title&quot;:&quot;Learn Backbone&#39;s Collection&quot;,&quot;completed&quot;:false,&quot;id&quot;:&quot;d9763e99-2267-75f5-62c3-9d7e40742aa6&quot;},{&quot;title&quot;:&quot;Learn Models&quot;,&quot;completed&quot;:true}]&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -607,12 +613,21 @@ For our example, we are going to create a model called <code>Todo</code>, which 
 
 <h3>2.4.1.3.- <code>render</code></h3>
 
-<p>In this function, you inject the markup into the elements. Not all views require having a render function, as you are going to see in the sample code, they can call other view’s render functions.</p>
+<p>This function injects the markup into the elements. Not all views require having a render function, as you are going to see in the sample code, they can call other view’s render functions.</p>
 
 <h3>2.4.1.5.- delegated events</h3>
 
-<p>Events are written in the <code>{"&lt;EVENT_NAME&gt; &lt;ELEMENT_ID&gt;": "&lt;FUNCTION_CALLBACK&gt;"}</code> format.
-E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
+<p>Events are written in the following format:</p>
+
+<p><code>{"&lt;EVENT_TYPE&gt; &lt;ELEMENT_ID&gt;": "&lt;CALLBACK_FUNTION&gt;"}</code></p>
+
+<p>E.g.</p>
+
+<p><code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
+
+<p>in jQuery it would be something like:</p>
+
+<p><code>$('#new-todo').keypress(createTodoOnEnter);</code></p>
 
 <h2>2.4.2.- Todo View</h2>
 
@@ -633,7 +648,7 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>In the following block of code we have the Backbone.View which uses the above template (<code>#item-template</code>) to fill it out the title from the <code>model</code> we pass along.</p>
 
 <figure class='code'><figcaption><span>Todo View </span><a href='https://raw.github.com/amejiarosario/Backbone-tutorial/fe0efb0fd0c4c3c4cb5fd61e9917165082f9a562/backbone-tutorial.html'>Full Code </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -656,7 +671,49 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>2.4.3.- App View</h2>
+<p>When we instanciate the views, they can receive any parameter that we need. In our case we call it <code>model</code> so we need to instanciated with a model (e.g. todo):</p>
+
+<p><code>var view = new app.TodoView({model: todo});</code></p>
+
+<p>Also notice that it&#8217;s using a <code>tagName: li</code> instead of the just <code>el</code> from before. This mean that the new render elements will be wrapped around a <code>&lt;li&gt;&lt;/li&gt;</code></p>
+
+<h2>2.5.- Backbone.Events</h2>
+
+<p>This module can be mixed with any object and give it the pub/sub (observer patter) behaviour. Events provides a couple of methods from which we are going to discuss: <code>on</code>, <code>off</code> and <code>trigger</code>. (If this you are familiar with then in jQuery, they will work the same way + some nice built-in features)</p>
+
+<h3>2.5.1 on</h3>
+
+<p><code>object.on(event, callback, [context])</code></p>
+
+<p>Also called bind. It binds an object to an event and a callback. When that event it&#8217;s triggered it executes the callback.</p>
+
+<p>E.g.
+<code>todoList.on('add', this.addAll, this);</code></p>
+
+<p>Everytime a new item is <code>add</code>ed to a Backbone.Collection the event <code>add</code> is triggered. In the example above, after the event is triggered the todoList&#8217;s callback <code>addAll()</code> is executed and the current object is passed with <code>this</code> as a <code>context</code>.</p>
+
+<p>Events can also be set on arbitrary objects using underscore.js <code>extend</code> function:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{},</span>
+</span><span class='line'>    <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Triggered &quot;</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">);</span> <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">object</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;my_event&quot;</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">object</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;my_event&quot;</span><span class="p">,</span> <span class="s2">&quot;my custom event&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>App View</h2>
 
 <p>Now, we need another view that take a collection and render each of the individual items. We are going to call it ‘AppView’. Take a look through this code and try to identify each of the elements (we have already describe them in the previous sections).</p>
 
@@ -700,12 +757,14 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
 <span class='line-number'>38</span>
 <span class='line-number'>39</span>
 <span class='line-number'>40</span>
+<span class='line-number'>41</span>
 </pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="c1">// renders the full list of todo items calling TodoView for each one.</span>
 </span><span class='line'>    <span class="nx">app</span><span class="p">.</span><span class="nx">AppView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
 </span><span class='line'>      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#todoapp&#39;</span><span class="p">,</span>
 </span><span class='line'>      <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new-todo&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addAll</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span><span class='line'>        <span class="c1">// when new elements are added to the collection render then with addOne</span>
+</span><span class='line'>        <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addOne</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
 </span><span class='line'>        <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;reset&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">addAll</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
 </span><span class='line'>        <span class="nx">app</span><span class="p">.</span><span class="nx">todoList</span><span class="p">.</span><span class="nx">fetch</span><span class="p">();</span> <span class="c1">// Loads list from local storage</span>
 </span><span class='line'>      <span class="p">},</span>
@@ -754,7 +813,7 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
     <id>http://adrianmejia.com/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started</id>
     <content type="html"><![CDATA[<p>Backbone.js is a JavaScript framework, among many others, that is gaining special attention in the web development community because it&#8217;s ease of use and the structure that it provides to JavaScript applications.</p>
 
-<p>(Revised: 2013-02-02)</p>
+<p>(Updated: 2013-02-02, 2013-11-24)</p>
 
 <h3>Brief Background (optional reading)</h3>
 
@@ -793,9 +852,9 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
 
 <p><strong>1.1.- Simple HTML5 and Backbone boilerplate</strong></p>
 
-<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you&#8217;ll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don&#8217;t worry about the libraries we are going to explain them, as we need them.</p>
+<p>To get started download <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/439ff34409dfc01adca7f9f96efcd726295f1aac/backbone-tutorial.html">this simple html file</a>. This file  contains the libraries that you&#8217;ll need (jQuery, Underscore.js, Backbone.js and Backbone-localStorage.js) and the placeholders for your HTML and JS code. Don&#8217;t worry about the libraries we are going to explain them, as we need them.</p>
 
-<p>After downloading the <a href="https://raw.github.com/amejiarosario/Backbone-tutorial/9821e5b1fdc39d22720b1a1d89055cc531f994d7/backbone-tutorial.html">file</a>, notice the HTML where all your page will be built using Backbone.Views!</p>
+<p>After downloading the afored mentioned file, notice the HTML where all your page will be built using Backbone.Views!</p>
 
 <p>All your js app will be loaded here:</p>
 
@@ -849,7 +908,7 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
 
 <p><strong>1.4.- Backbone&#8217;s Templates</strong></p>
 
-<p>Backbones has a utility/helper library called <a href="http://underscorejs.org/?utm_source=adrianmejia.com">underscore.js</a> and you can use their template solution out-of-the-box, but you can use any other template solution that you want like <a href="https://github.com/janl/mustache.js">mustage</a> or <a href="https://github.com/wycats/handlebars.js">handlerbars</a>. Let&#8217;s stick with _.js&#8217;s template for simplicity sake.</p>
+<p>Backbones has a utility/helper library called <a href="http://underscorejs.org/?utm_source=adrianmejia.com">underscore.js</a> and you can use their template solution out-of-the-box, but you can use any other template solution that you want like <a href="https://github.com/janl/mustache.js">mustache</a> or <a href="https://github.com/wycats/handlebars.js">handlerbars</a>. Let&#8217;s stick with _.js&#8217;s template for simplicity sake.</p>
 
 <p>Underscore.js template has the following signature:</p>
 
@@ -894,7 +953,7 @@ E.g. <code>events: {'keypress #new-todo': 'createTodoOnEnter'}</code></p>
 
 <p>Run the app again and verify that it&#8217;s working with the template.</p>
 
-<h3>Continue with the <a href="http://adrianmejia.com/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">2nd part</a> and learn more about backbones&#8217; Models, Collections, View and Events!</h3>
+<h3>Continue with the <a href="http://adrianmejia.com/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/">2nd part</a> and learn more about Backbone&#8217;s Models, Collections, View and Events!</h3>
 ]]></content>
   </entry>
   
@@ -1304,7 +1363,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[Adding Subversion (SVN) Properties to your code]]></title>
     <link href="http://adrianmejia.com/blog/2012/02/11/adding-subversion-svn-properties-to-your-code/"/>
-    <updated>2012-02-11T00:00:00-05:00</updated>
+    <updated>2012-02-11T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2012/02/11/adding-subversion-svn-properties-to-your-code</id>
     <content type="html"><![CDATA[<p>When you are coding in a team enviroment it&#39;s good to have the subversion properties in your files, that way any other developer can see quickly who made the last changes and when.</p>
 
@@ -1435,7 +1494,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[How do I change the Ruby/Python version Textmate uses?]]></title>
     <link href="http://adrianmejia.com/blog/2012/02/09/how-do-i-change-the-ruby-python-version-textmate-uses/"/>
-    <updated>2012-02-09T00:00:00-05:00</updated>
+    <updated>2012-02-09T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2012/02/09/how-do-i-change-the-ruby-python-version-textmate-uses</id>
     <content type="html"><![CDATA[<p>&nbsp;</p>
 
@@ -1483,7 +1542,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[Get Started with the web crawler Apache Nutch 1.x ]]></title>
     <link href="http://adrianmejia.com/blog/2012/02/04/get-started-with-the-web-crawler-apache-nutch-1-x/"/>
-    <updated>2012-02-04T00:00:00-05:00</updated>
+    <updated>2012-02-04T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2012/02/04/get-started-with-the-web-crawler-apache-nutch-1-x</id>
     <content type="html"><![CDATA[<p>Apache Nutch is an open source <strong>scalable</strong> Web crawler written in Java and based on Lucene/Solr for the indexing and search part.&nbsp;It has a highly modular architecture, allowing developers to create plug-ins for media-type parsing, data retrieval, querying and clustering. [<a href="http://en.wikipedia.org/wiki/Nutch">*</a>]</p>
 
@@ -1764,7 +1823,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[SSH login without password]]></title>
     <link href="http://adrianmejia.com/blog/2012/01/19/ssh-login-without-password/"/>
-    <updated>2012-01-19T00:00:00-05:00</updated>
+    <updated>2012-01-19T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2012/01/19/ssh-login-without-password</id>
     <content type="html"><![CDATA[<p>If you want to login to a remote server using SSH and don&#39;t have to type the password again and again, here is a little trick</p>
 
@@ -1786,7 +1845,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[Concentration problems? Procastination? You're not the only one.]]></title>
     <link href="http://adrianmejia.com/blog/2012/01/04/concentration-problems-procastination-youre-not-the-only-one/"/>
-    <updated>2012-01-04T00:00:00-05:00</updated>
+    <updated>2012-01-04T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2012/01/04/concentration-problems-procastination-youre-not-the-only-one</id>
     <content type="html"><![CDATA[<p>&nbsp;</p>
 
@@ -1881,7 +1940,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[Learning Algorithms from Scratch / Algorithms for Dummies]]></title>
     <link href="http://adrianmejia.com/blog/2011/12/22/learning-algorithms-from-scratch-algorithms-for-dummies/"/>
-    <updated>2011-12-22T00:00:00-05:00</updated>
+    <updated>2011-12-22T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/12/22/learning-algorithms-from-scratch-algorithms-for-dummies</id>
     <content type="html"><![CDATA[<p>When you are programming you face challenges all the way. Getting the problems solved is just the tip of the iceberg, getting it done efficiently is the rest.</p>
 
@@ -1996,7 +2055,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[How to remove programs from the start up in Mac OS X]]></title>
     <link href="http://adrianmejia.com/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x/"/>
-    <updated>2011-11-18T00:00:00-05:00</updated>
+    <updated>2011-11-18T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/11/18/how-to-remove-programs-from-the-start-up-in-mac-os-x</id>
     <content type="html"><![CDATA[<p>Well&#8230; I have done this so many times in Windows (it&#39;s just executing &quot;msconfig&quot; you can edit the startup items).&nbsp;Today, I had the need to do the same in the Mac OS X Lion.</p>
 
@@ -2025,7 +2084,7 @@ Sequel::DatabaseConnectionError: Mysql::ClientError::ServerGoneError: The MySQL 
   <entry>
     <title type="html"><![CDATA[Regular Expressions in C# and Java - CSV Example]]></title>
     <link href="http://adrianmejia.com/blog/2011/11/10/regular-expressions-in-c-and-java-csv-example/"/>
-    <updated>2011-11-10T00:00:00-05:00</updated>
+    <updated>2011-11-10T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/11/10/regular-expressions-in-c-and-java-csv-example</id>
     <content type="html"><![CDATA[<p>Regular expressions are used to find matches in texts. The following is a real application of Regex in C# and Java.&nbsp;</p>
 
@@ -2124,7 +2183,7 @@ name,line1,line2,city,zip code,country</pre>
   <entry>
     <title type="html"><![CDATA[How to setup Drupal WYSIWYG and Images uploading?]]></title>
     <link href="http://adrianmejia.com/blog/2011/11/09/how-to-setup-drupal-wysiwyg-and-images-uploading/"/>
-    <updated>2011-11-09T00:00:00-05:00</updated>
+    <updated>2011-11-09T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/11/09/how-to-setup-drupal-wysiwyg-and-images-uploading</id>
     <content type="html"><![CDATA[<p>It have been a pain for me to upload images and deal with tons of WYSIWYG editors&#8230; After many trials in this post I recompiled my experiences and the best method that I have found so far. If you have any suggestion I&#39;m willing to hear it, too.</p>
 
@@ -2246,7 +2305,7 @@ name,line1,line2,city,zip code,country</pre>
   <entry>
     <title type="html"><![CDATA[How to execute SQL statements on MS Access?]]></title>
     <link href="http://adrianmejia.com/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access/"/>
-    <updated>2011-11-09T00:00:00-05:00</updated>
+    <updated>2011-11-09T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/11/09/how-to-execute-sql-statements-on-ms-access</id>
     <content type="html"><![CDATA[<p>Sometimes is quicker to use SQL statements than create tables using the MS Access Visual Designer. For instance, if you already have the SQL code from other databases this could be useful.</p>
 
@@ -2290,7 +2349,7 @@ dbs.Close
   <entry>
     <title type="html"><![CDATA[git+ftp: Publish Git repository over FTP ]]></title>
     <link href="http://adrianmejia.com/blog/2011/11/09/gitftp-publish-git-repository-over-ftp/"/>
-    <updated>2011-11-09T00:00:00-05:00</updated>
+    <updated>2011-11-09T00:00:00-04:00</updated>
     <id>http://adrianmejia.com/blog/2011/11/09/gitftp-publish-git-repository-over-ftp</id>
     <content type="html"><![CDATA[<p>I have been working with websites for a while and also with different web hosts. The default way to upload content is through FTP but it takes a lot of time because upload the entire site each time. Some web hosts &nbsp;have ssh and git, which is great for deployement because you can keep track of the versions and also upload only the files that changes.</p>
 
